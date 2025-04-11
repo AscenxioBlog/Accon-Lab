@@ -104,7 +104,7 @@ function ShopData() {
     return (
         <div className="bg-gray-50">
             <ShopComponent2 data={data} />
-            <HomeComponent16 file={data} />
+            {/* <HomeComponent16 file={data} /> */}
         </div>
     );
 }
