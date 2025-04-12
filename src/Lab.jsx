@@ -36,14 +36,14 @@ function Lab() {
                     <Route path="/" element={<HomeComponent />} />
                     <Route path="/About" element={<AboutComponent />} />
                     <Route path="/Service" element={<ServiceComponent />} />
-                    <Route path="/Research" element={<ResearchComponent />} />
+                    {/* <Route path="/Research" element={<ResearchComponent />} /> */}
                     <Route path="/Team" element={<TeamComponent />} />
                     <Route path="/Contact" element={<ContactComponent />} />
                     <Route path="/cart" element={<CartComponent />} />
                     <Route path="/Shop" element={<ShopComponent />} />
                     <Route path="/FAQ" element={<FAQComponent />} />
                     <Route path="/Checkout" element={<CheckoutComponent />} />
-                    <Route path="/Pricing" element={<PricingComponent />} />
+                    {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>
                 <FooterComponent/>
             </BrowserRouter>

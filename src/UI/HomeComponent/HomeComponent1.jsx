@@ -25,7 +25,7 @@ function HomeComponent1() {
   return (
     <div>
         <div className='min-h-[600px] p-[20px] bg-white  grid grid-cols-1 lg:grid-cols-2 lg:gap-20 items-center'>
-            <div className=' lg:hidden' >
+            <div className=' lg:hidden relative' >
                 <motion.div
                    initial={{ x: -30 , opacity:0}}
                    animate={{ x: 0, opacity:1 }}
@@ -33,15 +33,19 @@ function HomeComponent1() {
                  className='min-h-[100px] w-[320px] '>
                  <img src={images[num]} alt="" />
 
+
+            
+
                 </motion.div>
                 <motion.div
                    initial={{ x: 30 , opacity:0}}
                    animate={{ x: 0, opacity:1 }}
                    transition={{delay:1.5, duration:4}}
-                className='hidden md:block min-h-[200px] w-[200px] absolute top-[200px] left-[360px]'>
+                className='hidden md:block min-h-[200px] w-[200px] absolute top-[70px] left-[300px]'>
                   <img src={bgg} alt="" />
 
                 </motion.div>
+                
 
             </div>
             <motion.div 

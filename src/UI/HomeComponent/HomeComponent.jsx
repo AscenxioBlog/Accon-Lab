@@ -30,10 +30,10 @@ function HomeComponent() {
         <HomeComponent7/>
         <HomeComponent8/>
         <HomeComponent9/>
-        <HomeComponent10/>
-        <HomeComponent11/>
-        <HomeComponent12/>
-        <HomeComponent13/>
+        {/* <HomeComponent10/> */}
+        {/* <HomeComponent11/> */}
+        {/* <HomeComponent12/> */}
+        {/* <HomeComponent13/> */}
         <HomeComponent114/>
         {/* <HomeComponent14/> */}
         <HomeComponent15/>

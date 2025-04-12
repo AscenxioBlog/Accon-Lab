@@ -8,7 +8,7 @@ function AboutComponent1() {
                 <h1 className='text-bodybg font-custom text-4xl font-extrabold'>ABOUT US</h1>
             </div>
             <div>
-                <h1 className=' relative  text-2xl font-custom font-extrabold'>Wilcon Lab : ABOUT US</h1>
+                <h1 className=' relative  text-2xl font-custom font-extrabold'>Accon Lab : ABOUT US</h1>
                 <h1 className='absolute flex before:h-[3px] before:w-[90px] before:bg-bodybg  left-[140px]'></h1>
             </div>
         </div>
@@ -17,7 +17,7 @@ function AboutComponent1() {
                     <h1 className='text-bodybg font-custom text-6xl font-extrabold'>ABOUT US</h1>
                 </div>
                 <div>
-                    <h1 className=' relative  text-2xl font-custom font-extrabold'>Wilcon Lab : ABOUT US</h1>
+                    <h1 className=' relative  text-2xl font-custom font-extrabold'>Accon Lab : ABOUT US</h1>
                     <h1 className='absolute flex before:h-[3px] before:w-[100px] before:bg-bodybg md:right-[10%]  right-[70px]'></h1>
                 </div>        
         </div>
@@ -26,7 +26,7 @@ function AboutComponent1() {
                 <h1 className='text-bodybg font-custom text-6xl font-extrabold'>ABOUT US</h1>
             </div>
             <div>
-                <h1 className=' relative  text-2xl font-custom font-extrabold'>Wilcon Lab : ABOUT US</h1>
+                <h1 className=' relative  text-2xl font-custom font-extrabold'>Accon Lab : ABOUT US</h1>
                 <h1 className='absolute flex before:h-[3px] before:w-[90px] before:bg-bodybg  right-[16.5%] xl:right-[17%]'></h1>
             </div>
             

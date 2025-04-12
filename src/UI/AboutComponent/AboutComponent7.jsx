@@ -84,8 +84,7 @@ function AboutComponent7() {
                 </div>
                 <div className='text-center'>
                 <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Generate Proposal</h1>
-                <p className='font-custom text-[1.3rem] dark:text-black'>Testing Begins many varios
-                suffered alten in some</p>
+                <p className='font-custom text-[1.3rem] dark:text-black'>We begin by understanding client needs and preparing a comprehensive research proposal tailored to the study objectives.</p>
                 </div>
           </div>
           <div className="flex items-center justify-center">
@@ -100,8 +99,7 @@ function AboutComponent7() {
             </div>
             <div className='text-center '> 
               <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Testing Begins</h1>
-              <p className='font-custom text-[1.3rem] dark:text-black'>There are many varios passages
-              suffered alten in some</p>
+              <p className='font-custom text-[1.3rem] dark:text-black'>Our experienced team executes rigorous testing protocols, adhering to global standards and scientific best practices.</p>
             </div>
           </div>
 
@@ -116,8 +114,7 @@ function AboutComponent7() {
             </div>
             <div className='text-center'>
               <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Reports Delivered</h1>
-                <p className='font-custom text-[1.3rem] dark:text-black'>There are many varios passages
-                suffered alten in some</p>
+                <p className='font-custom text-[1.3rem] dark:text-black'> Findings are analyzed, documented, and delivered clearly to help sta</p>
             </div>
           </div>
 
@@ -139,10 +136,10 @@ function AboutComponent7() {
           <div className='text-center leading-6'>
             <h1 className='font-custom font-semibold text-boldtext text-[2.5rem]'>Our Mission is Give You Always Best Results.</h1>
             <p className='  text-[1.3rem] font-custom font-medium mt-5 dark:text-black'>
-               Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo claritatem insitamconse quat.Exerci tation ullamcorper suscipit loborti excommodo habent claritatem insitamconse quat.Exerci tationlobortis nisl aliquip ex ea commodo habent claritatem insitamconse quat.
+            Our mission is to lead the advancement of medical and scientific knowledge by conducting reliable, ethical, and efficient clinical trials.
             </p>
             <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
-            Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo claritatem insitamconse quat.Exerci tation ullamcorper suscip
+            We strive to deliver precise results and support healthcare innovation through our commitment to quality, transparency, and collaboration.
             </p>
           </div>
           <div className='min-h-[100px] w-full'>
@@ -169,13 +166,13 @@ function AboutComponent7() {
             </div>
          <div className='text-center leading-6'>
             <h1 className='font-custom font-semibold text-boldtext text-[1.9rem] md:text-[2.5rem]'>
-              We are Trusted by over 25000+ of customers.
+            OUR VALUE
             </h1>
             <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
-               Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo claritatem insitamconse quat.Exerci tation ullamcorper suscipit loborti excommodo habent claritatem insitamconse quat.Exerci tationlobortis nisl aliquip ex ea commodo habent claritatem insitamconse quat.
+            Trusted by over <span className="text-blue-700 font-semibold">25,000+</span> clients worldwide, our value lies in delivering excellence with integrity.
             </p>
             <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
-            Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo claritatem insitamconse quat.Exerci tation ullamcorper suscip
+            Every project we undertake is backed by a strong ethical foundation, scientific rigor, and a passion for driving meaningful outcomes in healthcare.
             </p>
           </div>
           <div className='min-h-[100px] w-full'>      

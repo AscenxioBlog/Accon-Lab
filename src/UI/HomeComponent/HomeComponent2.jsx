@@ -23,15 +23,68 @@ function HomeComponent2() {
     autoplaySpeed: 5000,
     cssEase: "linear"
   };
+
+
+  let Categories = {
+
+  }
   return (
     <div>
-        <div className='min-h-[550px] bg-bodybg'>
+        <div className='min-h-[380px] lg:h-[380px] grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-10 mb-10 mt-5'>
+          <div className="min-h-[380px] bg-[] lg:col-span-2  pt-3">
+            <h1 className=' pl-2 box-border text-[1.5rem] font-bold'>Main Categories</h1>
+           <div className=" h-[360px] grid gap-1 pl-2 pr-2 bg-[url(assets/Frame.png)] frame">
+           <Link>
+           <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+            <h1>Cleaning Product +</h1>
+           </div>
+           </Link>
+           <Link>
+           <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+            <h1>Personal Safety +</h1>
+            </div>
+           </Link>
+            <Link>
+            <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+              <h1>Bulk Purchase +</h1>
+            </div>
+            </Link>
+            <Link>
+            <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+              <h1>First Aid tools +</h1>
+            </div>
+            </Link>
+           <Link>
+           <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+              <h1>Security Product +</h1>
+            </div>
+           </Link>
+            <Link>
+            <div className="h-full box-border  flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+              <h1>Lockout Supplier +</h1>
+            </div>
+            </Link>
+            <Link>
+            <div className=" h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+              <h1>Material Handling +</h1>
+            </div>
+            </Link>
+           </div>
+          </div>
 
-        <Slider {...settings}>
-        <div className=" h-[470px] w-full bg-[url(assets/banner2.jpg)] homeslider"></div>
-          <div className=" h-[470px] w-full  bg-[url(assets/banner3.jpg)] homeslider"></div>
-          <div className=" h-[470px] w-full bg-[url(assets/banner4.jpg)] homeslider"></div>
-    </Slider>
+          <div className="h-[380px] bg-[] lg:col-span-6 pl-4 pr-4 box-border">
+                  <Slider {...settings}>
+                <div className=" h-[380px] w-full bg-[url(assets/banner2.jpg)] homeslider"></div>
+                  <div className=" h-[380px] w-full  bg-[url(assets/banner3.jpg)] homeslider"></div>
+                  <div className=" h-[380px] w-full bg-[url(assets/banner4.jpg)] homeslider"></div>
+                </Slider>
+          </div>
+          <div className="h-[380px] bg-[] lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-2 p-5">
+            <div className=" bg-lime-200 bg-[url(assets/undraw2.png)] frame"></div>
+            <div className=" bg-lime-200"></div>
+          </div>
+
+     
 
           
            {/* <div className='relative'>

@@ -283,3 +283,7 @@ html {
         background-color: rgba(0, 0, 255, 0.504);
         background-blend-mode: darken;
       }
+
+      .frame{
+        background-size: 100% 100%;
+      }
