@@ -18,7 +18,7 @@ function TeamComponent2() {
              transition={{delay:0.4,duration:2}}
              viewport={{ once: true }}
             >
-                <img src={team2} width='100%' height='100%' alt="" />
+                <img src={team2} width='100%' height='100%' alt="" /> 
             </motion.div>
             <motion.div
             initial={{ opacity:0, x:30 }}
