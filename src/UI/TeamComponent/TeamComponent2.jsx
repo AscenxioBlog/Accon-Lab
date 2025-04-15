@@ -56,7 +56,6 @@ function TeamComponent2() {
                   <span className='h-[40px] w-[40px]  bg-red-500 flex items-center justify-center rounded-md  text-[1rem] text-white'><FaPinterest /></span>
                </a>
             </div>
-
         </div>
     </div>
   )
