@@ -22,14 +22,13 @@ function AboutComponent5() {
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{delay:0.5,type:'spring', stiffness:120}}
                     viewport={{ once: true }}
-                     className='min-h-[200px] bg group p-[10px]'>
+                     className='min-h-[200px] bg group p-[10px] flex flex-col items-center text-center'>
                         <div className='min-h-[100px] w-[100px] rounded-[50%] bg-[#0000ff89] flex items-center justify-center transition duration-500 ease-in group-hover:bg-[blue] text-[blue] group-hover:text-bodybg text-5xl'> 
                             <GiMicroscope />
                         </div>
                         <div className=' w-[60%] mt-[20px]'>
                             <h1 className='font-custom text-[2rem]  font-semibold'>High Quality Services</h1>
-                            <p>Nam eget dui vel quam sodales
-                            semper quis porttitor tortor.</p>
+                            <p>We provide top-tier services with a strong commitment to excellence and attention to detail.</p>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -37,15 +36,14 @@ function AboutComponent5() {
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{delay:0.6,type:'spring', stiffness:120}}
                     viewport={{ once: true }}
-                    className='min-h-[200px] bg group p-[10px]'
+                    className='min-h-[200px] bg group p-[10px] flex flex-col items-center text-center'
                     >
                         <div className='min-h-[100px] w-[100px] rounded-[50%] bg-[#ff00007c] flex items-center justify-center transition duration-500 ease-in group-hover:bg-[red] text-[red] group-hover:text-bodybg text-5xl'>
                             <SiFastly />
                         </div>
-                        <div className='w-[60%] text-start mt-[20px]'>
+                        <div className='w-[60%] mt-[20px] text-center'>
                             <h1 className='font-custom font-semibold text-[2rem]'>Fast Working Process</h1>
-                            <p>Nam eget dui vel quam sodales
-                            semper quis porttitor tortor.</p>
+                            <p>Our workflow is efficient and streamlined to deliver results quickly without compromising quality.</p>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -53,15 +51,14 @@ function AboutComponent5() {
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{delay:0.7,type:'spring', stiffness:120}}
                     viewport={{ once: true }}
-                    className='min-h-[200px]  group p-[10px]'
+                    className='min-h-[200px]  group p-[10px] flex flex-col items-center text-center'
                     >
                         <div className='min-h-[100px] w-[100px] rounded-[50%] bg-[#0080005d] flex items-center justify-center transition duration-500 ease-in group-hover:bg-[green] text-[green] group-hover:text-bodybg text-5xl'>
                          <TbHours24 />
                         </div>
-                        <div className='w-[60%] text-start mt-[20px]'>
+                        <div className='w-[60%]  mt-[20px]'>
                             <h1 className='font-custom font-semibold text-[2rem]'>24/7 Cutomer Support</h1>
-                            <p>Nam eget dui vel quam sodales
-                            semper quis porttitor tortor.</p>
+                            <p>We offer round-the-clock assistance to ensure our clients receive help whenever they need it.</p>
                         </div>
                     </motion.div>
                     <motion.div 
@@ -69,14 +66,13 @@ function AboutComponent5() {
                     whileInView={{ opacity: 1, y:0 }}
                     transition={{delay:0.8,type:'spring', stiffness:120}}
                     viewport={{ once: true }}
-                    className='group p-[10px]'>
+                    className='group p-[10px] flex flex-col items-center text-center'>
                         <div className='min-h-[100px] w-[100px] rounded-[50%] bg-[#2c8cd07c] flex items-center justify-center transition duration-500 ease-in group-hover:bg-textc text-textc font-semibold group-hover:text-bodybg text-5xl'>
                          <GiDarkSquad />
                         </div>
-                        <div className='w-[60%] text-start mt-[20px]'>
+                        <div className='w-[60%]  mt-[20px]'>
                             <h1 className='font-custom font-semibold text-[2rem]'>We have Expert Team</h1>
-                            <p>Nam eget dui vel quam sodales
-                            semper quis porttitor tortor.</p>
+                            <p>Our team is made up of skilled professionals with deep knowledge and experience in their fields.</p>
                         </div>
                     </motion.div>
 

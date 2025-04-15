@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../ReusableComponent/CartContext';
 import { FaCartShopping } from "react-icons/fa6";
 import { FaEye } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 function ShopComponent2({ data = [] }) {
     const { addToCart } = useContext(CartContext);
@@ -12,6 +13,7 @@ function ShopComponent2({ data = [] }) {
     const productsPerPage = 12;
     const [showAlert, setShowAlert] = useState(false); // State to handle alert visibility
     const [alertMessage, setAlertMessage] = useState(''); 
+    const [loading, setLoading] = useState(false);
 
     if (options === 'rating') {
         allData.sort((a, b) => (parseFloat(b.rating) || 0) - (parseFloat(a.rating) || 0));
@@ -25,6 +27,15 @@ function ShopComponent2({ data = [] }) {
     const lastIndex = Math.min(currentPage * productsPerPage, allData.length);
     const firstIndex = lastIndex - productsPerPage;
     const totalRecords = allData.slice(firstIndex, lastIndex);
+
+     useEffect(() => {
+            setLoading(true);
+            const timeout = setTimeout(() => {
+                setLoading(false);
+            }, 1000);
+            return () => clearTimeout(timeout);
+        }, [options, currentPage]);
+    
 
     const handlePageChange = (page) => {
         if (page > 0 && page <= totalPages) {
@@ -69,10 +80,16 @@ function ShopComponent2({ data = [] }) {
                     <span>{alertMessage}</span>
                 </div>
             )}
-            <div className="md:flex p-[20px] md:p-[30px] items-center justify-between">
+            <div className="md:flex p-[20px] md:p-[30px] items-center justify-between space-y-4">
                 <div className='dark:text-black'>
                     <h1>Showing {firstIndex + 1}-{lastIndex} of {data.length}</h1>
                 </div>
+
+                <form action="" className=' h-[50px] md:w-[50%] rounded-[20px] w-full bg-textc flex items-center'>
+                    <input type="text" className=' h-[50px] w-[90%] outline-none rounded-l-[20px]' placeholder=' Search what you want here' />
+                    <input type="submit" value='search' className=' text-center font-bold text-white' />
+                </form>
+
                 <div>
                     <span className='dark:text-black'>Sort by:</span>
                     <select
@@ -87,32 +104,35 @@ function ShopComponent2({ data = [] }) {
                     </select>
                 </div>
             </div>
-            <div className="grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4 p-[20px] lg:p-[30px] md:p-[15px]">
+
+             {/* Loading Spinner */}
+             {loading ? (
+                <div className="flex justify-center items-center min-h-[300px]">
+                    <div className="w-16 h-16 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            ) : (
+                <>
+            <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 p-[20px] lg:p-[30px] md:p-[15px]">
                 {totalRecords.map((item, index) => (
-                    <div key={index} className="card bg-base-100 w-90 shadow-xl group">
-                        <figure className="px-5 pt-10">
-                            <img
-                                src={item.image}
-                                alt={item.id}
-                                className="relative group-hover:scale-110 transition-transform duration-300 ease-in-out"
-                            />
-                        </figure>
-                        <div  className="flex invisible group-hover:visible transition-transform duration-[10s] ease-in-out justify-center gap-3 absolute left-[30%] bottom-[25%] group-hover:bottom-[35%]">
-                            <div
-                                role='alert'
-                                className="h-[30px] w-[30px] flex items-center justify-center rounded-[50%] cursor-pointer group-hover:bg-textc"
-                                onClick={() => {handleAddToCart(item)}}
-                            >
-                                <FaCartShopping className="text-[1.4rem] text-white rounded-xl hover:bg-boldtext" />
-                            </div>
-                            <div className="h-[30px] w-[30px] flex items-center justify-center rounded-[50%] group-hover:bg-textc cursor-pointer">
-                                <FaEye className="text-[1.4rem] text-white rounded-xl hover:bg-boldtext" />
-                            </div>
-                            <div className="h-[30px] w-[30px] flex items-center justify-center rounded-[50%] group-hover:bg-textc cursor-pointer">
-                                <MdFavoriteBorder 
-                                className="text-[1.4rem] text-white rounded-xl hover:bg-boldtext" />
-                            </div>
-                        </div>
+                  <div key={index} className="card bg-base-100 w-90 shadow-xl group relative">
+                                                  <figure className="px-3 md:px-5 pt-5 md:pt-10 h-[300px]">
+                                                      <img src={item.image} alt={item.id} className="group-hover:scale-110 transition-transform duration-300 ease-in-out h-full" />
+                                                  </figure>
+                                                  <div className="flex flex-col lg:flex-row invisible group-hover:visible transition-opacity duration-300 justify-center gap-3 absolute left-[20%] lg:left-[10%] bottom-[25%] group-hover:bottom-[35%]">
+                                                      <Link>
+                                                          <div
+                                                              className="h-[30px] w-[100px] flex font-semibold items-center justify-center rounded-[20px] cursor-pointer group-hover:bg-boldtext text-white text-[15px]"
+                                                              onClick={() => handleAddToCart(item)}
+                                                          >
+                                                              <h1>Add To Cart</h1>
+                                                          </div>
+                                                      </Link>
+                                                      <Link>
+                                                          <div className="h-[30px] w-[100px] flex font-semibold items-center justify-center rounded-[20px] cursor-pointer group-hover:bg-boldtext text-white text-[15px]">
+                                                              <h1>View Details</h1>
+                                                          </div>
+                                                      </Link>
+                                                  </div>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title uppercase">{item.id}</h2>
                             <div className='rating'>
@@ -128,12 +148,14 @@ function ShopComponent2({ data = [] }) {
                                 ))}
 
                             </div>
-                            <h2>${item.price}</h2>
+                            <h2>${item.price} <del>{item.price}</del></h2>
                         </div>
                     </div>
                 ))}
             </div>
-            <div className="join flex items-center justify-center">
+            </>
+            )}
+            <div className="join flex items-center justify-center  w-full">
                 <button
                     className="join-item btn"
                     onClick={() => handlePageChange(currentPage - 1)}

@@ -70,14 +70,14 @@ function AboutComponent2() {
                 </div>
                 <div>
                  <p className='text-start dark:text-black font-custom font-medium'>
-                    Exerci tation ullamcorper suscipit lobortis nisl aliquip ex ea commodo claritatem insitamconse quat.Exerci tation ullamcorper suscipit loborti excommodo habent claritatem insitamconse quat.Exerci tationlobortis nisl aliquip ex ea commodo habent claritatem insitamconse qua
+                 For over a decade, we’ve remained committed to delivering high-quality laboratory products and solutions to researchers, institutions, and healthcare facilities. Our platform ensures authenticity, consistency, and the innovation needed to empower your scientific discoveries.
                  </p>
                 </div>
                 <div className='mt-[40px]'>
-                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Extramural Funding</h1>
-                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Bacterial Markers</h1>
-                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Nam nec mi euismod euismod</h1>
-                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  In aliquet dui nec lectus</h1>
+                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Certified Lab Equipment</h1>
+                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  BISO-Standard Compliance</h1>
+                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Fast & Reliable Delivery</h1>
+                    <h1 className='flex items-center gap-3 font-custom text-2xl text-boldtext'><MdOutlineDone className='text-textc' />  Dedicated Customer Support</h1>
                 </div>
                 <div className='mt-[40px]'>
                  <Link to={'/About'}>

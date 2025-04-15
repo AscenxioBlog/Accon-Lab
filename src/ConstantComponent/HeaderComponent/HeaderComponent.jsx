@@ -71,14 +71,14 @@ function HeaderComponent() {
                     <h1 className=' font-custom text-4xl font-bold text-boldtext'> ACCON LAB  </h1>
             </div>
             <div className=' grid grid-cols-1 w-full '>
-                <div className='grid grid-cols-3 justify-around p-[10px] border-b-[2px] border-b-white  '>
+                <div className='grid grid-cols-3 p-[10px] border-b-[2px] border-b-white  '>
                     <div className='flex items-center p-[10px]'>
                         <h1 className='text-boldtext text-2xl font-bold'><MdDialpad /></h1>
                         <h1 className='font-custom text-[19px] font-semibold'> HELP DESK: +234 90 3459 900</h1>
                     </div>
                     <div className='flex items-center'>
-                        <h1 className='text-boldtext text-2xl font-bold'><IoTimeOutline /></h1>
-                        <h1 className='font-custom text-[17px] font-semibold dark:text-black'>MONDAY - FRIDAY 09:00AM-05:00PM</h1>
+                        {/* <h1 className='text-boldtext text-2xl font-bold'><IoTimeOutline /></h1>
+                        <h1 className='font-custom text-[17px] font-semibold dark:text-black'>MONDAY - FRIDAY 09:00AM-05:00PM</h1> */}
                     </div>
                     <div className='flex items-center'>
                           <h1 className='font-custom text-[19px] font-semibold'>MONDAY - FRIDAY 09:00AM-05:00PM</h1>
@@ -86,7 +86,7 @@ function HeaderComponent() {
                 </div>
                 <div className=' grid grid-cols-[70%,30%] gap-6 items-center'>
                     <div className='p-[5px] box-border font-custom text-[20px] font-semibold'> 
-                    <ul className='flex gap-[40px]'>
+                    <ul className='flex gap-[40px] justify-center'>
                             <li className='nav-item hover:border-b-[2px] hover:border-boldtext'><Link to={'/'}>HOME</Link></li>
                             <li className='nav-item hover:border-b-[2px] hover:border-boldtext'><Link to={'/Shop'}>SHOP</Link></li>
 
