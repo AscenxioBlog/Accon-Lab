@@ -18,7 +18,7 @@ function TeamComponent2() {
              transition={{delay:0.4,duration:2}}
              viewport={{ once: true }}
             >
-                <img src={team2} width='100%' height='100%' alt="" />
+                <img src={team2} width='100%' height='100%' alt="" /> 
             </motion.div>
             <motion.div
             initial={{ opacity:0, x:30 }}
@@ -56,7 +56,6 @@ function TeamComponent2() {
                   <span className='h-[40px] w-[40px]  bg-red-500 flex items-center justify-center rounded-md  text-[1rem] text-white'><FaPinterest /></span>
                </a>
             </div>
-
         </div>
     </div>
   )
