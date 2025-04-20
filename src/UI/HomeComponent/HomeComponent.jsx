@@ -21,9 +21,10 @@ function HomeComponent() {
   return (
     <div className=' bg-white mt-[100px] overflow-x-hidden dark:text-black'>
         <HomeComponent2/>
+        <HomeComponent13/>
         <HomeComponent16/>
         <HomeComponent1/>
-        <HomeComponent3/>
+        {/* <HomeComponent3/> */}
         <HomeComponent4/>
         <HomeComponent5/>
         <HomeComponent6/>
@@ -33,7 +34,6 @@ function HomeComponent() {
         {/* <HomeComponent10/> */}
         {/* <HomeComponent11/> */}
         {/* <HomeComponent12/> */}
-        {/* <HomeComponent13/> */}
         <HomeComponent114/>
         {/* <HomeComponent14/> */}
         <HomeComponent15/>

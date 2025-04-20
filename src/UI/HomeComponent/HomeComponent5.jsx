@@ -9,7 +9,7 @@ import Button from '../../ReusableComponent/Button'
 
 function HomeComponent5() {
   return (
-    <div className='min-h-[100px]  mt-[50px] relative p-[30px] hidden lg:block  '>
+    <div className='min-h-[100px]  mt-[50px] relative p-[30px] hidden lg:block bg-[url(assets/Frame2.png)]  '>
         <div className='min-h-[200px] bg-blue-700 flex flex-col items-center  relative '>
             <h1 className='before:h-[3px] before:w-[20px] before:bg-bodybg  after:h-[3px] after:w-[20px] after:bg-bodybg flex relative items-center text-[15px] font-light  text-bodybg font-custom leading-10'>WORK GALLERY</h1>
             <h1 className='text-4xl text-bodybg font-custom font-bold'>Accon Gallery</h1>

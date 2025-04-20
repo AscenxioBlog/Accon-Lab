@@ -33,10 +33,10 @@ function HeaderComponent() {
     }
   return (
     <div className='max-h-[30px] w-full fixed top-0 z-50'>
-        <div className='min-h-[100px] bg-[#b7d0d6]  flex items-center p-[10px] box-border lg:hidden '>
+        <div className='h-[90px] bg-[#b7d0d6]  flex items-center p-[10px] box-border lg:hidden '>
             <div className=' gap-1 flex items-center justify-start w-[60%]  '>
                 <h1  className='font-bold text-3xl text-textc '><BsLungs /></h1>
-                <h1 className=' font-custom text-3xl font-bold text-boldtext'> ACCON LAB </h1>
+                <h1 className=' font-custom text-[1rem] text-center font-bold text-boldtext'> ACCON SCIENTIFIC/ LAB EQUIPMENT</h1>
             </div>
             <div className='flex justify-end gap-4 w-[40%] p-[20px] box-border items-center'>
                 <div className='cursor-pointer text-[1.3rem]'>
@@ -51,9 +51,9 @@ function HeaderComponent() {
                     </Link>                            
                  </div>
                 <Button
-                        height='90px'
-                        width ='4000px'
-                        className='bg-textc text-2xl font-bold p-[10px] dark:text-black'
+                        height='50px'
+                        // width ='4000px'
+                        className=' bg-textc text-2xl font-bold p-[10px] dark:text-black'
                         label = 'Ξ'
                         onClick = {sidenav}
                     />
@@ -68,13 +68,13 @@ function HeaderComponent() {
         <div className='min-h-[10px] bg-[#b7d0d6] hidden lg:grid grid-cols-[25%,75%] dark:text-black w-full overflow-x-hidden '>
             <div className=' gap-1 flex items-center justify-center'>           
                     <h1  className='font-bold text-3xl text-textc '><BsLungs /></h1>
-                    <h1 className=' font-custom text-4xl font-bold text-boldtext'> ACCON LAB  </h1>
+                    <h1 className=' font-custom text-[1.2rem] font-bold text-boldtext text-center'> ACCON SCIENTIFIC/ <br /> LAB EQUIPMENT  </h1>
             </div>
             <div className=' grid grid-cols-1 w-full '>
                 <div className='grid grid-cols-3 p-[10px] border-b-[2px] border-b-white  '>
                     <div className='flex items-center p-[10px]'>
                         <h1 className='text-boldtext text-2xl font-bold'><MdDialpad /></h1>
-                        <h1 className='font-custom text-[19px] font-semibold'> HELP DESK: +234 90 3459 900</h1>
+                        <h1 className='font-custom text-[19px] font-semibold'> HELP DESK: +234 80 9402 5524</h1>
                     </div>
                     <div className='flex items-center'>
                         {/* <h1 className='text-boldtext text-2xl font-bold'><IoTimeOutline /></h1>
@@ -155,7 +155,7 @@ function HeaderComponent() {
             <div className=' gap-4 flex items-center justify-between  '>   
                 <div className='flex'>
                     <h1  className='font-bold text-2xl text-textc '><BsLungs /></h1>
-                    <h1 className=' font-custom text-3xl font-bold text-boldtext'> WILCON LAB </h1>    
+                    <h1 className=' font-custom text-[1rem] font-bold text-boldtext'> ACCON SCIENTIFIC/ <br /> LAB EQUIPMENT </h1>    
                 </div>        
               
                     <Button
@@ -176,38 +176,25 @@ function HeaderComponent() {
                     <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'  onClick={sidenav}><Link to={'/About'}>ABOUT</Link></h1>
                     <h1 className='font-custom text-[25px] font-semibold'></h1>
                 </div>
-                <div className="group border-b-[1px] border-b-white">
-                    <div className="flex items-center justify-between">
-                        <h1 className="font-custom font-semibold text-[19px] lg:text-[24px]">
-                            <Link to={"/Service"}>PAGES</Link>
-                        </h1>
-                        <h1 className="font-custom text-[25px] font-semibold">+</h1>
-                    </div>
-                    {/* Dropdown Menu */}
-                    <ul className="max-h-0 overflow-hidden group-hover:max-h-[500px] transition-[max-height] duration-500 ease-in-out bg- text-bodybg font-custom font-extrabold text-[1.4rem] mt-2 pl-4">
-                        <li className="hover:text-boldtext"  onClick={sidenav}>
-                            <Link to={"/Service"}>Services</Link>
-                        </li>
-                        <li className="hover:text-boldtext"   onClick={sidenav}>
-                            <Link to={"/Pricing"}>Pricing Plan</Link>
-                        </li>
-                        <li className="hover:text-boldtext"  onClick={sidenav}>
-                            <Link to={"/Shop"}>Shop</Link>
-                        </li>
-                        <li className="hover:text-boldtext"  onClick={sidenav}>
-                            <Link to={"/cart"}>Cart</Link>
-                        </li>
-                        <li className="hover:text-boldtext"  onClick={sidenav}>
-                            <Link to={"/Checkout"}>Checkout</Link>
-                        </li>
-                        <li className="hover:text-boldtext"  onClick={sidenav}>
-                            <Link to={"/FAQ"}>FAQs</Link>
-                        </li>
-                    </ul>
+
+                <div className='flex items-center justify-between border-b-[1px] border-b-white min-h-[20px]'>
+                    <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'  onClick={sidenav}> <Link to={"/Service"}>SERVICES</Link></h1>
+                    <h1 className='font-custom text-[25px] font-semibold'></h1>
                 </div>
-                <div className='flex items-center justify-between border-b-[1px] border-b-white'>
-                    <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext '  onClick={sidenav}><Link to={'/Research'}>RESEARCH</Link></h1>
+
+
+                <div className='flex items-center justify-between border-b-[1px] border-b-white min-h-[20px]'>
+                    <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'  onClick={sidenav}><Link to={"/Shop"}>SHOP</Link></h1>
+                    <h1 className='font-custom text-[25px] font-semibold'></h1>
                 </div>
+
+
+                <div className='flex items-center justify-between border-b-[1px] border-b-white min-h-[20px]'>
+                    <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'  onClick={sidenav}> <Link to={"/FAQ"}>FAQs</Link></h1>
+                    <h1 className='font-custom text-[25px] font-semibold'></h1>
+                </div>
+
+
                 <div className='flex items-center justify-between border-b-[1px] border-b-white'>
                     <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext '  onClick={sidenav}><Link to={'/Team'}>TEAM</Link></h1>
                 </div>
@@ -228,9 +215,13 @@ function HeaderComponent() {
 
             <div className='mt-[20px] p-[10px] lg:p-[20px]'>
                 <h1 className='lg:text-2xl font-custom dark:text-white'>CONTACT US</h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> Ta-134/A,Gulshan Badda Link</a></h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 90 8788 8999</a></h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#"className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl '> Wilconlab@gmail.com</a></h1>
+                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 16, Old Ojo Road, Maza-Maza, Lagos-State</a></h1>
+
+                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 41, Asogbon Street, Isale-Eko, Islad Lagos</a></h1>
+                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 9402 5524</a></h1>
+
+                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 3742 8180</a></h1>
+                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#"className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl '> accon@gmail.com</a></h1>
 
                 
             </div>

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 function HomeComponent4() {
   return (
-    <div className='min-h-[200px] dark:bg-white md:min-h-[1400px] mt-[50px] relative p-[10px]  lg:hidden  '>
+    <div className='min-h-[200px] dark:bg-white md:min-h-[1400px]  mt-[50px] relative p-[10px]  lg:hidden  '>
         <div className='min-h-[300px] bg-blue-700 flex flex-col items-center '>
             <h1 className='before:h-[3px] before:w-[20px] before:bg-bodybg  after:h-[3px] after:w-[20px] after:bg-bodybg flex relative items-center text-[15px] font-light  text-bodybg font-custom leading-10'>WORK GALLERY</h1>
             <h1 className='text-4xl text-bodybg font-custom font-bold'>Accon Gallery</h1>
