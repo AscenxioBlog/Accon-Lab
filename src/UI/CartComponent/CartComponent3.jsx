@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from '../../ReusableComponent/Button'
 import { Link } from 'react-router-dom'
 
 function CartComponent3({ cart=[], cartTotal=0}) {
     console.log(cart, cartTotal);
+
+     // Save cart to localStorage on changes
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    window.dispatchEvent(new Event("storageUpdate"));
+  }, [cart]);
 
   return (
     <div >
@@ -47,7 +53,7 @@ function CartComponent3({ cart=[], cartTotal=0}) {
                     </div>
                 </div>
                 <div>
-                    <Link   to="/Checkout" 
+                    <Link   to="/Checkuser" 
                         state={{ cart, cartTotal }}> 
                     <Button
                         label='PROCEED TO CHECKOUT'

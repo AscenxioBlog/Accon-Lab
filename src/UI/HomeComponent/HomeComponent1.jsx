@@ -24,7 +24,7 @@ function HomeComponent1() {
     
   return (
     <div>
-        <div className='min-h-[600px] p-[20px] bg-white  grid grid-cols-1 lg:grid-cols-2 lg:gap-20 items-center'>
+        <div className='min-h-[600px] p-[20px] bg-white bg-[url(assets/Frame2.png)]  grid grid-cols-1 lg:grid-cols-2 lg:gap-20 items-center'>
             <div className=' lg:hidden relative' >
                 <motion.div
                    initial={{ x: -30 , opacity:0}}

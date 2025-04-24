@@ -19,17 +19,17 @@ function HomeComponent15() {
     {
       img: test2,
       name: 'Darlene Robertson',
-      text: 'WilconLab is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
+      text: 'Accon scientific / lab equipment is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
     },
     {
       img: test3,
       name: 'Courtney Henry',
-      text: 'WilconLab is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
+      text: 'Accon scientific / lab equipment is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
     },
     {
       img: test4,
       name: 'Robertson JR',
-      text: 'WilconLab is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
+      text: 'Accon scientific / lab equipment is another theme that is beautiful and professionally constructed by the developers. The price for the template is cheap but not the quality of the product. What a bargain. This theme works for many types of websites and seems to be durable. Does not break and its easy to work with.',
     },
   ];
 

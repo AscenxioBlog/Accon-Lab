@@ -15,7 +15,7 @@ function HomeComponent2() {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 50,
+    // speed: 50,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
@@ -25,20 +25,34 @@ function HomeComponent2() {
   };
 
 
-  let Categories = {
-
-  }
+  let Categories = [
+   
+                           "Hospital Equipment",
+                           "Education / Teaching Model",
+                            "Lab Consumable",
+                            "Surgical Equipment",
+                            "Biology Equipment",
+                            "Chemistry Equipment",
+                           " Physics Equipment"
+  ]
   return (
     <div>
         <div className='min-h-[380px] lg:h-[380px] grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-10 mb-10 mt-5'>
           <div className="min-h-[380px] bg-[] lg:col-span-2  pt-3">
             <h1 className=' pl-2 box-border text-[1.5rem] font-bold'>Main Categories</h1>
            <div className=" h-[360px] grid gap-1 pl-2 pr-2 bg-[url(assets/Frame.png)] frame">
-           <Link>
+        
+<Link>
            <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
             <h1>Cleaning Product +</h1>
            </div>
            </Link>
+          
+           {/* <Link>
+           <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
+            <h1>Cleaning Product +</h1>
+           </div>
+           </Link> */}
            <Link>
            <div className="h-full box-border flex items-center font-bold border-l-[2px] border-l-[gray] pl-2 hover:border-l-[red]">
             <h1>Personal Safety +</h1>
