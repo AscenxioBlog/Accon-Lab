@@ -23,6 +23,7 @@ import AdminSignUp from './UI/AuthenticationComponent/AdminSignUp'
 import Settings from './UI/AdminComponent/Setting'
 import Adder from './UI/AdminComponent/Adder'
 import ProductSkeleton from './ReusableComponent/ProductSkeleton'
+import ProductDetails from './UI/ProductDetailsPage/ProductDetails'
 
 
 function MiniLab() {
@@ -58,6 +59,7 @@ function MiniLab() {
                         <Route path='/accon/settings' element={<Settings/>}/>
                     </Route>
                     <Route path="/sk" element={<ProductSkeleton />} />
+                    <Route path="singleproduct" element={<ProductDetails />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>

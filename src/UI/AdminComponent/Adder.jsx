@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import API_URL from '../../Config';
 
 function Adder() {
-    const [selectedFile, setSelectedFile] = useState(null);
+    // const [selectedFile, setSelectedFile] = useState(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async (event) => {
@@ -11,34 +11,31 @@ function Adder() {
         
         const formData = new FormData(event.target);
 
-        if (selectedFile) {
-            formData.append('image', selectedFile);
-        }
-
         try {
             const response = await fetch(`${API_URL}/product`, {
                 method: 'POST',
                 body: formData,
+                // Don't set Content-Type header - the browser will set it automatically with the correct boundary
             });
 
             if (response.ok) {
                 alert('Product added successfully!');
-                event.target.reset(); // Reset the form after successful submission
+                event.target.reset();
             } else {
-                console.error('Error submitting the form');
-                alert('Error adding product. Please try again.');
+                const errorData = await response.json(); // Try to get error details from server
+                console.error('Server error:', errorData);
+                alert(`Error adding product: ${errorData.message || 'Please try again.'}`);
             }
         } catch (error) {
-            console.error('Error submitting the form:', error);
+            console.error('Network error:', error);
             alert('Network error. Please try again.');
         } finally {
             setIsSubmitting(false);
         }
     };
-
-    const handleFileChange = (event) => {
-        setSelectedFile(event.target.files[0]);
-    };
+    // const handleFileChange = (event) => {
+    //     setSelectedFile(event.target.files[0]);
+    // };
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-gray-800 rounded-lg shadow-lg">
@@ -60,7 +57,7 @@ function Adder() {
                         <input 
                             type="file" 
                             name='image' 
-                            onChange={handleFileChange}
+                            // onChange={handleFileChange}
                             className="w-full px-4 py-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                             required
                         />
