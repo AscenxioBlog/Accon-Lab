@@ -5,6 +5,10 @@ import { FcClock } from "react-icons/fc";
 import Button from '../../ReusableComponent/Button';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import emailjs from "@emailjs/browser";
+// import SweetAlert from 'sweetalert-react';
+ 
+
 function ContactComponent2() {
     let [loading, setLoading] = useState(true);
     let [mapurl , setMapurl] = useState('');
@@ -18,6 +22,54 @@ function ContactComponent2() {
 
     },[]);
  
+
+
+     const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        website: "",
+        message: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        emailjs.send(
+            "service_gemtnqr", 
+            "template_9us6h0d", 
+            formData, 
+            "POzmPkkWklvfEh5IY"
+        )
+        .then((response) => {
+            console.log("Email sent successfully!", response);
+            alert("Message sent successfully!");
+    //         <SweetAlert
+    //     show={this.state.show}
+    //     title="Demo"
+    //     text="SweetAlert in React"
+    //     onConfirm={() => this.setState({ show: false })}
+    //   />
+
+             // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        website: "",
+        message: "",
+      });
+        })
+        .catch((error) => {
+            console.error("Email sending failed:", error);
+            alert("Failed to send message. Try again!");
+        });
+    };
 
 
   return (
@@ -57,13 +109,14 @@ function ContactComponent2() {
                 </div>
             </div>
             <div className='p-[10px] dark:text-black md:p-0'>
-                <form action="">
+                <form action="" onSubmit={handleSubmit}>
                     <h1  className='font-custom font-bold text-boldtext  text-[1.2rem]  mt-4'>Send us a Message:</h1>
-                    <input type="text" placeholder='  Enter your Name' className='h-[40px] dark:bg-white w-full md:w-[90%] lg:w-[40%] mt-10 active:outline-blue-700 hover:outline-blue-700'required />
-                    <input type="text" placeholder='  Enter your number ' className='h-[40px] dark:bg-white w-full md:w-[90%] mt-8 lg:w-[40%] lg:ml-10 md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700'required />
-                    <input type="number" placeholder='  Enter your number ' className='h-[40px] dark:bg-white w-full md:w-[90%] mt-8 lg:w-[40%] md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700' required />
-                    <input type="text" placeholder='  Enter your website ' className='h-[40px] w-full dark:bg-white md:w-[90%] mt-8 lg:w-[40%] lg:ml-10 md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700' />
-                    <textarea name="" id="" className='w-full md:w-[90%]  dark:bg-white lg:w-[84%] mt-10 h-[120px] active:outline-blue-700 hover:outline-blue-700'></textarea>
+                    <input type="text" name='name' placeholder='  Enter your Name'value={formData.name} onChange={handleChange}
+                    className='h-[40px] dark:bg-white w-full md:w-[90%] lg:w-[40%] mt-10 active:outline-blue-700 hover:outline-blue-700'required /> <br />
+                    {/* <input type="text" placeholder='  Enter your number ' className='h-[40px] dark:bg-white w-full md:w-[90%] mt-8 lg:w-[40%] lg:ml-10 md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700'required /> */}
+                    <input type="number" name='phone' placeholder='  Enter your number ' value={formData.phone || ""} onChange={handleChange} className='h-[40px] dark:bg-white w-full md:w-[90%] mt-8 lg:w-[40%] md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700' required /> 
+                    <input type="text" name='email' placeholder='  Enter your email 'value={formData.email || ""} onChange={handleChange} className='h-[40px] w-full dark:bg-white md:w-[90%] mt-8 lg:w-[40%] lg:ml-10 md:mt-8 lg:mt-10 active:outline-blue-700 hover:outline-blue-700' />
+                    <textarea name="message" id="" className='w-full md:w-[90%] dark:bg-white lg:w-[84%] mt-10 h-[120px] active:outline-blue-700 hover:outline-blue-700' value={formData.message} onChange={handleChange}></textarea>
                     <Button
                      className='btn  bg-textc text-bodybg hover:bg-textc hover:bg-opacity-75 mt-8'
                      type ='submit'

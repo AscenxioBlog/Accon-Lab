@@ -2,41 +2,69 @@ import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash, FaSearch, FaFilter, FaPlus } from 'react-icons/fa';
 import API_URL from '../../Config';
 
-// Mock data - replace with your actual data source
-// const products = [
-//   { id: 'PROD001', name: 'Glucose Monitor', category: 'Medical', price: 46.00, stock: 42, sold: 58, status: 'In Stock' },
-//   { id: 'PROD002', name: 'Examination Gloves', category: 'Medical', price: 58.10, stock: 125, sold: 275, status: 'In Stock' },
-//   { id: 'PROD003', name: 'Pharmaceutical Plants', category: 'Equipment', price: 88.00, stock: 8, sold: 12, status: 'Low Stock' },
-//   { id: 'PROD004', name: 'Premium Stethoscope', category: 'Medical', price: 96.00, stock: 0, sold: 50, status: 'Out of Stock' },
-//   { id: 'PROD005', name: 'Digital Sphygmomanometer', category: 'Medical', price: 69.00, stock: 15, sold: 35, status: 'In Stock' },
-//   { id: 'PROD006', name: 'Professional Sphygmomanometer', category: 'Medical', price: 70.00, stock: 22, sold: 28, status: 'In Stock' },
-//   { id: 'PROD007', name: 'Sterile Hand Gloves', category: 'Medical', price: 52.00, stock: 87, sold: 113, status: 'In Stock' },
-//   { id: 'PROD008', name: 'Advanced Sphygmomanometer', category: 'Medical', price: 66.00, stock: 5, sold: 45, status: 'Low Stock' },
-// ];
-
 function ViewAllProduct() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
+  const [allProduct, setAllproduct] = useState([]);
+  const [notification, setNotification] = useState({ show: false, message: '', productName: '' });
+  const [deleteConfirm, setDeleteConfirm] = useState({ show: false, productId: null, productName: '' });
   const productsPerPage = 5;
-  const [allProduct, setAllproduct]=useState([]);
-
 
   useEffect(() => {
-    // Fetch the menu for the restaurant
+    fetchProducts();
+  }, []);
+
+  const fetchProducts = () => {
     fetch(`${API_URL}/product`)
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         setAllproduct(json);
       })
       .catch(err => console.log(err));
+  };
 
-  }, []);
+  // Show notification
+  const showNotification = (message, productName) => {
+    setNotification({ show: true, message, productName });
+    setTimeout(() => {
+      setNotification({ show: false, message: '', productName: '' });
+    }, 3000);
+  };
 
-  
+  // Handle delete confirmation
+  const confirmDelete = (productId, productName) => {
+    setDeleteConfirm({ show: true, productId, productName });
+  };
+
+  // Cancel delete
+  const cancelDelete = () => {
+    setDeleteConfirm({ show: false, productId: null, productName: '' });
+  };
+
+  // Execute delete
+  const executeDelete = (productId) => {
+    fetch(`${API_URL}/product/${productId}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(() => {
+        // Update the UI immediately
+        setAllproduct(prevData => prevData.filter(product => product._id !== productId));
+        // Show success notification
+        showNotification('Product deleted successfully', deleteConfirm.productName);
+      })
+      .catch(err => {
+        console.log(err.message);
+        showNotification('Failed to delete product', deleteConfirm.productName);
+      })
+      .finally(() => {
+        setDeleteConfirm({ show: false, productId: null, productName: '' });
+      });
+  };
+
   // Get unique categories
-  const categories = ['All', ...new Set(allProduct.map(allProduct => allProduct.category))];
+  const categories = ['All', ...new Set(allProduct.map(product => product.category))];
 
   const filteredProducts = allProduct.filter(product => {
     const searchLower = searchTerm.toLowerCase();
@@ -68,12 +96,42 @@ function ViewAllProduct() {
     }
   };
 
-
-
-
-
   return (
-    <div className="min-h-screen bg-gray-50 bg-[url(assets/Frame2.png)]   p-6">
+    <div className="min-h-screen bg-gray-50 bg-[url(assets/Frame2.png)] p-6">
+      {/* Notification Popup */}
+      {notification.show && (
+        <div className="fixed top-4 right-4 z-50">
+          <div className="bg-green-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center">
+            <span className="mr-2">✓</span>
+            <span>{notification.message}: <strong>{notification.productName}</strong></span>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Dialog */}
+      {deleteConfirm.show && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
+            <h3 className="text-lg font-medium mb-4">Confirm Delete</h3>
+            <p className="mb-4">Are you sure you want to delete <strong>{deleteConfirm.productName}</strong>? This action cannot be undone.</p>
+            <div className="flex justify-end space-x-3">
+              <button
+                onClick={cancelDelete}
+                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => executeDelete(deleteConfirm.productId)}
+                className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-7xl mx-auto">
         <div className="bg-white shadow rounded-lg overflow-hidden">
           {/* Header */}
@@ -159,10 +217,9 @@ function ViewAllProduct() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {currentProducts.length > 0 ? (
                   currentProducts.map((product) => (
-                    <tr key={product.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                        {/* {product.image} */}
-                        <img src={product.image} height='70px' width='70px' alt="" />
+                    <tr key={product._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap">
+                        <img src={product.image} height='70px' width='70px' alt={product.productName} className="rounded" />
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {product.productName}
@@ -171,10 +228,10 @@ function ViewAllProduct() {
                         {product.category}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${product.price.toFixed(2)}
+                        ${product.price?.toFixed(2) || '0.00'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ${product.oldPrice.toFixed(2)}
+                        ${product.oldPrice?.toFixed(2) || '0.00'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                         {product.productQuantity}
@@ -191,7 +248,10 @@ function ViewAllProduct() {
                         <button className="text-emerald-600 hover:text-emerald-900 mr-3">
                           <FaEdit />
                         </button>
-                        <button className="text-red-600 hover:text-red-900">
+                        <button 
+                          onClick={() => confirmDelete(product._id, product.productName)}
+                          className="text-red-600 hover:text-red-900"
+                        >
                           <FaTrash />
                         </button>
                       </td>
@@ -199,7 +259,7 @@ function ViewAllProduct() {
                   ))
                 ) : (
                   <tr>
-                    <td colSpan="8" className="px-6 py-4 text-center text-sm text-gray-500">
+                    <td colSpan="9" className="px-6 py-4 text-center text-sm text-gray-500">
                       No products found matching your criteria
                     </td>
                   </tr>
