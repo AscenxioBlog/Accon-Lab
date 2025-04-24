@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Button from '../../ReusableComponent/Button';
+import PaystackButton from './PaystackButton';
 
 function CheckoutComponent2() {
     const [cart, setCart] = useState(() => {
@@ -45,15 +46,27 @@ function CheckoutComponent2() {
         
         // Prepare the data to send
         const orderData = {
-            customerInfo: formData,
-            products: cart,
-            total: cartTotal.toFixed(2),
-            orderDate: new Date().toISOString()
+            // customerInfo: formData,
+            // cart: cart,
+            // totalAmount: cartTotal.toFixed(2),
+            // orderDate: new Date().toISOString()
+            billingDetails: {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email
+            },
+            items: cart,
+            shippingAddress: {
+                address: formData.address,
+                city: formData.city,
+                state: formData.state
+            },
+            totalAmount: cartTotal
         };
 
         try {
             // Replace with your actual API endpoint
-            const response = await fetch('your-backend-api-endpoint/orders', {
+            const response = await fetch('http://localhost:3600/order/placeorder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -61,10 +74,10 @@ function CheckoutComponent2() {
                 body: JSON.stringify(orderData)
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-                console.log(orderData)
-            }
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok');
+            //     console.log(orderData)
+            // }
 
             const result = await response.json();
             console.log('Order successful:', result);
@@ -73,8 +86,6 @@ function CheckoutComponent2() {
             localStorage.removeItem('cart');
             setCart([]);
             
-            // Redirect or show success message
-            // history.push('/order-success');
             
         } catch (error) {
             console.error('Error submitting order:', error);
@@ -213,6 +224,13 @@ function CheckoutComponent2() {
                                 </div>
                             </div>
                             <div>
+                                {/* <PaystackButton
+                                    amount={cartTotal}
+                                    email={formData.email}
+                                    customerInfo={formData}
+                                    cart={cart}
+                                    className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
+                                /> */}
                                 <Button
                                     type="submit"
                                     className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
