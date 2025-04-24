@@ -6,8 +6,6 @@ import { FaTwitter } from "react-icons/fa";
 import { FaPinterest } from "react-icons/fa6";
 import {motion} from "motion/react"
 
-
-
 function TeamComponent2() {
   return (
     <div>
