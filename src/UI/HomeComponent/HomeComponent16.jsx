@@ -17,25 +17,26 @@ import surgical from '../ShopComponent/ShopPictures/shop12.jpg';
 import ProductSkeleton from '../../ReusableComponent/ProductSkeleton';
 
 function HomeComponent16() {
-    const productData = [
-        { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
-        { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
-        { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
-        { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
-        { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
-        { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
-        { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
-        { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
+    let [productData,setProductData] = useState([])
+    // const productData = [
+    //     { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
+    //     { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
+    //     { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
+    //     { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
+    //     { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
+    //     { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
+    //     { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
+    //     { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
 
-        { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
-        { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
-        { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
-        { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
-        { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
-        { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
-        { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
-        { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
-    ];
+    //     { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
+    //     { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
+    //     { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
+    //     { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
+    //     { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
+    //     { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
+    //     { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
+    //     { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
+    // ];
 
     const { addToCart } = useContext(CartContext);
     const [options, setOptions] = useState('new');
@@ -52,7 +53,7 @@ function HomeComponent16() {
     // Filter and sort products
     const filteredProducts = productData
         .filter(product => 
-            product.id.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            product.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
             (selectedCategory === 'All' || product.category === selectedCategory)
         )
         .sort((a, b) => {
@@ -68,6 +69,30 @@ function HomeComponent16() {
     const lastIndex = Math.min(currentPage * productsPerPage, filteredProducts.length);
     const firstIndex = lastIndex - productsPerPage;
     const currentProducts = filteredProducts.slice(firstIndex, lastIndex);
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            // const response = await fetch(`https://labserver.onrender.com/product`, {
+            const response = await fetch(`http://localhost:3600/product`, {
+              method: "GET",
+              credentials: "include", // Include cookies if needed
+            });
+      
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+      
+            const data = await response.json();
+            console.log("Fetched data:", data); // Log the fetched data
+            setProductData(data); // Update state with fetched data
+          } catch (error) {
+            console.error("Error fetching data:", error.message);
+          }
+        };
+      
+        fetchData();
+      }, []);
 
     useEffect(() => {
         setLoading(true);
@@ -185,7 +210,7 @@ function HomeComponent16() {
                                     <figure className="relative pt-[80%] overflow-hidden">
                                         <img 
                                             src={item.image} 
-                                            alt={item.id} 
+                                            alt={item.productName} 
                                             className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                         {item.isNew && (
@@ -193,7 +218,7 @@ function HomeComponent16() {
                                                 NEW
                                             </div>
                                         )}
-                                        {item.originalPrice > item.price && (
+                                        {item.oldPrice > item.price && (
                                             <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
                                                 SALE
                                             </div>
@@ -218,7 +243,7 @@ function HomeComponent16() {
                                     {/* Product Info */}
                                     <div className="card-body p-4">
                                         <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em]">
-                                            {item.id}
+                                            {item.productName}
                                         </h3>
                                         <div className="flex items-center mb-1">
                                             {[...Array(5)].map((_, i) => (
@@ -232,8 +257,8 @@ function HomeComponent16() {
                                         <div className="flex items-center justify-between">
                                             <div>
                                                 <span className="font-bold text-textc">${item.price.toFixed(2)}</span>
-                                                {item.originalPrice > item.price && (
-                                                    <span className="text-xs text-gray-400 line-through ml-2">${item.originalPrice.toFixed(2)}</span>
+                                                {item.oldPrice > item.price && (
+                                                    <span className="text-xs text-gray-400 line-through ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
                                             </div>
                                             <button 

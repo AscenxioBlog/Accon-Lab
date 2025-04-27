@@ -11,8 +11,8 @@ function CheckoutComponent2() {
 
     // Form state
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
+        firstname: '',
+        lastname: '',
         address: '',
         // apartment: '',
         city: '',
@@ -51,11 +51,14 @@ function CheckoutComponent2() {
             // totalAmount: cartTotal.toFixed(2),
             // orderDate: new Date().toISOString()
             billingDetails: {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
+                firstname: formData.firstname,
+                lastname: formData.lastname,
                 email: formData.email
             },
-            items: cart,
+            items: cart.map(item => ({
+                    product: item._id,
+                    quantity: item.quantity,
+            })),
             shippingAddress: {
                 address: formData.address,
                 city: formData.city,
@@ -64,6 +67,8 @@ function CheckoutComponent2() {
             totalAmount: cartTotal
         };
 
+        console.log(orderData)
+
         try {
             // Replace with your actual API endpoint
             const response = await fetch('http://localhost:3600/order/placeorder', {
@@ -71,7 +76,8 @@ function CheckoutComponent2() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(orderData)
+                body: JSON.stringify(orderData),
+                credentials: "include",
             });
 
             // if (!response.ok) {
@@ -83,8 +89,8 @@ function CheckoutComponent2() {
             console.log('Order successful:', result);
             
             // Optionally clear cart after successful order
-            localStorage.removeItem('cart');
-            setCart([]);
+            // localStorage.removeItem('cart');
+            // setCart([]);
             
             
         } catch (error) {
@@ -105,14 +111,14 @@ function CheckoutComponent2() {
                             <div>
                                 <div className="flex flex-col md:flex md:flex-row justify-between mt-4">
                                     <div className="md:w-[48%]">
-                                        <label htmlFor="firstName" className="block mb-1 font-semibold">
+                                        <label htmlFor="firstname" className="block mb-1 font-semibold">
                                             First Name <span className='text-[red]'>*</span>
                                         </label>
                                         <input
                                             type="text"
-                                            id="firstName"
-                                            name="firstName"
-                                            value={formData.firstName}
+                                            id="firstname"
+                                            name="firstname"
+                                            value={formData.firstname}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
                                             required
@@ -121,14 +127,14 @@ function CheckoutComponent2() {
                                     </div>
 
                                     <div className="md:w-[48%]">
-                                        <label htmlFor="lastName" className="block mb-1 font-semibold">
+                                        <label htmlFor="lastname" className="block mb-1 font-semibold">
                                             Last Name <span className='text-[red]'>*</span>
                                         </label>
                                         <input
                                             type="text"
-                                            id="lastName"
-                                            name="lastName"
-                                            value={formData.lastName}
+                                            id="lastname"
+                                            name="lastname"
+                                            value={formData.lastname}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
                                             className="input input-bordered input-sm w-full dark:bg-white"

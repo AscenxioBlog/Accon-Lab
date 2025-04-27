@@ -9,6 +9,8 @@ function CartComponent2() {
 
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
+    console.log(cartTotal);
+
   return (
     <div className=' p-[10px] lg:p-[20px]'>
     {cart.length === 0 ? (
@@ -29,27 +31,27 @@ function CartComponent2() {
                 {cart.map((item) => (
                     <tr key={item.id}>
                         <td className='border-black border-[1px] flex justify-center w-full '>
-                            <img src={item.image} alt={item.id} style={{ width: "70px", height: "70px" }} />
+                            <img src={item.image} alt={item.productName} style={{ width: "70px", height: "70px" }} />
                         </td>
-                        <td className='border-black border-[1px] text-center font-custom font-medium capitalize '>{item.id}</td>
+                        <td className='border-black border-[1px] text-center font-custom font-medium capitalize '>{item.productName}</td>
                         <td className='border-black border-[1px] font-custom text-center  '>${item.price}</td>
                         <td className='flex justify-center border-black text-[1.rem] font-bold border-[1px]'> 
                             <Button
-                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                disabled={item.quantity === 1}
+                                onClick={() => updateQuantity(item.id, item.productQuantity - 1)}
+                                disabled={item.productQuantity === 1}
                                 label='-'
                                 className='font-custom font-semibold text-[1.4rem]'
                             />
                                 
-                            <span style={{ margin: "0 10px" }}>{item.quantity}</span>
+                            <span style={{ margin: "0 10px" }}>{item.productQuantity}</span>
                             <Button
                              className='font-custom font-semibold text-[1.4rem]'
                              label='+'
 
-                            onClick={() => updateQuantity(item.id, item.quantity + 1)}/>
+                            onClick={() => updateQuantity(item.id, item.productQuantity + 1)}/>
                         </td>
                        
-                        <td className='border-black border-[1px] text-center font-custom font-semibold '>${(item.price * item.quantity).toFixed(2)}</td>
+                        <td className='border-black border-[1px] text-center font-custom font-semibold '>${(item.price * item.productQuantity).toFixed(2)}</td>
                         
                         <td className='border-black border-[1px] text-center'>
                             <Button
