@@ -13,13 +13,16 @@ import { FaBasketShopping } from "react-icons/fa6";
 import subpic from './Subnavpictures/subpic1.jpg'
 import subnav2 from './Subnavpictures/subnav2.jpg'
 import subnav3 from './Subnavpictures/subnav3.jpg'
+import { FaUser } from "react-icons/fa";
 import { CartContext } from '../../ReusableComponent/CartContext';
+import UserPopup from '../UserProfile/UserPopup';
 
 
 
 function HeaderComponent() {
     const { cart } = useContext(CartContext); // Access cart from context
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0); 
+    let [showPopup,setShowPopup] = useState(false)
     let [nav, setNav] = useState('-80%')
     function sidenav() {
         if (nav =='-80%') {
@@ -48,7 +51,10 @@ function HeaderComponent() {
                             </span>
                           )}   
                                                     
-                    </Link>                            
+                    </Link>
+                    <button>
+                        <FaUser />
+                    </button>                            
                  </div>
                 <Button
                         height='50px'
@@ -120,6 +126,10 @@ function HeaderComponent() {
                                 onClick = {sidenav}
                             /> */}
                             {/* </  div> */}
+                            <button className=' cursor-pointer' onClick={()=> !showPopup? setShowPopup(true) : setShowPopup(false)}>
+                                <FaUser />
+                            </button>   
+                                
                             <div className='cursor-pointer text-[1.3rem]'>
                                 <Link to={'/cart'}>
                                   
@@ -279,6 +289,7 @@ function HeaderComponent() {
 
          </div>
          {/* <Test/> */}
+         <UserPopup showPopup={showPopup} setShowPopup={setShowPopup}/>
 
     </div>
   )

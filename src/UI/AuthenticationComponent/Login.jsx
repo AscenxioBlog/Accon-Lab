@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import API_URL from '../../Config';
 
 function Login() {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3600/auth/login", {
+      const response = await fetch(`http://localhost:3600/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

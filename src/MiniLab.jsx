@@ -24,6 +24,8 @@ import Settings from './UI/AdminComponent/Setting'
 import Adder from './UI/AdminComponent/Adder'
 import ProductSkeleton from './ReusableComponent/ProductSkeleton'
 import ProductDetails from './UI/ProductDetailsPage/ProductDetails'
+import OrderHistoryPage from './UI/OrderComponents/OrderHistoryPage'
+import OrderDetails from './UI/OrderComponents/OrderDetails'
 
 
 function MiniLab() {
@@ -48,6 +50,8 @@ function MiniLab() {
                     <Route path="/FAQ" element={<FAQComponent />} />
                     <Route path="/Checkout" element={<CheckoutComponent />} />
                     <Route path="/checkuser" element={<Authentication />} />
+                    <Route path="/order-history" element={<OrderHistoryPage />} />
+                    <Route path="/order/:orderId" element={<OrderDetails />} />
                     <Route path="/aclab" element={<AdminSignUp />} />
                     <Route path="/accon" element={<Admin />} >
                         <Route index element={<Dashboard/>}/>
