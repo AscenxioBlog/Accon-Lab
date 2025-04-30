@@ -102,7 +102,7 @@ function CheckoutComponent2() {
     return (
         <div>
             <div>
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className='min-h-[100px] lg:translate-x-20  dark:bg-bodybg  lg:w-[90%] bg-bodybg grid gap-4 grid-cols-1 lg:grid-cols-2 p-[20px] lg:justify-center font-custom lg:p-[30px]'>
                         <div>
                             <div>
@@ -230,18 +230,18 @@ function CheckoutComponent2() {
                                 </div>
                             </div>
                             <div>
-                                {/* <PaystackButton
+                                <PaystackButton
                                     amount={cartTotal}
                                     email={formData.email}
                                     customerInfo={formData}
                                     cart={cart}
                                     className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
-                                /> */}
-                                <Button
+                                />
+                                {/* <Button
                                     type="submit"
                                     className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
                                     label='place order'
-                                />
+                                /> */}
                             </div>
                         </div>
                     </div>
