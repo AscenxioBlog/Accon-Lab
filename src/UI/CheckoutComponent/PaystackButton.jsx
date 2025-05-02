@@ -69,7 +69,7 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
           paymentReference: response.reference,
         };
 
-        const placeOrderRes = await fetch('http://localhost:3600/order/placeorder', {
+        const placeOrderRes = await fetch(`${API_URL}/order/placeorder`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

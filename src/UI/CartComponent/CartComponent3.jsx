@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Button from '../../ReusableComponent/Button'
 import { Link } from 'react-router-dom'
+import { TbCurrencyNaira } from "react-icons/tb";
 
 function CartComponent3({ cart=[], cartTotal=0}) {
     console.log(cart, cartTotal);
@@ -42,13 +43,13 @@ function CartComponent3({ cart=[], cartTotal=0}) {
                     <div className='flex justify-between border-black border-[1px] font-custom font-semibold text-[1.2rem]'>
                         <h1 className='font-medium'>subtotal</h1>
                         <h1>
-                        ${cartTotal.toFixed(2)}
+                        <span className=' flex justify-center items-center'><TbCurrencyNaira />{cartTotal.toFixed(2)}</span>
                         </h1>
                     </div>
                     <div className='flex justify-between border-black border-[1px] font-custom font-semibold'>
                         <h1>Total</h1>
                         <h1>
-                        ${cartTotal.toFixed(2)}
+                        <span className=' flex justify-center items-center'><TbCurrencyNaira />{cartTotal.toFixed(2)}</span>
                         </h1>
                     </div>
                 </div>
