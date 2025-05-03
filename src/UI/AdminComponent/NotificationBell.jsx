@@ -49,7 +49,7 @@ const NotificationBell = () => {
   };
 
   const deleteOne = async (id) => {
-    await fetch(`http://localhost:3600/notification/${id}`, { method: 'DELETE' });
+    await fetch(`${API_URL}/notification/${id}`, { method: 'DELETE' });
     await fetchNotifications();
     await fetchUnreadCount();
   };

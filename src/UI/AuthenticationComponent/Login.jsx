@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import API_URL from '../../Config';
+import React, { useContext, useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { AuthContxt } from "./AuthContext";
 
 function Login() {
   const navigate = useNavigate();
+  const location = useLocation();
+  let {setIsLoggedIn} = useContext(AuthContxt)
+  const from = location.state?.from?.pathname || '/'; // Default to homepage
+
   const [formData, setFormData] = useState({
     email: "",
-    password:"",
+    password: "",
   });
 
   const handleInputChange = (e) => {
@@ -17,12 +21,11 @@ function Login() {
     }));
   };
 
-  let handlesubmit = async (e) => {
+  const handlesubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // const response = await fetch(`http://localhost:3600/auth/login`, {
-      const response = await fetch(`${API_URL}/auth/login`, {
+      const response = await fetch(`http://localhost:3600/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,40 +35,38 @@ function Login() {
       });
 
       const result = await response.json();
-      console.log("Login sucessful:", result);
-
+      console.log("Login response:", result);
+      setIsLoggedIn(true)
 
       if (result.emailMessage) {
         alert(result.emailMessage);
-      }else if (result.passwordMessage) {
+      } else if (result.passwordMessage) {
         alert(result.passwordMessage);
-      }
-      else if (result.message) {
+      } else if (result.message) {
         alert(result.message);
-        navigate("/checkout"); // Redirect to checkout page
+
+        // Redirect to previous page if exists, else home
+        navigate(from, { replace: true });
       } else {
         alert("Login failed. Please try again.");
       }
-
     } catch (error) {
-      console.error("Error submitting order:", error);
-      // Handle error (show error message to user)
+      console.error("Error during login:", error);
     }
-
-    // navigate('/checkout');
   };
+
   return (
     <div>
       <form
         onSubmit={handlesubmit}
-        className=" w-full h-ful flex justify-center items-center"
+        className="w-full h-full flex justify-center items-center"
       >
-        <div className=" h-[450px] w-full md:w-[80%] lg:w-[50%] flex flex-col items-center justify-center space-y-6">
-          <div className=" h-[120px] w-[80%] bg-[] text-center flex flex-col justify-center ">
+        <div className="h-[450px] w-full md:w-[80%] lg:w-[50%] flex flex-col items-center justify-center space-y-6">
+          <div className="h-[120px] w-[80%] text-center flex flex-col justify-center">
             <h1 className="text-[1.5rem] font-bold text-boldtext">
               Welcome to Accon Lab
             </h1>
-            <p className=" text-[1.1rem]">
+            <p className="text-[1.1rem]">
               Type your e-mail to log in or create a Accon Lab account.
             </p>
           </div>
@@ -76,7 +77,7 @@ function Login() {
             placeholder="email"
             name="email"
             value={formData.email}
-            className=" h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
+            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
             onChange={handleInputChange}
           />
 
@@ -86,21 +87,23 @@ function Login() {
             placeholder="password"
             name="password"
             value={formData.password}
-            className=" h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
+            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
             onChange={handleInputChange}
           />
 
-          <div className=" w-[80%] text-center">
+          <div className="w-[80%] text-center">
             <input
               type="submit"
               value="Continue"
-              className=" h-[50px] cursor-pointer w-full bg-boldtext font-semibold text-white rounded-md hover:bg-textc"
+              className="h-[50px] cursor-pointer w-full bg-boldtext font-semibold text-white rounded-md hover:bg-textc"
             />
 
-            <p>By continuing you agree to Accon Lab’s</p>
-            <Link>
-              <span className=" text-textc underline">Terms and Condition</span>
-            </Link>
+            <p className="text-gray-500 text-[14px] mt-3">
+              <span>Don't have an account? </span>
+              <Link to="/register">
+                <span className="text-textc underline">Register</span>
+              </Link>
+            </p>
           </div>
         </div>
       </form>

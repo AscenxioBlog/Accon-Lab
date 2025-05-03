@@ -4,6 +4,7 @@ import { CartProvider } from "./ReusableComponent/CartContext";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import MiniLab from "./MiniLab";
+import AuthContext from "./UI/AuthenticationComponent/AuthContext";
 
 const ScrollToTop=()=>{
     const {pathname} = useLocation();
@@ -23,8 +24,9 @@ function Lab() {
         <CartProvider>
             <BrowserRouter>
             <ScrollToTop/>
-               
+            <AuthContext>
                 <MiniLab/>
+            </AuthContext>
             </BrowserRouter>
         </CartProvider>
     );

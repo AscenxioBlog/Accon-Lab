@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BsLungs } from "react-icons/bs";
 import { MdDialpad } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
@@ -16,14 +16,17 @@ import subnav3 from './Subnavpictures/subnav3.jpg'
 import { FaUser } from "react-icons/fa";
 import { CartContext } from '../../ReusableComponent/CartContext';
 import UserPopup from '../UserProfile/UserPopup';
+import { AuthContxt } from '../../UI/AuthenticationComponent/AuthContext';
 
 
 
 function HeaderComponent() {
     const { cart } = useContext(CartContext); // Access cart from context
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0); 
-    let [showPopup,setShowPopup] = useState(false)
     let [nav, setNav] = useState('-80%')
+    let {handleUserIconClick} = useContext(AuthContxt)
+    
+
     function sidenav() {
         if (nav =='-80%') {
             setNav('0')
@@ -34,6 +37,8 @@ function HeaderComponent() {
         }
         
     }
+
+
   return (
     <div className='max-h-[30px] w-full fixed top-0 z-50'>
         <div className='h-[90px] bg-[#b7d0d6]  flex items-center p-[10px] box-border lg:hidden '>
@@ -52,7 +57,7 @@ function HeaderComponent() {
                           )}   
                                                     
                     </Link>
-                    <button>
+                    <button className=' cursor-pointer' onClick={handleUserIconClick}>
                         <FaUser />
                     </button>                            
                  </div>
@@ -126,7 +131,7 @@ function HeaderComponent() {
                                 onClick = {sidenav}
                             /> */}
                             {/* </  div> */}
-                            <button className=' cursor-pointer' onClick={()=> !showPopup? setShowPopup(true) : setShowPopup(false)}>
+                            <button className=' cursor-pointer' onClick={handleUserIconClick}>
                                 <FaUser />
                             </button>   
                                 
@@ -289,7 +294,7 @@ function HeaderComponent() {
 
          </div>
          {/* <Test/> */}
-         <UserPopup showPopup={showPopup} setShowPopup={setShowPopup}/>
+         <UserPopup/>
 
     </div>
   )

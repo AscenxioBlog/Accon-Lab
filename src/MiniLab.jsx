@@ -27,6 +27,7 @@ import ProductDetails from './UI/ProductDetailsPage/ProductDetails'
 import OrderHistoryPage from './UI/OrderComponents/OrderHistoryPage'
 import OrderDetails from './UI/OrderComponents/OrderDetails'
 import Register from './UI/AuthenticationComponent/Register'
+import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
 
 
 function MiniLab() {
@@ -50,7 +51,15 @@ function MiniLab() {
                     <Route path="/cart" element={<CartComponent />} />
                     <Route path="/Shop" element={<ShopComponent />} />
                     <Route path="/FAQ" element={<FAQComponent />} />
-                    <Route path="/Checkout" element={<CheckoutComponent />} />
+                    {/* <Route path="/Checkout" element={<CheckoutComponent />} /> */}
+                    <Route
+                      path="/checkout"
+                      element={
+                        <ProtectedRoute>
+                          <CheckoutComponent />
+                        </ProtectedRoute>
+                      }
+                    />
                     <Route path="/checkuser" element={<Authentication />} />
                     <Route path="/order-history" element={<OrderHistoryPage />} />
                     <Route path="/order/:orderId" element={<OrderDetails />} />

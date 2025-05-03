@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaX } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
+import { AuthContxt } from '../../UI/AuthenticationComponent/AuthContext'
 
-function UserPopup({showPopup,setShowPopup}) {
+function UserPopup() {
+    let {showPopup, setShowPopup, handleLogout} = useContext(AuthContxt)
+
   return (
     <div className={` ${showPopup ? "block" : "hidden"} absolute top-[105px] right-[4%] w-[200px] h-[150px] bg-white bg-opacity-30 backdrop-blur-md shadow-lg rounded-lg p-4 z-50`}>
         <ul>
@@ -12,7 +15,7 @@ function UserPopup({showPopup,setShowPopup}) {
             <li className='py-2 px-4 text-[14px] duration-500 hover:tracking-[1.5px] hover:font-semibold cursor-pointer border-b border-gray-400'>
                 <Link to='/order-history'>Orders History</Link>
             </li>
-            <li className='py-2 px-4 text-[14px] duration-500 hover:tracking-[1.5px] hover:font-semibold cursor-pointer'>
+            <li className='py-2 px-4 text-[14px] duration-500 hover:tracking-[1.5px] hover:font-semibold cursor-pointer' onClick={handleLogout}>
                 Logout
             </li>
         </ul>

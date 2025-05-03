@@ -54,7 +54,7 @@ function CartComponent3({ cart=[], cartTotal=0}) {
                     </div>
                 </div>
                 <div>
-                    <Link   to="/Checkuser" 
+                    <Link to="/checkout" 
                         state={{ cart, cartTotal }}> 
                     <Button
                         label='PROCEED TO CHECKOUT'
