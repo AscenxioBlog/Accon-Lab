@@ -26,6 +26,7 @@ import ProductSkeleton from './ReusableComponent/ProductSkeleton'
 import ProductDetails from './UI/ProductDetailsPage/ProductDetails'
 import OrderHistoryPage from './UI/OrderComponents/OrderHistoryPage'
 import OrderDetails from './UI/OrderComponents/OrderDetails'
+import Register from './UI/AuthenticationComponent/Register'
 
 
 function MiniLab() {
@@ -33,6 +34,7 @@ function MiniLab() {
 
         const hideHeaderFoter = location.pathname === '/Checkuser' || 
          location.pathname === '/aclab' || 
+         location.pathname === '/register' || 
         
         location.pathname.startsWith('/accon');
   return (
@@ -63,7 +65,8 @@ function MiniLab() {
                         <Route path='/accon/settings' element={<Settings/>}/>
                     </Route>
                     <Route path="/sk" element={<ProductSkeleton />} />
-                    <Route path="singleproduct" element={<ProductDetails />} />
+                    <Route path="singleproduct/:id" element={<ProductDetails />} />
+                    <Route path="register" element={<Register />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>

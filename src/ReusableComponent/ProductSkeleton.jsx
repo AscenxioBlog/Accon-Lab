@@ -3,7 +3,7 @@ import React from 'react'
 function ProductSkeleton() {
   return (
     <div>
-         <div className="flex-shrink-0 mt-[150px]">
+         <div className="flex-shrink-0 ">
       <div className="bg-[#e7e2e2] shadow-md rounded-md overflow-hidden">
         {/* Image Skeleton */}
         <div className="relative pt-[80%] bg-[#cdd6de] flex justify-center items-center animate-pulse">

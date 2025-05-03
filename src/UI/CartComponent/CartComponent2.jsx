@@ -2,10 +2,11 @@ import React  , { useContext } from 'react'
 import { CartContext } from '../../ReusableComponent/CartContext';
 import Button from '../../ReusableComponent/Button';
 import CartComponent3 from './CartComponent3';
+import { TbCurrencyNaira } from "react-icons/tb";
 
 
 function CartComponent2() {
-    const { cart, removeFromCart, updateQuantity } = useContext(CartContext);
+    const { cart, removeFromCart,decreaseQuantity, increaseQuantity } = useContext(CartContext);
 
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
@@ -34,30 +35,32 @@ function CartComponent2() {
                             <img src={item.image} alt={item.productName} style={{ width: "70px", height: "70px" }} />
                         </td>
                         <td className='border-black border-[1px] text-center font-custom font-medium capitalize '>{item.productName}</td>
-                        <td className='border-black border-[1px] font-custom text-center  '>${item.price}</td>
+                        <td className='border-black border-[1px] font-custom text-center  justify-center items-center  '><span className=' flex justify-center items-center'><TbCurrencyNaira />{item.price}</span></td>
                         <td className='flex justify-center border-black text-[1.rem] font-bold border-[1px]'> 
-                            <Button
-                                onClick={() => updateQuantity(item.id, item.productQuantity - 1)}
-                                disabled={item.productQuantity === 1}
-                                label='-'
-                                className='font-custom font-semibold text-[1.4rem]'
+                        <Button
+                            onClick={() => decreaseQuantity(item)}
+                            disabled={item.quantity === 1}
+                            label='-'
+                            className='font-custom font-semibold text-[1.4rem]'
                             />
-                                
-                            <span style={{ margin: "0 10px" }}>{item.productQuantity}</span>
-                            <Button
-                             className='font-custom font-semibold text-[1.4rem]'
-                             label='+'
 
-                            onClick={() => updateQuantity(item.id, item.productQuantity + 1)}/>
+                            <span style={{ margin: "0 10px" }}>{item.quantity}</span>
+
+                            <Button
+                            className='font-custom font-semibold text-[1.4rem]'
+                            label='+'
+                            onClick={() => increaseQuantity(item)}
+                            />
+
                         </td>
                        
-                        <td className='border-black border-[1px] text-center font-custom font-semibold '>${(item.price * item.productQuantity).toFixed(2)}</td>
+                        <td className='border-black border-[1px] text-center font-custom font-semibold '><span className=' flex justify-center items-center'><TbCurrencyNaira />{(item.price * item.quantity).toFixed(2)}</span></td>
                         
                         <td className='border-black border-[1px] text-center'>
                             <Button
                             className='text-red-500'
                             label='X'
-                            onClick={() => removeFromCart(item.id)}/>
+                            onClick={() => removeFromCart(item)}/>
 
                         </td>
                     </tr>

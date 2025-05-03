@@ -1,119 +1,199 @@
-import React, { useRef, useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams } from 'react-router-dom';
+import { FaStar, FaShoppingCart, FaHeart } from 'react-icons/fa';
 
-function Product1() {
-
+function ProductPage() {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [quantity, setQuantity] = useState(1);
     const [lensPosition, setLensPosition] = useState({ x: 0, y: 0 });
     const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
     const [hovering, setHovering] = useState(false);
     const imageRef = useRef(null);
-  
+
+    // Fetch product data
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await fetch(`https://labserver.onrender.com/product/${id}`);
+                if (!response.ok) throw new Error('Product not found');
+                const data = await response.json();
+                setProduct(data);
+                setLoading(false);
+            } catch (err) {
+                setError(err.message);
+                setLoading(false);
+            }
+        };
+        fetchProduct();
+    }, [id]);
+
+    // Zoom lens handlers
     const handleMouseMove = (e) => {
-      const rect = imageRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left; // X-coordinate relative to the image
-      const y = e.clientY - rect.top; // Y-coordinate relative to the image
-  
-      setLensPosition({ x, y });
-      setImageDimensions({ width: rect.width, height: rect.height });
+        if (!imageRef.current) return;
+        const rect = imageRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        setLensPosition({ x, y });
+        setImageDimensions({ width: rect.width, height: rect.height });
     };
-  
+
     const handleMouseEnter = () => setHovering(true);
     const handleMouseLeave = () => setHovering(false);
-  
+
+    // Zoom lens styles
     const zoomLensStyle = {
-      position: 'absolute',
-      top: `${lensPosition.y - 50}px`,
-      left: `${lensPosition.x - 50}px`,
-      width: '100px',
-      height: '100px',
-      borderRadius: '50%',
-      border: '2px solid #fff',
-      backgroundColor: 'rgba(255, 255, 255, 0.5)',
-      pointerEvents: 'none',
+        position: 'absolute',
+        top: `${lensPosition.y - 50}px`,
+        left: `${lensPosition.x - 50}px`,
+        width: '100px',
+        height: '100px',
+        borderRadius: '50%',
+        border: '2px solid #fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.3)',
+        pointerEvents: 'none',
+        display: hovering ? 'block' : 'none',
+        transform: 'translate(-50%, -50%)',
+        boxShadow: '0 0 10px rgba(0,0,0,0.2)'
     };
-  
+
     const zoomedImageStyle = {
-      backgroundImage: `url("https://www.jamarahome.com/cdn/shop/files/CANYONHEADSET_BLUETOOTH_BTHS-3_BEIGE_90e6e33e-710d-4978-881e-aae6ecf6bb03.webp?v=1729760693&width=1024")`,
-      backgroundPosition: `${(lensPosition.x / imageDimensions.width) * 100}% ${(lensPosition.y / imageDimensions.height) * 100}%`,
-      backgroundSize: '230%', // Scale the image for zoom
-      width: '100%',
-      height: '100%',
-      position:'absolute',
-      top:'0',
-      backgroundColor:'pink'
+        backgroundImage: `url(${product?.image})`,
+        backgroundPosition: `${(lensPosition.x / imageDimensions.width) * 100}% ${(lensPosition.y / imageDimensions.height) * 100}%`,
+        backgroundSize: `${imageDimensions.width * 2}px ${imageDimensions.height * 2}px`,
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        display: hovering ? 'block' : 'none',
+        transition: 'opacity 0.3s ease'
     };
-  
-  return (
-    <div>
-         <div className="w-full flex justify-center mt-[20px] bg-[]">
-      <div className="min-h-[400px] w-[90%] lg:w-[80%]  bg-[] grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {/* Image Container */}
-        <div
-          className="h-[400px] bg-slate-300 rounded-[20px] relative"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <img
-            src="https://www.jamarahome.com/cdn/shop/files/CANYONHEADSET_BLUETOOTH_BTHS-3_BEIGE_90e6e33e-710d-4978-881e-aae6ecf6bb03.webp?v=1729760693&width=1024"
-            ref={imageRef}
-            alt="Product"
-            className="w-full h-full"
-          />
-          {/* Lens */}
-          {hovering && <div  style={zoomLensStyle}></div>}
-        </div>
 
-        {/* Mirror Container */}
-        <div className="h-[400px] bg-[] rounded-[20px] overflow-hidden flex items-center relative">
-          {hovering && <div  style={zoomedImageStyle}></div>}
-          
-          <div className=" h-[380px] w-[80%] bg-[] space-y-10">
-            <p className=' text-[25px] font-bold'>CANYON HEADSET/ BLUETOOTH /BTHS-3/ BEIGE</p>
+    if (loading) return <div className="text-center py-20">Loading...</div>;
+    if (error) return <div className="text-center py-20 text-red-500">{error}</div>;
+    if (!product) return <div className="text-center py-20">Product not found</div>;
 
-            <p>The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.</p>
-            <p className=' font-bold'>#22,999.00</p>
-
-            {/* <CustomBtn
-            label='ADD TO CART'
-            className=' h-[50px] w-[150px] bg-btncolor'
-            /> */}
-            <button  className=' h-[50px] w-[150px] bg-btncolor'>ADD TO CART</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-    <div className=' w-full flex justify-center  mt-[100px]'>
-        <div className=" min-h-[450px] w-[90%] lg:w-[80%] bg-[] grid grid-cols-1 lg:grid-cols-[50%,40%] justify-between gap-4">
-            <div className="min-h-[450px] bg-[] space-y-5 pt-3 ">
-                <h1 className=' font-bold text-[25px]'>FEATURES</h1>
-                <p className=' md:text-[18px]'>
-                    Featuring a genuine leather head strap and premium earcups, these headphones deliver superior comfort for those who like to enjoy endless listening. It includes intuitive controls designed for any situation. Whether you’re taking a business call or just in your own personal space, the auto on/off and pause features ensure that you’ll never miss a beat.
-                </p>
-
-                <p>
-                    The advanced Active Noise Cancellation with built-in equalizer allow you to experience your audio world on your terms. It lets you enjoy your audio in peace, but quickly interact with your surroundings when you need to. Combined with Bluetooth 5. 0 compliant connectivity and 17 hour battery life, the XX99 Mark II headphones gives you superior sound, cutting-edge technology, and a modern design aesthetic.
-                </p>
+    return (
+        <div className="container mx-auto px-4 py-8">
+            {/* Product Details Section with Zoom */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                {/* Image with Zoom Container */}
+                <div className="relative group">
+                    <div 
+                        className="relative h-[400px] bg-gray-100 rounded-lg overflow-hidden"
+                        onMouseMove={handleMouseMove}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >
+                        <img
+                            ref={imageRef}
+                            src={product.image}
+                            alt={product.productName}
+                            className="w-full h-full object-contain"
+                        />
+                        <div style={zoomLensStyle}></div>
+                    </div>
+                </div>
+                
+                {/* Product Info with Mirror Preview */}
+                <div className="space-y-6 relative">
+                    {/* Mirror/Zoom Preview - positioned within the info container */}
+                    <div 
+                        className={`hidden lg:block h-[300px] bg-gray-100 rounded-lg overflow-hidden mb-4 transition-all duration-300 ${hovering ? 'opacity-100' : 'opacity-0'}`}
+                        style={{
+                            position: 'relative',
+                            visibility: hovering ? 'visible' : 'hidden',
+                            height: hovering ? '300px' : '0',
+                            marginBottom: hovering ? '1rem' : '0'
+                        }}
+                    >
+                        <div style={zoomedImageStyle}></div>
+                    </div>
+                    
+                    {/* Product Information */}
+                    <h1 className="text-3xl font-bold">{product.productName}</h1>
+                    
+                    <div className="flex items-center space-x-2">
+                        {[...Array(5)].map((_, i) => (
+                            <FaStar 
+                                key={i}
+                                className={`text-lg ${i < product.rating ? 'text-yellow-400' : 'text-gray-300'}`}
+                            />
+                        ))}
+                        <span className="text-gray-600">({product.reviewCount || 0} reviews)</span>
+                    </div>
+                    
+                    <div className="space-y-2">
+                        <p className="text-2xl font-bold">${product.price.toFixed(2)}</p>
+                        {product.oldPrice > product.price && (
+                            <p className="text-gray-500 line-through">${product.oldPrice.toFixed(2)}</p>
+                        )}
+                    </div>
+                    
+                    
+                    
+                    <div className="flex items-center space-x-4 pt-4">
+                        <div className="flex items-center border rounded">
+                            <button 
+                                className="px-3 py-1 text-xl"
+                                onClick={() => setQuantity(prev => Math.max(1, prev - 1))}
+                            >
+                                -
+                            </button>
+                            <span className="px-4 py-1">{quantity}</span>
+                            <button 
+                                className="px-3 py-1 text-xl"
+                                onClick={() => setQuantity(prev => prev + 1)}
+                            >
+                                +
+                            </button>
+                        </div>
+                        <button className="bg-purple-600 text-white px-6 py-2 rounded hover:bg-purple-700 transition flex items-center space-x-2">
+                            <FaShoppingCart />
+                            <span>Add to Cart</span>
+                        </button>
+                        <button className="p-2 text-gray-500 hover:text-red-500 transition">
+                            <FaHeart className="text-xl" />
+                        </button>
+                    </div>
+                    
+                    <div className="pt-4 border-t">
+                        <p><span className="font-semibold">Category:</span> {product.category}</p>
+                        <p><span className="font-semibold">SKU:</span> {product.sku}</p>
+                        <p><span className="font-semibold">Availability:</span> {product.stock > 0 ? 'In Stock' : 'Out of Stock'}</p>
+                    </div>
+                </div>
             </div>
-            <div className="h-[450px] bg-[] space-y-8 pt-3">
-                <h1 className=' uppercase font-bold'>in the box</h1>
-
-                <div className=" space-y-4">
-                    <p><span className=' text-btncolor mr-2 font-bold'>1X</span> Headphone Unit</p>
-                    <p><span className=' text-btncolor mr-2 font-bold'>2X</span> Replacement Earcups</p>
-                    <p><span className=' text-btncolor mr-2 font-bold'>1X</span> User Manual</p>
-                    <p><span className=' text-btncolor mr-2 font-bold'>1X</span> 3.5mm 5m Audio Cable</p>
-                    <p><span className=' text-btncolor mr-2 font-bold'>1X</span> Travel bag</p>
+            
+            {/* Product Tabs */}
+            <div className="mb-12">
+                <div className="tabs">
+                    <button className="tab tab-bordered tab-active">Description</button>
+                    <button className="tab tab-bordered">Specifications</button>
+                    <button className="tab tab-bordered">Reviews</button>
+                </div>
+                
+                <div className="bg-white p-6 rounded-b-lg shadow-md">
+                    <h2 className="text-xl font-bold mb-4">Product Description</h2>
+                    <p className="text-gray-700">{product.description || 'No description available.'}</p>
+                    
+                    {product.features && (
+                        <div className="mt-6">
+                            <h3 className="font-semibold mb-2">Features:</h3>
+                            <ul className="list-disc pl-5 space-y-1">
+                                {product.features.map((feature, index) => (
+                                    <li key={index}>{feature}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-  )
+    );
 }
 
-export default Product1
+export default ProductPage;
