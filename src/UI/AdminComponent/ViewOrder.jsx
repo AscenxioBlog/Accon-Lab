@@ -37,19 +37,38 @@ function ViewOrder() {
   //   }
   // ];
 
-  const [order,setOrder]=useState([])
-   useEffect(() => {
-      fetchAllOrder();
-    }, []);
+  const [order,setOrders]=useState([])
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+ 
+  useEffect(() => {
+     const fetchOrders = async () => {
+       setLoading(true);
+       try {
+        //  const res = await fetch(`http://localhost:3600/order`, {
+         const res = await fetch(`${API_URL}/order`, {
+           method: 'GET',
+           credentials: 'include', // 💥 this is important so that cookies go along
+         });
+ 
+         if (!res.ok) {
+           throw new Error('Failed to fetch orders');
+         }
+ 
+         const data = await res.json();
+         console.log(data); // Check the structure of the response
+         setOrders(data); // assuming your backend sends { orders: [...] }
+       } catch (err) {
+         console.error(err);
+         setError('Failed to load your orders.');
+       } finally {
+         setLoading(false);
+       }
+     };
+ 
+     fetchOrders();
+   }, []);
   
-    const fetchAllOrder = () => {
-      fetch(`${API_URL}/order`)
-        .then(res => res.json())
-        .then(json => {
-          setOrder(json);
-        })
-        .catch(err => console.log(err));
-    };
   const getStatusColor = (status) => {
     switch(status) {
       case 'Completed': return 'bg-green-100 text-green-800';
@@ -65,7 +84,7 @@ function ViewOrder() {
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Recent Orders</h1>
         
         <div className="space-y-4">
-          {order.map((order) => {
+          { order.length > 0 ? order.map((order) => {
             const total = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             
             return (
@@ -74,7 +93,7 @@ function ViewOrder() {
                   {/* Order Header */}
                   <div className="flex justify-between items-start mb-3">
                     <div>
-                      <h2 className="font-bold text-lg">Order #{order.id}</h2>
+                      <h2 className="font-bold text-lg text-black">Order #{order._id}</h2>
                       <div className="flex items-center text-sm text-gray-500 mt-1">
                         <FaCalendarAlt className="mr-1" />
                         <span>{order.dateOrdered}</span>
@@ -93,13 +112,13 @@ function ViewOrder() {
                   
                   {/* Order Items */}
                   <div className="border-t border-gray-200 pt-3">
-                    <h3 className="font-medium mb-2 flex items-center">
+                    <h3 className="font-medium mb-2 flex items-center text-black">
                       <FaShoppingCart className="mr-2" />
                       Ordered Items
                     </h3>
                     <ul className="space-y-2">
                       {order.items.map((item, index) => (
-                        <li key={index} className="flex justify-between text-sm">
+                        <li key={index} className="flex justify-between text-sm text-gray-500">
                           <span>
                             {item.product.productName} × {item.quantity}
                           </span>
@@ -111,7 +130,7 @@ function ViewOrder() {
                   </div>
                   
                   {/* Order Total */}
-                  <div className="border-t border-gray-200 pt-3 mt-3 flex justify-between font-medium">
+                  <div className="border-t border-gray-200 pt-3 mt-3 flex justify-between font-medium text-blue-600">
                     <span className="flex items-center">
                       <FaMoneyBillWave className="mr-2" />
                       Total
@@ -121,7 +140,7 @@ function ViewOrder() {
                 </div>
               </div>
             );
-          })}
+          }): <p>Loading...</p>}
         </div>
       </div>
     </div>

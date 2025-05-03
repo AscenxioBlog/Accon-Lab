@@ -35,6 +35,7 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
     setLoading(true);
 
     try {
+      // const verifyRes = await fetch(`http://localhost:3600/api/payment/verify-payment`, {
       const verifyRes = await fetch(`${API_URL}/api/payment/verify-payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +70,8 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
           paymentReference: response.reference,
         };
 
-        const placeOrderRes = await fetch('http://localhost:3600/order/placeorder', {
+        // const placeOrderRes = await fetch('http://localhost:3600/order/placeorder', {
+        const placeOrderRes = await fetch(`${API_URL}/order/placeorder`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Button from '../../ReusableComponent/Button';
 import PaystackButton from './PaystackButton';
+import API_URL from '../../Config';
 
 function CheckoutComponent2() {
     const [cart, setCart] = useState(() => {
@@ -13,8 +14,9 @@ function CheckoutComponent2() {
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
+        phone: '',
         address: '',
-        // apartment: '',
+        apartment: '',
         city: '',
         state: '',
         email: ''
@@ -71,7 +73,8 @@ function CheckoutComponent2() {
 
         try {
             // Replace with your actual API endpoint
-            const response = await fetch('http://localhost:3600/order/placeorder', {
+            // const response = await fetch('http://localhost:3600/order/placeorder', {
+            const response = await fetch(`${API_URL}/order/placeorder`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,10 +83,10 @@ function CheckoutComponent2() {
                 credentials: "include",
             });
 
-            // if (!response.ok) {
-            //     throw new Error('Network response was not ok');
-            //     console.log(orderData)
-            // }
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+                console.log(orderData)
+            }
 
             const result = await response.json();
             console.log('Order successful:', result);
@@ -135,6 +138,21 @@ function CheckoutComponent2() {
                                             id="lastname"
                                             name="lastname"
                                             value={formData.lastname}
+                                            onChange={handleInputChange}
+                                            placeholder="Type here"
+                                            className="input input-bordered input-sm w-full dark:bg-white"
+                                            required
+                                        />
+                                    </div>
+                                    <div className="md:w-[48%]">
+                                        <label htmlFor="phone" className="block mb-1 font-semibold">
+                                            Phone Number <span className='text-[red]'>*</span>
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            id="phone"
+                                            name="phone"
+                                            value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
                                             className="input input-bordered input-sm w-full dark:bg-white"
