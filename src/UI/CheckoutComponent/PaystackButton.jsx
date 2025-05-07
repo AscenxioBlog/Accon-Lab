@@ -15,7 +15,7 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
   const handlePayment = () => {
     const handler = window.PaystackPop && window.PaystackPop.setup({
     //   key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY, // 👈 Correct way to access env variable
-      key: 'pk_test_411c6d368e4cfe20cef4589ad7616364e808db11', // 👈 Correct way to access env variable
+      key: 'pk_live_511373897bc114068063d761c1548a136ea2faf9', // 👈 Correct way to access env variable
       email,
       amount: amount * 100, // 👈 Paystack expects kobo
       currency: 'NGN',
