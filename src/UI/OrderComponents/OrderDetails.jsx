@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import API_URL from "../../Config";
 
 function OrderDetails() {
   let [order, setOrder] = useState(null);
@@ -12,7 +13,7 @@ function OrderDetails() {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3600/order/${orderId}`, {
+        const res = await fetch(`${API_URL}/order/${orderId}`, {
           method: "GET",
           credentials: "include", // 💥
         });

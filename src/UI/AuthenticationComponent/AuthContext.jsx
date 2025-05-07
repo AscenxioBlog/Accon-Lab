@@ -13,7 +13,6 @@ function AuthContext({children}) {
 
     useEffect(() => {
         fetch(`${API_URL}/auth/check`, {
-        // fetch(`http://localhost:3600/auth/check`, {
           method: 'GET',
           credentials: 'include',
         })
@@ -45,7 +44,7 @@ function AuthContext({children}) {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch(`http://localhost:3600/auth/logout`, {
+            const response = await fetch(`${API_URL}/auth/logout`, {
             // await fetch(`${API_URL}/auth/logout`, {
                 method: 'POST',
                 credentials: 'include',
