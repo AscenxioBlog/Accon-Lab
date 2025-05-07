@@ -28,6 +28,8 @@ import OrderHistoryPage from './UI/OrderComponents/OrderHistoryPage'
 import OrderDetails from './UI/OrderComponents/OrderDetails'
 import Register from './UI/AuthenticationComponent/Register'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
+import SuccessfulPayment from './UI/CheckoutComponent/SuccessfulPayment'
+import UserDashboard from './ConstantComponent/HeaderComponent/UserDashboard'
 
 
 function MiniLab() {
@@ -76,9 +78,12 @@ function MiniLab() {
                     <Route path="/sk" element={<ProductSkeleton />} />
                     <Route path="singleproduct/:id" element={<ProductDetails />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="order-success" element={<SuccessfulPayment />} />
+                    <Route path="profile" element={<UserDashboard />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>
+
                
                 {!hideHeaderFoter &&  <FooterComponent/>}
     </div>

@@ -65,7 +65,7 @@ function HomeComponent16() {
         setLoading(true);
         const timeout = setTimeout(() => {
             setLoading(false);
-        }, 800);
+        }, 8000);
         return () => clearTimeout(timeout);
     }, [options, currentPage, searchTerm, selectedCategory]);
 

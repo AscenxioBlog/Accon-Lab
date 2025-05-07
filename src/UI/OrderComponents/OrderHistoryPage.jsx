@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import OrderCard from './OrderCard'; // Adjust path if needed
+import API_URL from '../../Config';
 
 const OrderHistoryPage = () => {
   const [orders, setOrders] = useState([]);
@@ -10,7 +11,7 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:3600/order/my-orders`, {
+        const res = await fetch(`${API_URL}/order/my-orders`, {
           method: 'GET',
           credentials: 'include', // 💥 this is important so that cookies go along
         });

@@ -95,6 +95,25 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
     } finally {
       setLoading(false);
     }
+
+    const orderData = {
+      billingDetails: formData,
+      items: cart,
+      totalAmount: cartTotal,
+      paymentReference: response.reference, // from Paystack
+      status: 'paid'
+    };
+  
+    // Redirect to success page with order data
+    navigate('/success', { 
+      state: { 
+        order: orderData,
+        paymentId: response.reference 
+        
+      } 
+      
+    });
+    console.log( orderData)
   };
 
   return (

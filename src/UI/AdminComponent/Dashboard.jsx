@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaBoxOpen, FaDollarSign, FaUsers, FaChartLine, FaCalendarAlt, FaClipboardList } from 'react-icons/fa';
+import API_URL from '../../Config';
 
 function Dashboard() {
   const [order,setOrders]=useState([])
@@ -11,7 +12,7 @@ function Dashboard() {
       const fetchOrders = async () => {
         setLoading(true);
         try {
-          const res = await fetch(`http://localhost:3600/order/recent`, {
+          const res = await fetch(`${API_URL}/order/recent`, {
             method: 'GET',
             credentials: 'include', 
           });

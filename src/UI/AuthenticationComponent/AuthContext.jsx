@@ -12,8 +12,8 @@ function AuthContext({children}) {
     const navigate = useNavigate()
 
     useEffect(() => {
-        // fetch(`${API_URL}/auth/check`, {
-        fetch(`http://localhost:3600/auth/check`, {
+        fetch(`${API_URL}/auth/check`, {
+        // fetch(`http://localhost:3600/auth/check`, {
           method: 'GET',
           credentials: 'include',
         })
