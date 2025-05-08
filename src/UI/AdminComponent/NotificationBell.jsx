@@ -10,7 +10,10 @@ const NotificationBell = () => {
   const dropdownRef = useRef();
 
   const fetchUnreadCount = async () => {
-    const res = await fetch(`${API_URL}/notification/unread-count`);
+    const res = await fetch(`${API_URL}/notification/unread-count`,{
+      method: "GET",
+      credentials:'include'
+    });
     const data = await res.json();
     setCount(data.unreadCount);
   };
@@ -18,7 +21,10 @@ const NotificationBell = () => {
 
   const fetchNotifications = async () => {
     // const res = await fetch('http://localhost:3600/notification');
-    const res = await fetch(`${API_URL}/notification`);
+    const res = await fetch(`${API_URL}/notification`,{
+      method: "GET",
+      credentials:'include'
+    });
     const data = await res.json();
     setNotifications(data);
   };
@@ -36,20 +42,20 @@ const NotificationBell = () => {
   };
 
   const deleteAll = async () => {
-    await fetch(`${API_URL}/delete-all`, { method: 'DELETE' });
+    await fetch(`${API_URL}/delete-all`, { method: 'DELETE', credentials:"include" });
     setNotifications([]);
     setCount(0);
   };
 
   
   const markAsRead = async (id) => {
-    await fetch(`${API_URL}/notification/mark-as-read/${id}`, { method: 'POST' });
+    await fetch(`${API_URL}/notification/mark-as-read/${id}`, { method: 'POST', credentials:"include" });
     await fetchNotifications();
     await fetchUnreadCount();
   };
 
   const deleteOne = async (id) => {
-    await fetch(`${API_URL}/notification/${id}`, { method: 'DELETE' });
+    await fetch(`${API_URL}/notification/${id}`, { method: 'DELETE' , credentials:"include"});
     await fetchNotifications();
     await fetchUnreadCount();
   };

@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContxt } from "./AuthContext";
 import API_URL from "../../Config";
+<<<<<<< HEAD
+=======
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
+>>>>>>> 18b4e2828f4c7829e6dad1c269e000c213444a21
 
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
-  let {setIsLoggedIn} = useContext(AuthContxt)
+  let { setIsLoggedIn } = useContext(AuthContxt);
   const from = location.state?.from?.pathname || '/'; // Default to homepage
 
   const [formData, setFormData] = useState({
@@ -16,6 +20,8 @@ function Login() {
   let [errors, setErrors] = useState({});
 
 
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -24,11 +30,14 @@ function Login() {
     }));
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handlesubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // const response = await fetch(`http://localhost:3600/auth/login`, {
       const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         headers: {
@@ -40,7 +49,7 @@ function Login() {
 
       const result = await response.json();
       console.log("Login response:", result);
-      setIsLoggedIn(true)
+      setIsLoggedIn(true);
 
       // if (result.emailMessage) {
       //   alert(result.emailMessage);
@@ -143,20 +152,34 @@ function Login() {
             required
             placeholder="email"
             name="email"
+<<<<<<< HEAD
             // value={formData.email}
             className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
+=======
+            value={formData.email}
+            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md px-4"
+>>>>>>> 18b4e2828f4c7829e6dad1c269e000c213444a21
             onChange={handleInputChange}
           />
 
-          <input
-            type="password"
-            required
-            placeholder="password"
-            name="password"
-            value={formData.password}
-            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
-            onChange={handleInputChange}
-          />
+          <div className="relative w-[80%]">
+            <input
+              type={showPassword ? "text" : "password"}
+              required
+              placeholder="password"
+              name="password"
+              value={formData.password}
+              className="h-[55px] w-full border-boldtext border-[2px] rounded-md px-4 pr-12"
+              onChange={handleInputChange}
+            />
+            <button
+              type="button"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-boldtext"
+              onClick={togglePasswordVisibility}
+            >
+              {showPassword ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </button>
+          </div>
 
           <div className="w-[80%] text-center">
             <input

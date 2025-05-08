@@ -38,7 +38,7 @@ function HomeComponent2() {
   return (
     <div>
         <div className='min-h-[380px] lg:h-[380px] grid grid-cols-1 gap-5 lg:gap-0 lg:grid-cols-10 mb-10 mt-5'>
-          <div className="min-h-[380px] bg-[] lg:col-span-2  pt-3">
+          <div className="hidden lg:inline-block min-h-[380px] bg-[] lg:col-span-2  pt-3">
             <h1 className=' pl-2 box-border text-[1.5rem] font-bold'>Main Categories</h1>
            <div className=" h-[360px] grid gap-1 pl-2 pr-2 bg-[url(assets/Frame.png)] frame">
         
@@ -93,11 +93,13 @@ function HomeComponent2() {
                   <div className=" h-[380px] w-full bg-[url(assets/banner4.jpg)] homeslider"></div>
                 </Slider>
           </div>
-          <div className="h-[380px] bg-[] lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-2 p-5">
+        <div className=" hidden lg:inline-block">
+        <div className=" h-[380px] bg-[] lg:col-span-2 grid grid-cols-2 lg:grid-cols-1 gap-2 p-5">
             <div className=" bg-lime-200 bg-[url(assets/undraw2.png)] frame"></div>
             <div className=" bg-lime-200"></div>
           </div>
 
+        </div>
      
 
           

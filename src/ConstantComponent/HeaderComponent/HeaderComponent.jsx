@@ -23,16 +23,16 @@ import { AuthContxt } from '../../UI/AuthenticationComponent/AuthContext';
 function HeaderComponent() {
     const { cart } = useContext(CartContext); // Access cart from context
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0); 
-    let [nav, setNav] = useState('-80%')
+    let [nav, setNav] = useState('-100%')
     let {handleUserIconClick} = useContext(AuthContxt)
     
 
     function sidenav() {
-        if (nav =='-80%') {
+        if (nav =='-100%') {
             setNav('0')
             
         } else {
-            setNav('-80%')
+            setNav('-100%')
             
         }
         
@@ -47,16 +47,19 @@ function HeaderComponent() {
                 <h1 className=' font-custom text-[1rem] text-center font-bold text-boldtext'> ACCON SCIENTIFIC/ LAB EQUIPMENT</h1>
             </div>
             <div className='flex justify-end gap-4 w-[40%] p-[20px] box-border items-center'>
-                <div className='cursor-pointer text-[1.3rem]'>
-                     <Link to={'/cart'}>                                 
-                         <FaBasketShopping  className='dark:text-black'/>  
-                         {totalItems > 0 && (
-                            <span className="absolute top-[30px] right-[80px] bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                                   {totalItems}
-                            </span>
-                          )}   
-                                                    
-                    </Link>
+                <div className='cursor-pointer text-[1.3rem] w-[60px] flex gap-3'>
+                <Link 
+  to={'/cart'} 
+  className='relative flex items-center justify-center  rounded-md'
+>
+  <FaBasketShopping className='dark:text-black text-lg' />
+  
+  {totalItems > 0 && (
+    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+      {totalItems}
+    </span>
+  )}
+</Link>
                     <button className=' cursor-pointer' onClick={handleUserIconClick}>
                         <FaUser />
                     </button>                            
@@ -102,21 +105,7 @@ function HeaderComponent() {
                             <li className='nav-item hover:border-b-[2px] hover:border-boldtext'><Link to={'/Shop'}>SHOP</Link></li>
 
                             <li className='nav-item hover:border-b-[2px] hover:border-boldtext'><Link to={'/About'}>ABOUT</Link></li>
-                            {/* <li className='nav-item john-bro cursor-pointer hover:border-b-[2px] hover:border-boldtext'>
-                               PAGES +
-                            </li> */}
-                            {/* <div className=" john opacity-0 absolute top-[150px] left-[35%] xl:left-[33.3%] " style={{transition:'1s'}}>
-                                   <ul className='flex flex-col text-bodybg  font-custom font-extrabold text-[1.4rem]'>
-                                        <li className='hover:text-textc'><Link to={'/Service'}>Services</Link></li>
-                                        <li className='hover:text-textc'><Link to={'/Pricing'}>Pricing Plan</Link></li>
-                                        <li className='hover:text-textc'><Link to={'/Shop'}>Shop</Link></li>
-                                        <li className='hover:text-textc'><Link to={'/cart'}>Cart</Link></li>
-                                        <li className='hover:text-textc'><Link to={'/Checkout'}>Checkout</Link></li>
-                                        <li className='hover:text-textc'><Link to={'/FAQ'}>FAQs</Link></li>
-                                    </ul>
-                                </div> */}
-                            {/* <li className='nav-item hover:border-boldtext hover:border-b-[2px]'><Link to={'/Research'}>RESEARCH</Link></li> */}
-                            {/* <li className='nav-item hover:border-boldtext hover:border-b-[2px]'><Link to={'/Team'}>FAQs</Link></li> */}
+                           
                             <li className='nav-item hover:border-boldtext hover:border-b-[2px]'><Link to={'/Contact'}>CONTACT</Link></li>
                         </ul>
                     </div>
@@ -136,16 +125,18 @@ function HeaderComponent() {
                             </button>   
                                 
                             <div className='cursor-pointer text-[1.3rem]'>
-                                <Link to={'/cart'}>
-                                  
-                                <FaBasketShopping className='relative'/>
-                                {totalItems > 0 && (
-                                            <span className="absolute top-[80px] right-[16%] bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
-                                                {totalItems}
-                                            </span>
-                                        )}
-                                
-                                </Link>                            
+                            <Link 
+                                    to={'/cart'} 
+                                    className='relative flex items-center justify-center  rounded-md'
+                                    >
+                                    <FaBasketShopping className='dark:text-black text-lg' />
+                                    
+                                    {totalItems > 0 && (
+                                        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                                        {totalItems}
+                                        </span>
+                                    )}
+                                    </Link>                          
                             </div>
 
 
@@ -166,8 +157,10 @@ function HeaderComponent() {
 
                         {/* SIDENAV DISPLAY  */}
 
-        <div className=' absolute bg-textc min-h-[1000px] z-[2] top-[20px] w-[80%]  flex flex-col gap-2 p-[10px]'style={{right:nav, transition:'1s',}}>
-            <div className=' gap-4 flex items-center justify-between  '>   
+        <div onClick ={sidenav} className=' absolute bg-[#00000083] min-h-[1000px] z-[2] top-[0px] w-full flex justify-end 'style={{right:nav, transition:'0.3s',}}>
+
+            <div className=" min-h-[1000px] w-[75%] bg-[white] flex flex-col gap-2 p-[10px]">
+                <div className=' gap-4 flex items-center justify-between  '>   
                 <div className='flex'>
                     <h1  className='font-bold text-2xl text-textc '><BsLungs /></h1>
                     <h1 className=' font-custom text-[1rem] font-bold text-boldtext'> ACCON SCIENTIFIC/ <br /> LAB EQUIPMENT </h1>    
@@ -183,7 +176,7 @@ function HeaderComponent() {
                     />
             </div>
                         {/* THIS PART OF THE SIDENAV IS HIDDEN FOR LARGE SCREEN  */}
-            <section className='p-[10px] lg:hidden  dark:text-white '>
+            <section className='p-[10px] lg:hidden  dark:text-white  space-y-4'>
                 <div className='border-b-[1px] border-b-white'>
                   <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'onClick={sidenav} > <Link to={'/'}>HOME</Link> </h1>
                 </div>
@@ -219,75 +212,29 @@ function HeaderComponent() {
             </section>
 
                     {/* THIS PART OF SIDENAV IS TO BE SHOWN ON THE LARGE SCREEN  */}
-            <section className='hidden lg:block p-[20px] font-custom font-semibold text-6xl'>
-                <div>
-                    <h1>Our Mission is to ensure  the generation of accurate and precise finding </h1>
-                </div>
-
-
-            </section>
+         
          
 
-            <div className='mt-[20px] p-[10px] lg:p-[20px]'>
+            <div className='mt-[20px] p-[10px] lg:p-[20px] space-y-4'>
                 <h1 className='lg:text-2xl font-custom dark:text-white'>CONTACT US</h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 16, Old Ojo Road, Maza-Maza, Lagos-State</a></h1>
+                <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 16, Old Ojo Road, Maza-Maza, Lagos-State</a></h1>
 
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 41, Asogbon Street, Isale-Eko, Islad Lagos</a></h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 9402 5524</a></h1>
+                <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 41, Asogbon Street, Isale-Eko, Islad Lagos</a></h1>
+                <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 9402 5524</a></h1>
 
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 3742 8180</a></h1>
-                <h1 className='hover:text-[red] text-bodybg'>⭐<a href="#"className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl '> accon@gmail.com</a></h1>
+                <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> +234 80 3742 8180</a></h1>
+                <h1 className='hover:text-[red] '>⭐<a href="#"className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl '> accon@gmail.com</a></h1>
 
                 
             </div>
-            <div className='hidden lg:block p-[20px]'>
-                <label className="form-control w-full max-w-xs">
-                        <div className="label">
-                            <span className="label-text font-custom text-[26px]">Get Update</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <input type="text" placeholder="Enter Mail" className="input input-bordered w-full max-w-xs" />
-                            <span className='text-2xl bg-boldtext text-bodybg h-12 rounded flex items-center w-7 cursor-pointer hover:bg-textc'><IoIosSend /></span>
+        
 
-                        </div>                  
-                </label>         
-            </div>
+           
 
-            <div className='p-[20px] min-h-[100px] hidden lg:block'>
-                <div>
-                    <h1 className='text-2xl font-custom font-semibold'>Check Instagram Post</h1>
-                </div>
-                <div className=' min-h-[100px] flex gap-5 mt-5'>
-                    <div className='min-h-[100px] rounded-2xl'>
-                        <img src={subpic} height='100%' width='100%' alt="microscope" />
-                    </div>
-                    <div>
-                        <img src={subnav2} height='100%' width='100%' alt="looking through microscope" />
-
-                    </div>
-                    <div>
-                          <img src={subnav3} height='100%' width='100%' alt="Observing" />
-
-                    </div>
-                </div>
-            </div>
-
-            <div className='flex items-center gap-6 mt-[20px] text-[20px] md:text-[25px] p-[10px] lg:p-[20px]'>
-                <div className='hover:bg-textc hover:scale-x-[130%] '>
-                      <h1><FaYoutube /></h1>
-                </div>
-                <div className='hover:bg-textc hover:scale-x-[130%] '>
-                    <h1 className=''><a href="#"><GrTwitter /></a></h1>
-                </div>
-                <div className='hover:bg-textc hover:scale-x-[130%] '>
-                    <h1><a href="#"><FaFacebookF /></a></h1>
-                </div>
-                <div className='hover:bg-textc hover:scale-x-[130%] '>
-                    <h1><a href="#"><FaSkype /></a></h1>
-                </div>
+        
 
             </div>
-
+            
           
 
                 

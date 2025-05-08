@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import { FaStar, FaShoppingCart, FaHeart } from 'react-icons/fa';
+import API_URL from '../../Config';
 
 function ProductPage() {
     const { id } = useParams();
@@ -12,12 +13,15 @@ function ProductPage() {
     const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
     const [hovering, setHovering] = useState(false);
     const imageRef = useRef(null);
-
+    // let {id} = useParams();
     // Fetch product data
     useEffect(() => {
+       console.log(id)
+
+
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`https://labserver.onrender.com/product/${id}`);
+                const response = await fetch(`${API_URL}/product/${id}`);
                 if (!response.ok) throw new Error('Product not found');
                 const data = await response.json();
                 setProduct(data);

@@ -30,6 +30,8 @@ import Register from './UI/AuthenticationComponent/Register'
 import ForgotPassword from './UI/AuthenticationComponent/ForgotPassword'
 import ResetPassword from './UI/AuthenticationComponent/ResetPassword'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
+import SuccessfulPayment from './UI/CheckoutComponent/SuccessfulPayment'
+import UserDashboard from './ConstantComponent/HeaderComponent/UserDashboard'
 
 
 function MiniLab() {
@@ -80,9 +82,12 @@ function MiniLab() {
                     <Route path="register" element={<Register />} />
                     <Route path="/password-reset" element={<ForgotPassword/>}/>
                     <Route path="/reset-password" element={<ResetPassword />} />
+                    <Route path="order-success" element={<SuccessfulPayment />} />
+                    <Route path="profile" element={<UserDashboard />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>
+
                
                 {!hideHeaderFoter &&  <FooterComponent/>}
     </div>

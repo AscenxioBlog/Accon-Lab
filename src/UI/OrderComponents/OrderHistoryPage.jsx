@@ -11,7 +11,6 @@ const OrderHistoryPage = () => {
     const fetchOrders = async () => {
       setLoading(true);
       try {
-        // const res = await fetch(`http://localhost:3600/order/my-orders`, {
         const res = await fetch(`${API_URL}/order/my-orders`, {
           method: 'GET',
           credentials: 'include', // 💥 this is important so that cookies go along
