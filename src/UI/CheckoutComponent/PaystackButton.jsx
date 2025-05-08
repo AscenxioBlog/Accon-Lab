@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { ClipLoader } from 'react-spinners';
 import API_URL from '../../Config';
+import { useNavigate } from 'react-router-dom'; // Make sure this is imported at the top
+
+
 
 const PaystackButton = ({ amount, email, customerInfo, cart }) => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Declare at the top inside your component
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -15,7 +19,8 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
   const handlePayment = () => {
     const handler = window.PaystackPop && window.PaystackPop.setup({
     //   key: import.meta.env.VITE_REACT_APP_PAYSTACK_PUBLIC_KEY, // 👈 Correct way to access env variable
-      key: 'pk_live_511373897bc114068063d761c1548a136ea2faf9', // 👈 Correct way to access env variable
+      // key: 'pk_live_511373897bc114068063d761c1548a136ea2faf9', // 👈 Correct way to access env variable
+      key: 'pk_test_411c6d368e4cfe20cef4589ad7616364e808db11', // 👈 Correct way to access env variable
       email,
       amount: amount * 100, // 👈 Paystack expects kobo
       currency: 'NGN',
@@ -33,9 +38,8 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
 
   const handlePaymentSuccess = async (response) => {
     setLoading(true);
-
+  
     try {
-      // const verifyRes = await fetch(`http://localhost:3600/api/payment/verify-payment`, {
       const verifyRes = await fetch(`${API_URL}/api/payment/verify-payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -45,11 +49,11 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
           products: cart,
           total: amount,
         }),
-        credentials: "include"
+        credentials: 'include'
       });
-
+  
       const verifyData = await verifyRes.json();
-
+  
       if (verifyRes.ok) {
         const orderData = {
           billingDetails: {
@@ -60,6 +64,9 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
           items: cart.map(item => ({
             product: item._id,
             quantity: item.quantity,
+            price: item.price,  
+            image: item.productImage,
+            productName: item.productName,
           })),
           shippingAddress: {
             address: customerInfo.address,
@@ -68,24 +75,30 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
           },
           totalAmount: amount,
           paymentReference: response.reference,
+          status: 'paid'
         };
-
-        // const placeOrderRes = await fetch('http://localhost:3600/order/placeorder', {
+  
         const placeOrderRes = await fetch(`${API_URL}/order/placeorder`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(orderData),
-          credentials: "include",
+          credentials: 'include',
         });
-
+  
         const orderResult = await placeOrderRes.json();
         console.log('Order placed successfully:', orderResult);
-
+  
         alert('Payment and Order successful!');
-        localStorage.removeItem("cart");
-        window.location.href = '/order-success';
+        localStorage.removeItem('cart');
+  
+        navigate('/order-success', {
+          state: {
+            order: orderData,
+            paymentId: response.reference,
+          },
+        });
       } else {
         alert('Payment verification failed.');
       }
@@ -95,25 +108,6 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
     } finally {
       setLoading(false);
     }
-
-    const orderData = {
-      billingDetails: formData,
-      items: cart,
-      totalAmount: cartTotal,
-      paymentReference: response.reference, // from Paystack
-      status: 'paid'
-    };
-  
-    // Redirect to success page with order data
-    navigate('/success', { 
-      state: { 
-        order: orderData,
-        paymentId: response.reference 
-        
-      } 
-      
-    });
-    console.log( orderData)
   };
 
   return (

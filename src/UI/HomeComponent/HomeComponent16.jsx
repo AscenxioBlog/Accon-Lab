@@ -15,6 +15,7 @@ function HomeComponent16() {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [singleproduct,setSingleproduct]=useState()
     
     const productsPerPage = 16;
     const categories = ['All', ...new Set(productData.map(product => product.category))];
@@ -180,7 +181,7 @@ function HomeComponent16() {
                                                 alt={item.productName} 
                                                 className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
-                                            {item.isNew && (
+                                            {item.status && (
                                                 <div className="absolute top-2 left-2 bg-textc text-white text-xs font-bold px-2 py-1 rounded">
                                                     NEW
                                                 </div>

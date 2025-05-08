@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaShoppingCart, FaCalendarAlt, FaUser, FaMoneyBillWave } from 'react-icons/fa';
 import API_URL from '../../Config';
+import { Link } from 'react-router-dom';
 
 function ViewOrder() {
   // Sample order data - replace with your actual data
@@ -138,6 +139,11 @@ function ViewOrder() {
                     <span>${order.totalAmount}</span>
                   </div>
                 </div>
+                 <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
+                        <Link to={`/order/${order._id}`}>
+                          View Details
+                        </Link>
+                      </button>
               </div>
             );
           }): <p>Loading...</p>}
