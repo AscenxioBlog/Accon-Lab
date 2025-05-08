@@ -85,14 +85,14 @@ function HomeComponent13() {
                                 {/* Product Info */}
                                 <div className="card-body p-4 flex flex-col flex-grow">
                                     <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em]">
-                                        {item.name}
+                                        {item.productName}
                                     </h3>
                                     <div className="mt-auto">
                                         <div className="flex items-center justify-between mt-2">
                                             <div>
                                                 <span className="font-bold text-textc">${item.price.toFixed(2)}</span>
-                                                {item.originalPrice > item.price && (
-                                                    <span className="text-sm line-through text-gray-500 ml-2">${item.originalPrice.toFixed(2)}</span>
+                                                {item.oldPrice > item.price && (
+                                                    <span className="text-sm line-through text-gray-500 ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
                                             </div>
                                             {/* <button className="btn btn-sm bg-textc hover:bg-textc border-none text-white">
