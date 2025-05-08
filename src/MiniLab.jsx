@@ -27,6 +27,8 @@ import ProductDetails from './UI/ProductDetailsPage/ProductDetails'
 import OrderHistoryPage from './UI/OrderComponents/OrderHistoryPage'
 import OrderDetails from './UI/OrderComponents/OrderDetails'
 import Register from './UI/AuthenticationComponent/Register'
+import ForgotPassword from './UI/AuthenticationComponent/ForgotPassword'
+import ResetPassword from './UI/AuthenticationComponent/ResetPassword'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
 
 
@@ -76,6 +78,8 @@ function MiniLab() {
                     <Route path="/sk" element={<ProductSkeleton />} />
                     <Route path="singleproduct/:id" element={<ProductDetails />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="/password-reset" element={<ForgotPassword/>}/>
+                    <Route path="/reset-password" element={<ResetPassword />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}
                 </Routes>
