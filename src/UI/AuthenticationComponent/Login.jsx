@@ -2,10 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { AuthContxt } from "./AuthContext";
 import API_URL from "../../Config";
-<<<<<<< HEAD
-=======
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
->>>>>>> 18b4e2828f4c7829e6dad1c269e000c213444a21
 
 function Login() {
   const navigate = useNavigate();
