@@ -90,7 +90,7 @@ function FooterComponent1() {
     <div class="container px-6 py-8 mx-auto">
         <div class="flex flex-col items-center text-center">
             <Link to="#">
-            <h1 className=' font-custom text-3xl font-bold text-white'> ACCON LAB </h1>
+            <h1 className=' font-custom text-[20px] md:text-3xl font-bold text-white'> ACCON LAB </h1>
             {/* <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt=""/> */}
             </Link>
 
