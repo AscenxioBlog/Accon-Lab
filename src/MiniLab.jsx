@@ -78,8 +78,8 @@ function MiniLab() {
                         <Route path='/accon/settings' element={<Settings/>}/>
                     </Route>
                     <Route path="/sk" element={<ProductSkeleton />} />
-                    <Route path="singleproduct/:id" element={<ProductDetails />} />
-                    <Route path="register" element={<Register />} />
+                    <Route path="/singleproduct/:id" element={<ProductDetails />} />
+                    <Route path="/register" element={<Register />} />
                     <Route path="/password-reset" element={<ForgotPassword/>}/>
                     <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="order-success" element={<SuccessfulPayment />} />

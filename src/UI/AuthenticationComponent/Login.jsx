@@ -36,6 +36,7 @@ function Login() {
 
     try {
       const response = await fetch(`${API_URL}/auth/login`, {
+      // const response = await fetch(`http://localhost:3600/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,12 +49,6 @@ function Login() {
       console.log("Login response:", result);
       setIsLoggedIn(true);
 
-      // if (result.emailMessage) {
-      //   alert(result.emailMessage);
-      // } else if (result.passwordMessage) {
-      //   alert(result.passwordMessage);
-      // } else if (result.message) {
-      //   alert(result.message);
       if (response.status === 200) {
         alert(result.message);
         // Redirect to previous page if exists, else home
@@ -129,9 +124,14 @@ function Login() {
           >
             Log In
           </button>
-          <Link to="/password-reset" className=" text-[0.9rem] underline cursor-pointer text-blue-600 ">
-            Forgot password?
-          </Link>
+          <div className=" flex justify-between items-center">
+            <span className=" text-[0.7rem] text-black">Don't have an account? <Link to="/register" className=" text-blue-600 underline">sign-up here </Link></span>
+            <Link to="/password-reset" className=" text-[0.9rem] underline cursor-pointer text-blue-600 ">
+              Forgot password?
+            </Link>
+          </div>
+          
+
         {/* </form> */}
       </div>
         {/* <div className="h-[450px] w-full md:w-[80%] lg:w-[50%] flex flex-col items-center justify-center space-y-6">

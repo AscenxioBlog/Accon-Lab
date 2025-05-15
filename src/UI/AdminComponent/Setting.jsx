@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import API_URL from "../../Config";
+import ViewStaffs from "./ViewStaffs";
 
 function Settings() {
   // Admin details state
@@ -19,7 +20,6 @@ function Settings() {
     role: "",
     password: "",
   });
-  const [staffMembers, setStaffMembers] = useState([]);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -48,31 +48,6 @@ function Settings() {
     fetchDetails();
   }, []);
 
-  useEffect(() => {
-    const fetchStaffMembers = async () => {
-      setLoading(true);
-      try {
-        const res = await fetch(`${API_URL}/user/staff`, {
-          method: "GET",
-          credentials: "include",
-        });
-
-        if (!res.ok) {
-          throw new Error("Failed to fetch staff members");
-        }
-
-        const data = await res.json();
-        setStaffMembers(data);
-      } catch (err) {
-        console.error(err);
-        setError("Failed to load staff members.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchStaffMembers();
-  }, []);
 
   // Handle password change
   const handlePasswordChange = (e) => {
@@ -145,8 +120,8 @@ function Settings() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Settings</h1>
+    <div className="p-6 max-w-4xl mx-auto mt-3">
+      <h1 className="text-2xl font-bold mb-6 text-gray-500">Settings</h1>
 
       {/* Admin Details Section */}
       <div className="bg-white rounded-lg shadow p-6 mb-6">
@@ -360,56 +335,7 @@ function Settings() {
         </form>
 
         {/* Staff List */}
-        <div>
-          <h3 className="text-lg font-medium mb-3 text-gray-500">
-            Staff Members
-          </h3>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Email
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Role
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {staffMembers.map((staff) => (
-                  <tr key={staff.id}>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-500">
-                      {staff.firstName} {staff.lastName}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-500">
-                      {staff.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                        {staff.role}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      <button className="text-blue-600 hover:text-blue-900 mr-3">
-                        Edit
-                      </button>
-                      <button className="text-red-600 hover:text-red-900">
-                        Remove
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <ViewStaffs/>
       </div>
     </div>
   );

@@ -81,7 +81,7 @@ function ViewOrder() {
 
   return (
     <div className="min-h-screen bg-[url(assets/Frame2.png)] p-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-4xl mx-auto mt-3">
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Recent Orders</h1>
         
         <div className="space-y-4">
@@ -108,7 +108,7 @@ function ViewOrder() {
                   {/* Customer Info */}
                   <div className="flex items-center text-sm text-gray-600 mb-3">
                     <FaUser className="mr-1" />
-                    <span>{order.user.firstName} {order.user.lastName}</span>
+                    <span>{order.user?.firstName} {order.user?.lastName}</span>
                   </div>
                   
                   {/* Order Items */}
@@ -121,9 +121,9 @@ function ViewOrder() {
                       {order.items.map((item, index) => (
                         <li key={index} className="flex justify-between text-sm text-gray-500">
                           <span>
-                            {item.product.productName} × {item.quantity}
+                            {item.product?.productName} × {item.quantity}
                           </span>
-                          <span>#{(item.product.price * item.quantity).toFixed(2)}</span>
+                          <span>#{(item.product?.price * item.quantity).toFixed(2)}</span>
                         </li>
                         
                       ))}

@@ -88,7 +88,7 @@ const NotificationBell = () => {
         </button>
       
         {showDropdown && (
-        <div className="absolute right-0 mt-2 w-72 bg-white border rounded shadow-md z-50 max-h-96 overflow-y-auto">
+        <div className="absolute right-0 mt-2 w-[280px] bg-white border rounded shadow-md z-50 max-h-[200px] overflow-y-auto">
           <div className="flex items-center justify-between px-3 py-2 border-b">
             <span className="font-bold">Notifications</span>
             <div className="flex gap-2">
@@ -106,7 +106,7 @@ const NotificationBell = () => {
               >
                 <div>
                     {notif.type === 'order' && (
-                        <span className="text-blue-500 ">New Order: </span>
+                        <span className="text-blue-500 text-[12px]">New Order: </span>
                     )}
                     {notif.message}
                 </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaEdit, FaTrash, FaSearch, FaFilter, FaPlus } from 'react-icons/fa';
 import API_URL from '../../Config';
+import EditProduct from './EditProduct';
 
 function ViewAllProduct() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -9,20 +10,30 @@ function ViewAllProduct() {
   const [allProduct, setAllproduct] = useState([]);
   const [notification, setNotification] = useState({ show: false, message: '', productName: '' });
   const [deleteConfirm, setDeleteConfirm] = useState({ show: false, productId: null, productName: '' });
+    // For the edit modal
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const productsPerPage = 5;
+
+  const handleEditClick = (product) => {
+    setSelectedProduct(product);
+    setIsEditModalOpen(true);
+  };
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  const fetchProducts = () => {
-    fetch(`${API_URL}/product`)
-      .then(res => res.json())
-      .then(json => {
-        setAllproduct(json);
-      })
-      .catch(err => console.log(err));
-  };
+ const fetchProducts = async () => {
+  try {
+    const res = await fetch(`${API_URL}/product`);
+    // const res = await fetch(`http://localhost:3600/product`);
+    const data = await res.json();
+    setAllproduct(data);
+  } catch (err) {
+    console.error("Failed to fetch products:", err);
+  }
+};
 
   // Show notification
   const showNotification = (message, productName) => {
@@ -43,26 +54,32 @@ function ViewAllProduct() {
   };
 
   // Execute delete
-  const executeDelete = (productId) => {
-    fetch(`${API_URL}/product/${productId}`, {
-      method: 'DELETE',
-    })
-      .then(res => res.json())
-      .then(() => {
-        // Update the UI immediately
-        setAllproduct(prevData => prevData.filter(product => product._id !== productId));
-        // Show success notification
-        showNotification('Product deleted successfully', deleteConfirm.productName);
-      })
-      .catch(err => {
-        console.log(err.message);
-        showNotification('Failed to delete product', deleteConfirm.productName);
-      })
-      .finally(() => {
-        setDeleteConfirm({ show: false, productId: null, productName: '' });
+  const executeDelete = async (productId) => {
+    try {
+      const res = await fetch(`${API_URL}/product/${productId}`, {
+        method: 'DELETE',
+        credentials: 'include',
       });
+  
+      if (!res.ok) {
+        throw new Error('Failed to delete product');
+      }
+  
+      const data = await res.json();
+      alert(data.message);
+  
+      // Update the UI immediately
+      setAllproduct(prevData => prevData.filter(product => product._id !== productId));
+  
+      // Show success notification
+      showNotification('Product deleted successfully', deleteConfirm.productName);
+    } catch (err) {
+      console.log(err.message);
+      showNotification('Failed to delete product', deleteConfirm.productName);
+    } finally {
+      setDeleteConfirm({ show: false, productId: null, productName: '' });
+    }
   };
-
   // Get unique categories
   const categories = ['All', ...new Set(allProduct.map(product => product.category))];
 
@@ -111,7 +128,7 @@ function ViewAllProduct() {
       {/* Delete Confirmation Dialog */}
       {deleteConfirm.show && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full">
+          <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full text-black">
             <h3 className="text-lg font-medium mb-4">Confirm Delete</h3>
             <p className="mb-4">Are you sure you want to delete <strong>{deleteConfirm.productName}</strong>? This action cannot be undone.</p>
             <div className="flex justify-end space-x-3">
@@ -132,7 +149,7 @@ function ViewAllProduct() {
         </div>
       )}
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-3">
         <div className="bg-white shadow rounded-lg overflow-hidden">
           {/* Header */}
           <div className="px-6 py-4 border-b border-gray-200 flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -245,7 +262,7 @@ function ViewAllProduct() {
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button className="text-emerald-600 hover:text-emerald-900 mr-3">
+                        <button className="text-emerald-600 hover:text-emerald-900 mr-3" onClick={() => handleEditClick(product)}>
                           <FaEdit />
                         </button>
                         <button 
@@ -305,6 +322,12 @@ function ViewAllProduct() {
           )}
         </div>
       </div>
+      <EditProduct
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          product={selectedProduct}
+          onProductChange={fetchProducts}
+      />
     </div>
   );
 }
