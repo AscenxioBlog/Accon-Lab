@@ -15,6 +15,7 @@ function Adder() {
             const response = await fetch(`${API_URL}/product`, {
                 method: 'POST',
                 body: formData,
+                credentials:"include"
                 // Don't set Content-Type header - the browser will set it automatically with the correct boundary
             });
 

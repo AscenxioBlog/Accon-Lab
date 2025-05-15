@@ -2,56 +2,30 @@ import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../../ReusableComponent/CartContext';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart, FaHeart, FaEye, FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import glucose from '../ShopComponent/ShopPictures/glucose.jpg';
-import gloves from '../ShopComponent/ShopPictures/gloves.jpg';
-import plant from '../ShopComponent/ShopPictures/plant.jpg';
-import digital from '../ShopComponent/ShopPictures/shop4.jpg';
-import sethoscope from '../ShopComponent/ShopPictures/shop5.jpg';
-import sphygmomanometer from '../ShopComponent/ShopPictures/shop6.jpg';
-import sphygmomanometer2 from '../ShopComponent/ShopPictures/shop7.jpg';
-import handgloves from '../ShopComponent/ShopPictures/shop8.jpg';
-import sphygmomanometer3 from '../ShopComponent/ShopPictures/shop9.jpg';
-import glucometer from '../ShopComponent/ShopPictures/shop10.jpg';
-import oxygen from '../ShopComponent/ShopPictures/shop11.jpg';
-import surgical from '../ShopComponent/ShopPictures/shop12.jpg';
+import ProductSkeleton from '../../ReusableComponent/ProductSkeleton';
+import API_URL from '../../Config';
+// import { FaSearch, FaShoppingCart, FaHeart, FaEye, FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+
 
 function ShopComponent2({ data = [] }) {
-    const productData = [
-        { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
-        { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
-        { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
-        { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
-        { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
-        { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
-        { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
-        { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
-
-        { id: 'Glucose Monitor', price: 46.00, originalPrice: 55.00, rating: 4, image: glucose, sku: 'PROD001', category: 'Medical', isNew: true },
-        { id: 'Examination Gloves', price: 58.10, originalPrice: 65.00, rating: 4, image: gloves, sku: 'PROD002', category: 'Medical', isNew: false },
-        { id: 'Pharmaceutical Plants', price: 88.00, originalPrice: 100.00, rating: 3, image: plant, sku: 'PROD003', category: 'Equipment', isNew: true },
-        { id: 'Premium Stethoscope', price: 96.00, originalPrice: 120.00, rating: 4, image: sethoscope, sku: 'PROD004', category: 'Medical', isNew: false },
-        { id: 'Digital Sphygmomanometer', price: 69.00, originalPrice: 85.00, rating: 4, image: sphygmomanometer, sku: 'PROD005', category: 'Medical', isNew: true },
-        { id: 'Professional Sphygmomanometer', price: 70.00, originalPrice: 80.00, rating: 3, image: sphygmomanometer2, sku: 'PROD006', category: 'Medical', isNew: false },
-        { id: 'Sterile Hand Gloves', price: 52.00, originalPrice: 60.00, rating: 4, image: handgloves, sku: 'PROD007', category: 'Medical', isNew: true },
-        { id: 'Advanced Sphygmomanometer', price: 66.00, originalPrice: 75.00, rating: 4, image: sphygmomanometer3, sku: 'PROD008', category: 'Medical', isNew: false },
-    ];
-
+    let [productData, setProductData] = useState([]);
     const { addToCart } = useContext(CartContext);
     const [options, setOptions] = useState('new');
     const [currentPage, setCurrentPage] = useState(1);
     const [showAlert, setShowAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [singleproduct, setSingleproduct] = useState();
     
-    const productsPerPage = 10;
+    const productsPerPage = 15;
     const categories = ['All', ...new Set(productData.map(product => product.category))];
 
     // Filter and sort products
     const filteredProducts = productData
         .filter(product => 
-            product.id.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            product.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
             (selectedCategory === 'All' || product.category === selectedCategory)
         )
         .sort((a, b) => {
@@ -59,7 +33,7 @@ function ShopComponent2({ data = [] }) {
                 case 'rating': return (b.rating || 0) - (a.rating || 0);
                 case 'highest price': return b.price - a.price;
                 case 'lowest price': return a.price - b.price;
-                default: return a.isNew ? -1 : 1; // Newest first
+                default: return a.isNew ? -1 : 10; // Newest first
             }
         });
 
@@ -69,12 +43,35 @@ function ShopComponent2({ data = [] }) {
     const currentProducts = filteredProducts.slice(firstIndex, lastIndex);
 
     useEffect(() => {
-        setLoading(true);
-        const timeout = setTimeout(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`${API_URL}/product`, {
+                    method: "GET",
+                    credentials: "include",
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+        
+                const data = await response.json();
+                console.log(data);
+                setProductData(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching data:", error.message);
+                setLoading(false);
+            }
+        };
+        
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        if (productData.length > 0) {
             setLoading(false);
-        }, 800);
-        return () => clearTimeout(timeout);
-    }, [options, currentPage, searchTerm, selectedCategory]);
+        }
+    }, [productData]);
 
     const handlePageChange = (page) => {
         if (page > 0 && page <= totalPages) {
@@ -85,7 +82,7 @@ function ShopComponent2({ data = [] }) {
 
     const handleAddToCart = (item) => {
         addToCart(item, (addedItem) => {
-            setAlertMessage(`${addedItem.id} added to cart!`);
+            setAlertMessage(`${addedItem.productName} added to cart!`);
             setShowAlert(true);
             setTimeout(() => setShowAlert(false), 3000);
         });
@@ -170,53 +167,42 @@ function ShopComponent2({ data = [] }) {
 
                 {/* Loading Spinner */}
                 {loading ? (
-                    <div className="flex justify-center items-center min-h-[300px]">
-                        <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                        {Array.from({ length: productsPerPage }).map((_, index) => (
+                            <ProductSkeleton key={`skeleton-${index}`} />
+                        ))}
                     </div>
                 ) : (
                     <>
-                        {/* Products Grid - 2 columns on mobile, 3 on tablet, 4 on desktop */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                        {/* Products Grid */}
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                             {currentProducts.map((item) => (
-                                <div key={`${item.sku}-${currentPage}`} className="card bg-white shadow-md hover:shadow-xl transition-shadow group">
+                                <div key={`${item._id}-${currentPage}`} className="card bg-white shadow-md hover:shadow-xl transition-shadow group">
                                     {/* Product Image with Badges */}
-                                    <figure className="relative pt-[80%] overflow-hidden">
-                                        <img 
-                                            src={item.image} 
-                                            alt={item.id} 
-                                            className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                        {item.isNew && (
-                                            <div className="absolute top-2 left-2 bg-textc text-white text-xs font-bold px-2 py-1 rounded">
-                                                NEW
-                                            </div>
-                                        )}
-                                        {item.originalPrice > item.price && (
-                                            <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                                                SALE
-                                            </div>
-                                        )}
-                                        {/* Quick Actions */}
-                                        <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-                                            <button 
-                                                className="btn btn-circle btn-sm bg-white text-textc hover:bg-textc hover:text-white"
-                                                onClick={() => handleAddToCart(item)}
-                                            >
-                                                <FaShoppingCart />
-                                            </button>
-                                            <button className="btn btn-circle btn-sm bg-white text-textc hover:bg-textc hover:text-white">
-                                                <FaHeart />
-                                            </button>
-                                            <Link to={`/product/${item.sku}`} className="btn btn-circle btn-sm bg-white text-textc hover:bg-textc hover:text-white">
-                                                <FaEye />
-                                            </Link>
-                                        </div>
-                                    </figure>
+                                    <Link to={`/singleproduct/${item._id}`}>
+                                        <figure className="relative pt-[80%] overflow-hidden">
+                                            <img 
+                                                src={item.image} 
+                                                alt={item.productName} 
+                                                className="absolute top-0 left-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                            {item.status && (
+                                                <div className="absolute top-2 left-2 bg-textc text-white text-xs font-bold px-2 py-1 rounded">
+                                                    NEW
+                                                </div>
+                                            )}
+                                            {item.oldPrice > item.price && (
+                                                <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                                                    SALE
+                                                </div>
+                                            )}
+                                        </figure>
+                                    </Link>
 
                                     {/* Product Info */}
                                     <div className="card-body p-4">
                                         <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em]">
-                                            {item.id}
+                                            {item.productName}
                                         </h3>
                                         <div className="flex items-center mb-1">
                                             {[...Array(5)].map((_, i) => (
@@ -227,11 +213,11 @@ function ShopComponent2({ data = [] }) {
                                             ))}
                                             <span className="text-xs text-gray-500 ml-1">({item.rating})</span>
                                         </div>
-                                        <div className="flex items-center justify-between">
+                                        <div className="flex items-center justify-between mt-2">
                                             <div>
                                                 <span className="font-bold text-textc">${item.price.toFixed(2)}</span>
-                                                {item.originalPrice > item.price && (
-                                                    <span className="text-xs text-gray-400 line-through ml-2">${item.originalPrice.toFixed(2)}</span>
+                                                {item.oldPrice > item.price && (
+                                                    <span className="text-xs text-gray-400 line-through ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
                                             </div>
                                             <button 
@@ -278,13 +264,14 @@ function ShopComponent2({ data = [] }) {
                         )}
 
                         {/* View All Button */}
-                        {/* <div className="flex justify-center mt-8">
+                        <div className="flex justify-center mt-8">
                             <Link to="/shop" className="btn btn-wide bg-textc hover:bg-purple-700 text-white">
                                 View All Products
                             </Link>
-                        </div> */}
+                        </div>
                     </>
                 )}
+                {/* )} */}
             </div>
         </div>
     );
