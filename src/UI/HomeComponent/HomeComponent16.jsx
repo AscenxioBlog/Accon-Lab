@@ -3,8 +3,8 @@ import { CartContext } from '../../ReusableComponent/CartContext';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingCart, FaHeart, FaEye, FaStar, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import ProductSkeleton from '../../ReusableComponent/ProductSkeleton';
-
 import API_URL from '../../Config';
+
 function HomeComponent16() {
     let [productData, setProductData] = useState([]);
     const { addToCart } = useContext(CartContext);
@@ -15,9 +15,9 @@ function HomeComponent16() {
     const [loading, setLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
-    const [singleproduct,setSingleproduct]=useState()
+    const [singleproduct, setSingleproduct] = useState();
     
-    const productsPerPage = 16;
+    const productsPerPage = 15;
     const categories = ['All', ...new Set(productData.map(product => product.category))];
 
     // Filter and sort products
@@ -31,12 +31,12 @@ function HomeComponent16() {
                 case 'rating': return (b.rating || 0) - (a.rating || 0);
                 case 'highest price': return b.price - a.price;
                 case 'lowest price': return a.price - b.price;
-                default: return a.isNew ? -1 : 1; // Newest first
+                default: return a.isNew ? -1 : 10; // Newest first
             }
         });
 
     const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
-    const lastIndex = Math.min(currentPage * productsPerPage, filteredProducts.length);
+    const lastIndex = currentPage * productsPerPage;
     const firstIndex = lastIndex - productsPerPage;
     const currentProducts = filteredProducts.slice(firstIndex, lastIndex);
 
@@ -53,9 +53,12 @@ function HomeComponent16() {
                 }
         
                 const data = await response.json();
+                console.log(data);
                 setProductData(data);
+                setLoading(false);
             } catch (error) {
                 console.error("Error fetching data:", error.message);
+                setLoading(false);
             }
         };
         
@@ -63,12 +66,10 @@ function HomeComponent16() {
     }, []);
 
     useEffect(() => {
-        setLoading(true);
-        const timeout = setTimeout(() => {
+        if (productData.length > 0) {
             setLoading(false);
-        }, 8000);
-        return () => clearTimeout(timeout);
-    }, [options, currentPage, searchTerm, selectedCategory]);
+        }
+    }, [productData]);
 
     const handlePageChange = (page) => {
         if (page > 0 && page <= totalPages) {
@@ -162,7 +163,7 @@ function HomeComponent16() {
 
                 {/* Loading Spinner */}
                 {loading ? (
-                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                         {Array.from({ length: productsPerPage }).map((_, index) => (
                             <ProductSkeleton key={`skeleton-${index}`} />
                         ))}
@@ -170,7 +171,7 @@ function HomeComponent16() {
                 ) : (
                     <>
                         {/* Products Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
                             {currentProducts.map((item) => (
                                 <div key={`${item._id}-${currentPage}`} className="card bg-white shadow-md hover:shadow-xl transition-shadow group">
                                     {/* Product Image with Badges */}
@@ -207,21 +208,20 @@ function HomeComponent16() {
                                                 />
                                             ))}
                                             <span className="text-xs text-gray-500 ml-1">({item.rating})</span>
-                                            <button 
-                                                className="btn btn-sm bg-textc hover:bg-textc border-none text-white"
-                                                onClick={() => handleAddToCart(item)}
-                                            >
-                                                Add
-                                            </button>
                                         </div>
-                                        <div className="flex items-center justify-between">
+                                        <div className="flex items-center justify-between mt-2">
                                             <div>
                                                 <span className="font-bold text-textc">${item.price.toFixed(2)}</span>
                                                 {item.oldPrice > item.price && (
                                                     <span className="text-xs text-gray-400 line-through ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
                                             </div>
-                                       
+                                            <button 
+                                                className="btn btn-sm bg-textc hover:bg-textc border-none text-white"
+                                                onClick={() => handleAddToCart(item)}
+                                            >
+                                                Add
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
