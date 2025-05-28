@@ -1,5 +1,5 @@
 import React from 'react'
-import HeaderComponent from './ConstantComponent/HeaderComponent/HeaderComponent'
+import MainHeader from './ConstantComponent/HeaderComponent/MainHeader'
 import HomeComponent from './UI/HomeComponent/HomeComponent'
 import AboutComponent from './UI/AboutComponent/AboutComponent'
 import ServiceComponent from './UI/ServicesComponent/ServiceComponent'
@@ -44,7 +44,7 @@ function MiniLab() {
         location.pathname.startsWith('/accon');
   return (
     <div>
-         {!hideHeaderFoter && <HeaderComponent />}
+         {!hideHeaderFoter && <MainHeader />}
                 <Routes>
                     <Route path="/" element={<HomeComponent />} />
                     <Route path="/About" element={<AboutComponent />} />

@@ -91,10 +91,10 @@ function HomeComponent16() {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-8">
-                    <h1 className="text-3xl md:text-4xl font-bold text-purple-800">
+                    <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
                         Medical Marketplace
                     </h1>
-                    <p className="mt-2 text-purple-600">
+                    <p className="mt-2 text-gray-600">
                         Quality healthcare products at your fingertips
                     </p>
                 </div>
@@ -197,8 +197,8 @@ function HomeComponent16() {
 
                                     {/* Product Info */}
                                     <div className="card-body p-4">
-                                        <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em]">
-                                            {item.productName}
+                                        <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em] texw">
+                                            {item.productName} 
                                         </h3>
                                         <div className="flex items-center mb-1">
                                             {[...Array(5)].map((_, i) => (

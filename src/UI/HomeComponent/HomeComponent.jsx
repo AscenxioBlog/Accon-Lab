@@ -16,27 +16,25 @@ import HomeComponent14 from './HomeComponent14'
 import HomeComponent114 from './HomeComponent114'
 import HomeComponent15 from './HomeComponent15'
 import HomeComponent16 from './HomeComponent16'
+import Row2 from './Row2'
+import Row3 from './Row3'
+import Row4 from './Row4'
+import ProductContext from './ProductContext'
+import Row5 from './Row5'
 
 function HomeComponent() {
   return (
-    <div className=' bg-white mt-[100px] overflow-x-hidden dark:text-black'>
+    <div className='  overflow-x-hidden '>
         <HomeComponent2/>
-        <HomeComponent13/>
         <HomeComponent16/>
-        <HomeComponent1/>
-        {/* <HomeComponent3/> */}
-        <HomeComponent4/>
-        <HomeComponent5/>
-        <HomeComponent6/>
-        <HomeComponent7/>
-        <HomeComponent8/>
-        <HomeComponent9/>
-        {/* <HomeComponent10/> */}
-        {/* <HomeComponent11/> */}
-        {/* <HomeComponent12/> */}
-        <HomeComponent114/>
-        {/* <HomeComponent14/> */}
+        <ProductContext>
+          <Row2/>
+          <Row3/>
+          <Row4/>
+        </ProductContext>
         <HomeComponent15/>
+        <Row5/>
+        
 
     </div>
   )

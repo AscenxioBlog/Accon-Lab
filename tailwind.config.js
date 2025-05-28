@@ -18,6 +18,10 @@ export default {
           '100%': { opacity: 1, transform: 'scale(1)' },
         },
       },
+      fontFamily: {
+        playfair: ['"Playfair Display"', 'serif'], // Logo font
+        montserrat: ['Montserrat', 'sans-serif'], // Nav/body font
+      },
       colors:{
         textc: '#2c8cd0',
         bodybg: '#ecf0f1',

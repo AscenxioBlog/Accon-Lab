@@ -11,6 +11,14 @@ function AuthContext({children}) {
     let [showPopup,setShowPopup] = useState(false)
     const navigate = useNavigate()
 
+    let forPopup = () => {
+      setShowPopup(true)
+    }
+
+    let forPopupFalse = () => {
+      setShowPopup(false)
+    }
+
     useEffect(() => {
         fetch(`${API_URL}/auth/check`, {
           method: 'GET',
@@ -64,7 +72,7 @@ function AuthContext({children}) {
     };
 
   return (
-    <AuthContxt.Provider value={{handleUserIconClick, showPopup, setShowPopup, isLoggedIn,setIsLoggedIn, handleLogout}}>
+    <AuthContxt.Provider value={{handleUserIconClick, showPopup, forPopup, forPopupFalse,isLoggedIn,setIsLoggedIn, handleLogout}}>
         {children}
     </AuthContxt.Provider>
   )
