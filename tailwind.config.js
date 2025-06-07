@@ -21,6 +21,9 @@ export default {
       fontFamily: {
         playfair: ['"Playfair Display"', 'serif'], // Logo font
         montserrat: ['Montserrat', 'sans-serif'], // Nav/body font
+         abril: ['"Abril Fatface"', 'cursive'],
+        oswald: ['Oswald', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
       },
       colors:{
         textc: '#2c8cd0',

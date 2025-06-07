@@ -3,8 +3,8 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <section className="w-full bg-[#f3f7fa] py-8 px-4 lg:px-16">
-      <div className="flex flex-col lg:flex-row gap-6 min-h-[70vh] items-center lg:items-start ">
+    <section className="w-full bg-[#ffffff] py-8 px-4 lg:px-16">
+      <div className="flex flex-col lg:flex-row gap-6 md:min-h-[70vh] items-center lg:items-start ">
         <div className=' flex-1 flex-col h-[80vh] shadow-md text-black'>
           <div className=' h-[85%]'>
               <img src="/images/Slide 1.png" className=' h-full rounded-tl-md rounded-tr-md w-full object-cover'/>
@@ -21,7 +21,7 @@ const HeroSection = () => {
         </div>  
 
         {/* Right Side Cards */}
-        <div className="lg:w-[15%] grid gap-4 ">
+        <div className="lg:w-[15%] md:grid gap-4 hidden ">
           {[
             { title: 'Hospital Store', img: 'hospital.jpeg' },
             { title: 'Chemistry Store', img: 'chemistry.jpeg' },
