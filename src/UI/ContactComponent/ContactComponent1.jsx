@@ -8,7 +8,7 @@ function ContactComponent1() {
             <h1 className='text-bodybg font-custom text-4xl font-extrabold'>CONTACT US</h1>
         </div>
         <div>
-            <h1 className=' relative  md:text-2xl font-custom font-extrabold'>Wilcon Lab : CONTACT US</h1>
+            <h1 className=' relative  md:text-2xl font-custom font-extrabold'>Accon Lab : CONTACT US</h1>
             <h1 className='absolute flex before:h-[3px] before:w-[140px] before:bg-bodybg md:left-[135px]'></h1>
         </div>
         
@@ -19,7 +19,7 @@ function ContactComponent1() {
             <h1 className='text-bodybg font-custom md:text-6xl font-extrabold'>CONTACT US</h1>
         </div>
         <div>
-            <h1 className=' relative  text-2xl font-custom font-extrabold'>Wilcon Lab : CONTACT US</h1>
+            <h1 className=' relative  text-2xl font-custom font-extrabold'>Accon Lab : CONTACT US</h1>
             <h1 className='absolute flex before:h-[3px] before:w-[140px] before:bg-bodybg  right-[48px]'></h1>
         </div>
         
@@ -30,7 +30,7 @@ function ContactComponent1() {
             <h1 className='text-bodybg font-custom md:text-6xl font-extrabold'>CONTACT US</h1>
         </div>
         <div>
-            <h1 className=' relative  text-2xl font-custom font-extrabold'>Wilcon Lab : CONTACT US</h1>
+            <h1 className=' relative  text-2xl font-custom font-extrabold'>Accon Lab : CONTACT US</h1>
             <h1 className='absolute flex before:h-[3px] before:w-[120px] before:bg-bodybg  right-[14.7%] xl:right-[16%]'></h1>
         </div>
         

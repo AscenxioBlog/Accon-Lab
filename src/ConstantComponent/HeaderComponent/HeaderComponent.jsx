@@ -26,10 +26,10 @@ const HeaderComponent = () => {
       </div> */}
       <div className="max-w-6xl mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
         <nav className="hidden md:flex space-x-5 text-black text-[0.9rem]">
-          <a href="/">Home</a>
-          <a href="/about">About</a>
-          <a href="/contact">Contact</a>
-          <a href="/shop">Shop</a>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/contact">Contact</Link>
         </nav>
         <Link to="/" >
             <h1 className=' font-montserrat text-[1rem] md:text-[1.5rem] font-extrabold tracking-tighter text-gray-700'> ACCON SCIENTIFIC / LAB EQUIPMENT  </h1>

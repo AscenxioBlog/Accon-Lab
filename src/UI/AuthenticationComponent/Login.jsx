@@ -149,13 +149,8 @@ function Login() {
             required
             placeholder="email"
             name="email"
-<<<<<<< HEAD
-            // value={formData.email}
-            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
-=======
             value={formData.email}
             className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md px-4"
->>>>>>> 18b4e2828f4c7829e6dad1c269e000c213444a21
             onChange={handleInputChange}
           />
 

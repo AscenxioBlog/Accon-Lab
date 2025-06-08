@@ -64,7 +64,7 @@ function MiniLab() {
                         </ProtectedRoute>
                       }
                     />
-                    <Route path="/checkuser" element={<Authentication />} />
+                    <Route path="/login" element={<Authentication />} />
                     <Route path="/order-history" element={<OrderHistoryPage />} />
                     <Route path="/order/:orderId" element={<OrderDetails />} />
                     <Route path="/aclab" element={<AdminSignUp />} />
