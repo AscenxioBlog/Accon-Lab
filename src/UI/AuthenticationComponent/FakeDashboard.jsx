@@ -26,7 +26,7 @@ function FakeDashboard() {
         <Divider sx={{ background: '#394867' }} />
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', py: 3 }}>
           <Avatar sx={{ width: 64, height: 64, mb: 1 }}>U</Avatar>
-          <Typography variant="subtitle1">John Doe</Typography>
+          <Typography variant="subtitle1">Ufuoma Eze</Typography>
           <Typography variant="caption" color="#b0b8c1">User</Typography>
         </Box>
         <List>
@@ -64,7 +64,7 @@ function FakeDashboard() {
         {/* Dashboard Content */}
         <Box sx={{ background: '#fff', borderRadius: 2, p: 4, boxShadow: 1 }}>
           <Typography variant="h5" gutterBottom>
-            Welcome back, John!
+            Welcome back, Ufuoma!
           </Typography>
           <Typography variant="body1" color="text.secondary">
             Here’s a summary of your account activity.
