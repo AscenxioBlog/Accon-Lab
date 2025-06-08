@@ -32,6 +32,7 @@ import ResetPassword from './UI/AuthenticationComponent/ResetPassword'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
 import SuccessfulPayment from './UI/CheckoutComponent/SuccessfulPayment'
 import UserDashboard from './ConstantComponent/HeaderComponent/UserDashboard'
+import FakeDashboard from './UI/AuthenticationComponent/FakeDashboard'
 
 
 function MiniLab() {
@@ -40,7 +41,7 @@ function MiniLab() {
         const hideHeaderFoter = location.pathname === '/Checkuser' || 
          location.pathname === '/aclab' || 
          location.pathname === '/register' || 
-        
+         location.pathname === '/dashboard' ||
         location.pathname.startsWith('/accon');
   return (
     <div>
@@ -55,6 +56,7 @@ function MiniLab() {
                     <Route path="/cart" element={<CartComponent />} />
                     <Route path="/Shop" element={<ShopComponent />} />
                     <Route path="/FAQ" element={<FAQComponent />} />
+                    <Route path="/dashboard" element={<FakeDashboard />} />
                     {/* <Route path="/Checkout" element={<CheckoutComponent />} /> */}
                     <Route
                       path="/checkout"
