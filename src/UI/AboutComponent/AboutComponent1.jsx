@@ -3,7 +3,7 @@ import React from 'react'
 function AboutComponent1() {
   return (
     <div>
-        <div className='min-h-[430px] md:min-h-[400px] lg:min-h-[425px] w-full text-bodybg flex justify-center flex-col md:hidden p-[10px]  contactbg'>
+        <div className='min-h-[230px] md:min-h-[400px] lg:min-h-[425px] w-full text-bodybg flex justify-center flex-col md:hidden p-[10px]  contactbg'>
             <div>
                 <h1 className='text-bodybg font-custom text-4xl font-extrabold'>ABOUT US</h1>
             </div>

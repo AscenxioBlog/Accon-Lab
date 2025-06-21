@@ -27,7 +27,9 @@ function UserPopup() {
     >
       <ul>
         <li className='py-2 text-white font-bold text-[14px] duration-500 hover:tracking-[1.5px] hover:font-semibold cursor-pointer border-b border-gray-400'>
-          <button className=' bg-sky-500 block w-full rounded-md shadow-lg p-2'>Sign in</button>
+          <button className=' bg-sky-500 block w-full rounded-md shadow-lg p-2'>
+            <Link to='/login' className=' text-white'>Sign in</Link>
+          </button>
         </li>
         <li className='py-2 px-4 text-[14px] duration-500 hover:tracking-[1.5px] hover:font-semibold cursor-pointer border-b border-gray-400'>
           <Link to='/profile' className='  text-black'>Profile</Link>

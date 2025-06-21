@@ -1,110 +1,70 @@
-import React,  { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
 
-function AboutComponent4() {
-    let targetLabNum = 1492;
-    let targetSpecialistNum = 152;
-    let targetMaterialNum = 1022;
-    let targetPatientsNum = 24332;
-  
-    let duration = 2000; 
-    let steps = 100; 
-    let intervalTime = duration / steps;
-  
-    let labStep = targetLabNum / steps;
-    let specialistStep = targetSpecialistNum / steps;
-    let materialStep = targetMaterialNum / steps;
-    let patientsStep = targetPatientsNum / steps;
-  
-    let [labNum, setLabNum] = useState(0);
-    let [specialistNum, setSpecialistNum] = useState(0);
-    let [materialNum, setMaterialNum] = useState(0);
-    let [patientsNum, setPatientsNum] = useState(0);
-    const [isVisible, setIsVisible] = useState(false); 
-    const sectionRef = useRef(null)
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                setIsVisible(true); // Trigger counting when the section enters the viewport
-                observer.disconnect(); // Stop observing once the component is in view
-            }
-        });
+const AccordionItem = ({ title, content, isOpen, onClick }) => (
+  <div className="border-b border-gray-300">
+    <button
+      className="w-full flex justify-between items-center py-4 text-left font-medium text-gray-800 focus:outline-none"
+      onClick={onClick}
+    >
+      <span>{title}</span>
+      <FaPlus
+        className={`transform transition-transform duration-300 ${
+          isOpen ? 'rotate-45 text-blue-600' : 'rotate-0'
+        }`}
+      />
+    </button>
+    {isOpen && (
+      <div className="pb-4 text-gray-600">
+        {content}
+      </div>
+    )}
+  </div>
+);
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+const AboutComponent4 = () => {
+  const [openIndex, setOpenIndex] = useState(null);
 
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
+  const toggleAccordion = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
-    useEffect(() => {
-        if (!isVisible) return; 
-      let stepCount = 0;
-  
-      const numberscount = setInterval(() => {
-        stepCount += 1;
-  
-        setLabNum((prev) => Math.min(prev + labStep, targetLabNum));
-        setSpecialistNum((prev) => Math.min(prev + specialistStep, targetSpecialistNum));
-        setMaterialNum((prev) => Math.min(prev + materialStep, targetMaterialNum));
-        setPatientsNum((prev) => Math.min(prev + patientsStep, targetPatientsNum));
-  
-        if (stepCount >= steps) {
-          clearInterval(numberscount); // Stop when all steps are done
-        }
-      }, intervalTime);
-  
-      return () => clearInterval(numberscount); // Cleanup on unmount
-    }, [isVisible]);
+  const items = [
+    {
+      title: 'What products does Accon Lab sell?',
+      content: 'We offer lab equipment, scientific kits, chemistry and physics tools, and educational instruments for schools and professionals.'
+    },
+    {
+      title: 'Do you offer nationwide delivery?',
+      content: 'Yes! We deliver securely and promptly across all locations in the country.'
+    },
+    {
+      title: 'Can schools and institutions request bulk purchases?',
+      content: 'Absolutely. We offer bulk order discounts and custom quotes for institutions. Contact our support for assistance.'
+    },
+    {
+      title: 'Are your products tested and reliable?',
+      content: 'Yes. We ensure that every product is quality-checked for durability, accuracy, and performance before shipping.'
+    }
+  ];
+
   return (
-    <div>
-         <div className='min-h-[600px] md:min-h-[500px] lg:min-h-[300px] mt-[50px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-around gap-5 p-[20px] box-border' ref={sectionRef}>
-            <div className=' p-[20px] hover:border-[2px] hover:border-[blue] transition delay-75 duration-75 rounded lg border-[#18151529] border-[1px]'>
-                <div className='lab '>
-                  
-                    
-                </div>
-                <div className='mt-8'>
-                    <h1 className='text-5xl font-bold dark:text-black font'>{Math.round(labNum)}</h1>
-                    <p className='font-custom text-[18px] dark:text-black font-semibold'>Laboratories in 100+ states</p>
-                </div>
-                
-            </div>
-            <div className=' p-[20px]  hover:border-[2px] hover:border-[red] transition delay-75 duration-75 rounded-lg border-[#18151529] border-[1px]'>
-                <div className='special'>
-                    
-                </div>
-                <div className='mt-8'>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(specialistNum)}</h1>
-                    <p className='font-custom  dark:text-black text-[18px] font-semibold'>Laboratory Specialists</p>
-                </div>
-            </div>
-            <div className=' p-[20px]  hover:border-[2px] hover:border-[blue] transition delay-75 duration-75 rounded-lg border-[#18151529] border-[1px]'>
-                <div className='material'>
-                    
-                </div>
-                <div className='mt-8 '>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(materialNum)}</h1>
-                    <p className='font-custom dark:text-black text-[18px] font-semibold'>Material collection points</p>
-                </div>
-            </div>
-            <div className='p-[20px]  hover:border-[2px] hover:border-[green] transition delay-75 duration-75 rounded-lg border-[#18151529] border-[1px]'> 
-                <div className='patients'>
-                    
-                </div>
-                <div className='mt-8 '>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(patientsNum)}</h1>
-                    <p className='font-custom text-[18px] dark:text-black font-semibold'>Patients diagnosed in 2022</p>
-                </div>
-            </div>
-
+    <div className='bg-sky-100'>
+        <div className="max-w-2xl mx-auto px-4 py-8 ">
+            <h1 className=' text-3xl font-semibold mb-2'>Frequently Asked Questions</h1>
+            {items.map((item, index) => (
+                <AccordionItem
+                key={index}
+                title={item.title}
+                content={item.content}
+                isOpen={openIndex === index}
+                onClick={() => toggleAccordion(index)}
+                />
+            ))}
         </div>
     </div>
-    
-  )
-}
+ 
+  );
+};
 
-export default AboutComponent4
+export default AboutComponent4;

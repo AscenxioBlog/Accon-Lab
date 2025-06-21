@@ -119,6 +119,7 @@ function Login() {
           </div>
         
           <button
+            id="loginButton"
             type="submit"
             className="w-full py-2 bg-blue-500 mb-3 mt-4 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
@@ -149,13 +150,8 @@ function Login() {
             required
             placeholder="email"
             name="email"
-<<<<<<< HEAD
-            // value={formData.email}
-            className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md"
-=======
             value={formData.email}
             className="h-[55px] w-[80%] border-boldtext border-[2px] rounded-md px-4"
->>>>>>> 18b4e2828f4c7829e6dad1c269e000c213444a21
             onChange={handleInputChange}
           />
 

@@ -4,7 +4,7 @@ import ContactComponent2 from './ContactComponent2'
 
 function ContactComponent() {
   return (
-    <div className='mt-[110px]  bg-white overflow-x-hidden'>
+    <div className=' bg-white overflow-x-hidden'>
       <ContactComponent1/>
       <ContactComponent2/>
     </div>
