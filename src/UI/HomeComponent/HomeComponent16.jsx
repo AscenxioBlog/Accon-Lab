@@ -200,14 +200,20 @@ function HomeComponent16() {
                                         <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em] texw">
                                             {item.productName} 
                                         </h3>
-                                        <div className="flex items-center mb-1">
+                                        <div className="flex items-center justify-between mb-1">
                                             {[...Array(5)].map((_, i) => (
                                                 <FaStar 
                                                     key={i}
                                                     className={`text-sm ${i < item.rating ? 'text-yellow-400' : 'text-gray-300'}`}
                                                 />
                                             ))}
-                                            <span className="text-xs text-gray-500 ml-1">({item.rating})</span>
+                                            <span className="text-xs text-gray-500 ml-1">({item.rating}) </span>
+                                             <button 
+                                                className="btn btn-sm bg-textc hover:bg-textc border-none text-white"
+                                                onClick={() => handleAddToCart(item)}
+                                            >
+                                                Add
+                                            </button>
                                         </div>
                                         <div className="flex items-center justify-between mt-2">
                                             <div>
@@ -216,12 +222,7 @@ function HomeComponent16() {
                                                     <span className="text-xs text-gray-400 line-through ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
                                             </div>
-                                            <button 
-                                                className="btn btn-sm bg-textc hover:bg-textc border-none text-white"
-                                                onClick={() => handleAddToCart(item)}
-                                            >
-                                                Add
-                                            </button>
+                                           
                                         </div>
                                     </div>
                                 </div>

@@ -15,8 +15,8 @@ function ProductContext({children}) {
     useEffect(()=>{
         const fetchProducts = async ()=>{
             try {
-                // const res = await fetch(`${API_URL}/product`)
-                const res = await fetch(`http://localhost:3600/product`);
+                const res = await fetch(`${API_URL}/product`)
+                // const res = await fetch(`http://localhost:3600/product`);
                 const data = await res.json();
                 
                 setProducts(data);
