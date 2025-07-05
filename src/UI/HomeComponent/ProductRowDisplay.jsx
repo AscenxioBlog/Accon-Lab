@@ -66,9 +66,9 @@ function ProductRowDisplay({ products, textDeal }) {
         </button>
       </div>
       
-      <div className=" max-w-[100vw] shadow-lg  overflow-x-scroll md:overflow-x-hidden scrollbar-none">
+      <div className=" max-w-[100vw] shadow-lg  overflow-x-scroll md:overflow-x-hidden lg:overflow-x-scroll scrollbar-hide">
         <div
-          className=" min-h-[40vh] md:w-full gap-[30px] flex min-w-[300%] "
+          className=" min-h-[40vh] md:w-full gap-[30px] flex  "
         >
           {products ? (
             products

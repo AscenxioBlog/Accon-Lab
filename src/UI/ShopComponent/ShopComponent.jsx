@@ -5,7 +5,7 @@ import ShopData from './ShopData'
 
 function ShopComponent() {
   return (
-    <div className='mt-[110px] bg-white'>
+    <div className=' bg-white'>
       <ShopComponent1/>
       {/* <ShopComponent2/> */}
       <ShopData/>
