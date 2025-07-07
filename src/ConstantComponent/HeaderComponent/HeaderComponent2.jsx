@@ -52,7 +52,7 @@ function HeaderComponent() {
   to={'/cart'} 
   className='relative flex items-center justify-center  rounded-md'
 >
-  <FaBasketShopping className='dark:text-black text-lg' />
+  <FaBasketShopping className='text-black text-lg' />
   
   {totalItems > 0 && (
     <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -67,7 +67,7 @@ function HeaderComponent() {
                 <Button
                         height='50px'
                         // width ='4000px'
-                        className=' bg-textc text-2xl font-bold p-[10px] dark:text-black'
+                        className=' bg-textc text-2xl font-bold p-[10px] text-black'
                         label = 'Ξ'
                   k      onClick = {sidenav}
                     />
@@ -79,7 +79,7 @@ function HeaderComponent() {
 
 
         {/* for large screen  */}
-        <div className='min-h-[10px] bg-[#b7d0d6] hidden lg:grid grid-cols-[25%,75%] dark:text-black w-full overflow-x-hidden '>
+        <div className='min-h-[10px] bg-[#b7d0d6] hidden lg:grid grid-cols-[25%,75%] text-black w-full overflow-x-hidden '>
             <div className=' gap-1 flex items-center justify-center'>           
                     <h1  className='font-bold text-3xl text-textc '><BsLungs /></h1>
                     <h1 className=' font-custom text-[1.2rem] font-bold text-boldtext text-center'> ACCON SCIENTIFIC/ <br /> LAB EQUIPMENT  </h1>
@@ -129,7 +129,7 @@ function HeaderComponent() {
                                     to={'/cart'} 
                                     className='relative flex items-center justify-center  rounded-md'
                                     >
-                                    <FaBasketShopping className='dark:text-black text-lg' />
+                                    <FaBasketShopping className='text-black text-lg' />
                                     
                                     {totalItems > 0 && (
                                         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
@@ -176,7 +176,7 @@ function HeaderComponent() {
                     />
             </div>
                         {/* THIS PART OF THE SIDENAV IS HIDDEN FOR LARGE SCREEN  */}
-            <section className='p-[10px] lg:hidden  dark:text-white  space-y-4'>
+            <section className='p-[10px] lg:hidden text-black space-y-4'>
                 <div className='border-b-[1px] border-b-white'>
                   <h1 className='font-custom font-semibold text-[19px] lg:text-[24px] hover:text-boldtext'onClick={sidenav} > <Link to={'/'}>HOME</Link> </h1>
                 </div>
@@ -216,7 +216,7 @@ function HeaderComponent() {
          
 
             <div className='mt-[20px] p-[10px] lg:p-[20px] space-y-4'>
-                <h1 className='lg:text-2xl font-custom dark:text-white'>CONTACT US</h1>
+                <h1 className='lg:text-2xl font-custom text-black'>CONTACT US</h1>
                 <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 16, Old Ojo Road, Maza-Maza, Lagos-State</a></h1>
 
                 <h1 className='hover:text-[red] '>⭐<a href="#" className='font-light font-custom text-[17px] md:text-[20px] lg:text-3xl'> 41, Asogbon Street, Isale-Eko, Islad Lagos</a></h1>

@@ -92,7 +92,7 @@ function AboutComponent6() {
           <div className='min-h-[100px] bg p-[20px] ' style={{display:process}}>
 
             <section >
-              <h1 className='text-center font-custom font-medium dark:text-boldtext text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
+              <h1 className='text-center font-custom font-medium text-black text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
               accurate and precise findings</h1>
             </section>
 
@@ -103,7 +103,7 @@ function AboutComponent6() {
                 </div>
                 <div className='text-center'>
                   <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Generate Proposal</h1>
-                  <p className='font-custom text-[1.3rem] dark:text-black'>Initial phase of planning and documentation.</p>
+                  <p className='font-custom text-[1.3rem] text-black'>Initial phase of planning and documentation.</p>
                 </div>
               </div>
               <div className='flex flex-col justify-center items-center'>
@@ -112,7 +112,7 @@ function AboutComponent6() {
                 </div>
                 <div className='text-center '> 
                   <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Testing Begins</h1>
-                  <p className='font-custom text-[1.3rem] dark:text-black'>Execution phase where trials are conducted.</p>
+                  <p className='font-custom text-[1.3rem] text-black'>Execution phase where trials are conducted.</p>
                 </div>
               </div>
               <div className='flex flex-col justify-center items-center'>
@@ -121,7 +121,7 @@ function AboutComponent6() {
                 </div>
                 <div className='text-center'>
                   <h1 className='text-[2rem] font-custom font-semibold text-boldtext'>Reports Delivered</h1>
-                    <p className='font-custom text-[1.3rem] dark:text-black'>Final phase involving reporting and delivering results.</p>
+                    <p className='font-custom text-[1.3rem] text-black'>Final phase involving reporting and delivering results.</p>
                 </div>
               </div>
 
@@ -132,16 +132,16 @@ function AboutComponent6() {
 
           <div className='min-h-[100px] bg p-[20px] ' style={{display:mission}}>
             <section >
-                <h1 className='text-center font-custom font-medium dark:text-boldtext text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
+                <h1 className='text-center font-custom font-medium text-black text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
                 accurate and precise findings</h1>
             </section>
             <div className='min-h-[100px] bg mt-10'>
               <div className='text-center leading-6'>
                 <h1 className='font-custom font-semibold text-boldtext text-[1.9rem] md:text-[2.5rem]'>Our Mission is Give You Always Best Results.</h1>
-                <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
+                <p className=' text-black text-[1.3rem] font-custom font-medium mt-5'>
                 Our mission is to lead the advancement of medical and scientific knowledge by conducting reliable, ethical, and efficient clinical trials.
                 </p>
-                <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
+                <p className=' text-black text-[1.3rem] font-custom font-medium mt-5'>
                 We strive to deliver precise results and support healthcare innovation through our commitment to quality, transparency, and collaboration.
                 </p>
               </div>
@@ -164,7 +164,7 @@ function AboutComponent6() {
 
           <div className='min-h-[100px] bg- p-[20px]' style={{display:value}}>
             <section >
-                  <h1 className='text-center font-custom font-medium dark:text-boldtext text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
+                  <h1 className='text-center font-custom font-medium text-black text-[1.2rem] md:text-[1.4rem]'>Your full service lab for clinical trials. Our process is to ensure the generation of
                   accurate and precise findings</h1>
             </section>
             <div className='min-h-[100px] bg mt-10'>
@@ -172,10 +172,10 @@ function AboutComponent6() {
                 <h1 className='font-custom font-semibold text-boldtext text-[1.9rem] md:text-[2.5rem]'>
                   We are Trusted by over 25000+ of customers.
                 </h1>
-                <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
+                <p className=' text-black text-[1.3rem] font-custom font-medium mt-5'>
                 Trusted by over <span className="text-blue-700 font-semibold">25,000+</span> clients worldwide, our value lies in delivering excellence with integrity.
                 </p>
-                <p className=' dark:text-black text-[1.3rem] font-custom font-medium mt-5'>
+                <p className=' text-black text-[1.3rem] font-custom font-medium mt-5'>
                 Every project we undertake is backed by a strong ethical foundation, scientific rigor, and a passion for driving meaningful outcomes in healthcare.
                 </p>
               </div>

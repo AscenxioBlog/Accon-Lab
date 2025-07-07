@@ -43,11 +43,11 @@ function ProdCard({ product }) {
         <div className="flex items-center justify-between mt-2">
           <div>
             <span className="font-bold text-textc">
-              ${product.price.toFixed(2)}
+               ₦{product.price.toFixed(2)}
             </span>
             {product.oldPrice > product.price && (
               <span className="text-xs text-gray-400 line-through ml-2">
-                ${product.oldPrice.toFixed(2)}
+                 ₦{product.oldPrice.toFixed(2)}
               </span>
             )}
           </div>

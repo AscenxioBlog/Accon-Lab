@@ -86,7 +86,7 @@ function FooterComponent1() {
       </div> */}
 
 
-<footer class="bg-boldtext dark:bg-gray-900">
+<footer class="bg-boldtext text-white">
     <div class="container px-6 py-8 mx-auto">
         <div class="flex flex-col items-center text-center">
             <Link to="#">
@@ -95,26 +95,26 @@ function FooterComponent1() {
             </Link>
 
             <div class="flex flex-wrap justify-center mt-6 -mx-4">
-                <Link to="/" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Home </Link>
+                <Link to="/" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Home </Link>
                 
-                <Link href="/About" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> About </Link>
+                <Link href="/About" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> About </Link>
                 
-                <Link to="/FAQ" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Faqs </Link>
+                <Link to="/FAQ" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Faqs </Link>
 
-                <Link to="/Team" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Team </Link>
+                <Link to="/Team" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Team </Link>
 
-                <Link to="/cart" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400" aria-label="Reddit"> Cart </Link>
+                <Link to="/cart" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Cart </Link>
             </div>
 
         </div>
 
-        <hr class="my-6 border-gray-200 md:my-10 dark:border-gray-700" />
+        <hr class="my-6 border-gray-200 md:my-10" />
 
         <div class="flex flex-col items-center sm:flex-row sm:justify-between">
-            <p class="text-sm text-white dark:text-gray-300"> &copy; {new Date().getFullYear()} ACCON LAB. All Rights Reserved.</p>
+            <p class="text-sm text-white"> &copy; {new Date().getFullYear()} ACCON LAB. All Rights Reserved.</p>
 
             <div class="flex -mx-2">
-                <Link to="#" class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Reddit">
+                <Link to="#" class="mx-2 text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -123,7 +123,7 @@ function FooterComponent1() {
                     </svg>
                 </Link>
 
-                <Link to="#" class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Facebook">
+                <Link to="#" class="mx-2 text-white transition-colors duration-300 hover:text-blue-500" aria-label="Facebook">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -132,7 +132,7 @@ function FooterComponent1() {
                     </svg>
                 </Link>
 
-                <Link to="#" class="mx-2 text-gray-600 transition-colors duration-300 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400" aria-label="Github">
+                <Link to="#" class="mx-2 text-white transition-colors duration-300 hover:text-blue-500" aria-label="Github">
                     <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path

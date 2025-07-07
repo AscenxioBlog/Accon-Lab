@@ -15,7 +15,7 @@ function MobileHeader() {
     <header className="bg-sky-100 shadow-md border-b-[1px] border-gray-300">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
             <Link to="/" >
-                <h1 className=' font-montserrat text-[1.5rem] font-extrabold tracking-tighter text-gray-700'> ACCON SCIENTIFIC / <br /> LAB EQUIPMENT  </h1>
+                <h1 className=' font-montserrat text-[1.5rem] tracking-tighter text-gray-700'> ACCON SCIENTIFIC / <br /> LAB EQUIPMENT  </h1>
             </Link>
             
             <div className="flex space-x-4 text-gray-800 ">

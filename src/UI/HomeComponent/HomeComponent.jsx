@@ -30,9 +30,9 @@ function HomeComponent() {
         <ProductContext>
           <Row2/>
           <Row3/>
-          <Row4/>
+          {/* <Row4/> */}
         </ProductContext>
-        <HomeComponent15/>
+        {/* <HomeComponent15/> */}
         <Row5/>
         
 

@@ -3,13 +3,13 @@ import React from 'react';
 
 const HeroSection = () => {
   return (
-    <section className="w-full bg-[#ffffff] py-8 px-4 lg:px-16">
-      <div className="flex flex-col lg:flex-row gap-6 md:min-h-[70vh] items-center lg:items-start ">
-        <div className=' flex-1 flex-col h-[80vh] shadow-md text-black'>
-          <div className=' h-[85%]'>
-              <img src="/images/Slide 1.png" className=' h-full rounded-tl-md rounded-tr-md w-full object-cover'/>
+    <section className="w-full bg-[#ffffff] md:py-8 px-4 lg:px-16">
+      <div className="flex md:flex-col lg:flex-row gap-6 md:min-h-[40vh] lg:min-h-[70vh] h-[30vh] md:items-center lg:items-start ">
+        <div className=' flex-1 flex-col h-[20vh] md:h-[80vh] shadow-md text-black w-[100%]'>
+          <div className='  md:h-[85%] h-[30vh] mt-2 md:mt-0'>
+              <img src="/images/Slide 1.png" className=' h-full md:rounded-tl-md md:rounded-tr-md w-full md:object-left object-fill'/>
           </div>
-          <div className=' md:h-[15%] h-[30%] bg-white rounded-bl-md rounded-br-md'>
+          <div className=' md:h-[15%] h-[30%] bg-white rounded-bl-md rounded-br-md hidden md:block'>
               <ol className=' flex justify-around h-full items-center'>
                   <li>Education</li>
                   <li>Surgical</li>
@@ -21,7 +21,7 @@ const HeroSection = () => {
         </div>  
 
         {/* Right Side Cards */}
-        <div className="lg:w-[15%] md:grid gap-4 hidden ">
+        <div className="lg:w-[15%] lg:grid gap-4 hidden ">
           {[
             { title: 'Hospital Store', img: 'hospital.jpeg' },
             { title: 'Chemistry Store', img: 'chemistry.jpeg' },

@@ -42,11 +42,12 @@ const HeaderComponent = () => {
               <FaCaretDown className=' -ml-1'/>
             </section>
             <section className=' flex gap-2 items-center text-sky-500 cursor-pointer hover:text-black duration-150'>
-                <FaShoppingCart className="cursor-pointer" />
                 <Link
                   to={'/cart'} 
                   className='relative flex items-center justify-center  rounded-md'
                   >
+                <FaShoppingCart className="cursor-pointer" />
+
                   <span className="text-[0.8rem] hidden md:inline">CART: </span><span>{totalItems}</span>
                 </Link>
             </section>

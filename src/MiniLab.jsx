@@ -40,7 +40,6 @@ function MiniLab() {
 
         const hideHeaderFoter = location.pathname === '/Checkuser' || 
          location.pathname === '/aclab' || 
-         location.pathname === '/register' || 
          location.pathname === '/dashboard' ||
         location.pathname.startsWith('/accon');
   return (
@@ -61,9 +60,9 @@ function MiniLab() {
                     <Route
                       path="/checkout"
                       element={
-                        <ProtectedRoute>
+                        // <ProtectedRoute>
                           <CheckoutComponent />
-                        </ProtectedRoute>
+                        // </ProtectedRoute>
                       }
                     />
                     <Route path="/login" element={<Authentication />} />
