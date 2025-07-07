@@ -12,7 +12,7 @@ function AboutComponent3() {
           />
         </section>
         <section className=" md:w-[50%] flex justify-center flex-col gap-4 p-4 ">
-          <h1 className=" text-3xl ">Our Mission</h1>
+          <h1 className=" text-3xl text-black ">Our Mission</h1>
           <p className=" text-sky-600">
             At Accon Lab, our mission is to empower the next generation of
             scientists, educators, and innovators by making reliable,

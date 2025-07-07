@@ -99,9 +99,9 @@ function FooterComponent1() {
                 
                 <Link href="/About" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> About </Link>
                 
-                <Link to="/FAQ" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Faqs </Link>
+                {/* <Link to="/FAQ" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Faqs </Link> */}
 
-                <Link to="/Team" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Team </Link>
+                {/* <Link to="/Team" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Team </Link> */}
 
                 <Link to="/cart" class="mx-4 text-sm text-white transition-colors duration-300 hover:text-blue-500" aria-label="Reddit"> Cart </Link>
             </div>

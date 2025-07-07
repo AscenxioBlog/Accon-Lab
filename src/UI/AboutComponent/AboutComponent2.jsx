@@ -37,7 +37,7 @@ function AboutComponent2() {
             {qualities.map((quality, index) => (
               <div key={index} className=' bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
                 <div className=' text-sky-500 text-[3rem] mb-4 flex justify-center'>{quality.icon}</div>
-                <h3 className=' text-xl font-semibold mb-2 text-center'>{quality.header}</h3>
+                <h3 className=' text-xl font-semibold mb-2 text-center text-black'>{quality.header}</h3>
                 <p className=' text-gray-700 text-center text-[14px]'>{quality.description}</p>
               </div>
             ))}

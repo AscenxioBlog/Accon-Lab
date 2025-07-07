@@ -230,7 +230,7 @@ function HomeComponent16() {
                         </div>
 
                         {/* Pagination */}
-                        {totalPages > 1 && (
+                        {/* {totalPages > 1 && (
                             <div className="flex justify-center mt-10">
                                 <div className="join">
                                     <button 
@@ -258,7 +258,7 @@ function HomeComponent16() {
                                     </button>
                                 </div>
                             </div>
-                        )}
+                        )} */}
 
                         {/* View All Button */}
                         <div className="flex justify-center mt-8">

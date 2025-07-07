@@ -51,7 +51,7 @@ const AboutComponent4 = () => {
   return (
     <div className='bg-sky-100'>
         <div className="max-w-2xl mx-auto px-4 py-8 ">
-            <h1 className=' text-3xl font-semibold mb-2'>Frequently Asked Questions</h1>
+            <h1 className=' text-3xl font-semibold mb-2 text-black'>Frequently Asked Questions</h1>
             {items.map((item, index) => (
                 <AccordionItem
                 key={index}

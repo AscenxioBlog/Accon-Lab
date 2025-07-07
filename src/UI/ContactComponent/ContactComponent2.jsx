@@ -75,44 +75,44 @@ function ContactComponent2() {
     <div className="min-h-[300px] w-full bg-bodybg flex flex-col md:flex-row px-[30px] py-[30px] gap-3">
       <div className=" bg-white p-7 w-full md:w-[50%] rounded-md ">
         <h4 className=" text-[14px] text-sky-500">Get In Touch</h4>
-        <h1 className=" text-3xl font-semibold">Reach Out To Us</h1>
+        <h1 className=" text-3xl font-semibold text-black">Reach Out To Us</h1>
         <p className=" text-[13px] text-gray-500">
           Have questions or feedback? We're here to help. Send us a message and
           we'll respond as soon as possible.
         </p>
         <div className=" grid grid-cols-1 md:grid-cols-4 gap-2  border-t pt-7 border-gray-300 mt-7 min-h-[50vh] md:grid-rows-[1fr_1fr_3fr] bg-yellow-00">
           <div className=" col-start-1 col-end-5 md:col-end-3 flex flex-col items-start gap-2">
-            <label className=" font-medium">First Name</label>
+            <label className=" font-medium text-black">First Name</label>
             <input
               type="text"
-              placeholder="first name"
+              placeholder=""
               name="firstName"
               className=" p-2 w-full bg-gray-100 rounded-sm placeholder:text-black"
             />
           </div>
           <div className=" col-start-1 md:col-start-3 col-end-5 flex flex-col items-start gap-2">
-            <label className=" font-medium">Last Name</label>
+            <label className=" font-medium text-black">Last Name</label>
             <input
               type="text"
-              placeholder="last name"
+              placeholder=""
               name="lastName"
               className=" p-2 w-full bg-gray-100 rounded-sm placeholder:text-black"
             />
           </div>
           <div className=" col-start-1 col-end-5 flex flex-col items-start gap-2 mt-2">
-            <label className=" font-medium">Email</label>
+            <label className=" font-medium text-black">Email</label>
             <input
               type="email"
-              placeholder="email"
+              placeholder=""
               name="email"
               className=" p-2 w-full bg-gray-100 rounded-sm placeholder:text-black"
             />
           </div>
           <div className=" col-start-1 col-end-5 flex flex-col items-start gap-2 mt-3">
-            <label className=" font-medium">Message</label>
+            <label className=" font-medium text-black">Message</label>
             <textarea
               rows=""
-              placeholder="message"
+              placeholder=""
               name="message"
               className=" p-2 w-full h-full bg-gray-100 rounded-sm placeholder:text-black"
             ></textarea>
@@ -139,10 +139,10 @@ function ContactComponent2() {
               <MdOutlineEmail />
             </span>
             <div>
-              <p className=" font-semibold">Email</p>
+              <p className=" font-semibold text-black">Email</p>
               <a
                 href="mailto:offiahchinyerestephanie@gmail.com"
-                className=" text-[14px]"
+                className=" text-[14px] text-black"
               >
                 offiahchinyerestephanie@gmail.com
               </a>
@@ -153,7 +153,7 @@ function ContactComponent2() {
               <MdOutlineLocalPhone />
             </span>
             <div>
-              <p className=" font-semibold">Phone</p>
+              <p className=" font-semibold text-black">Phone</p>
               <a href="tel:+2348037428180" className=" text-[14px]">
                 +2348037428180
               </a>
@@ -164,9 +164,9 @@ function ContactComponent2() {
               <PiBuildingOffice />
             </span>
             <div>
-              <p className=" font-semibold">Address</p>
-              <p>23 Road Market Opposite W-close Festac Town</p>
-              <p>Maza Maza ...</p>
+              <p className=" font-semibold text-black">Address</p>
+              <p className=" text-black">23 Road Market Opposite W-close Festac Town</p>
+              <p className=" text-black">Maza Maza ...</p>
             </div>
           </section>
         </div>

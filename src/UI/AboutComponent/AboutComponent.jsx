@@ -13,7 +13,7 @@ import AboutComponent10 from './AboutComponent10'
 function AboutComponent() {
 
   return (
-    <div className='overflow-x-hidden  bg-white'>
+    <div className='overflow-x-hidden  bg-white mt-[120px]'>
       <AboutComponent1/>
       <AboutComponent2/>
       <AboutComponent3/>

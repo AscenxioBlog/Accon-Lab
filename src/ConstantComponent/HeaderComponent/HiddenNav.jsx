@@ -35,7 +35,7 @@ function HiddenNav({isOpen, toggleMenu}) {
                 <li>
                     <Link to='/contact'>contact</Link>
                 </li>
-                <li className=' relative'>
+                {/* <li className=' relative'>
                     <span className=' cursor-pointer' onClick={()=> setShowing(!isShowing)}>categories <FaCaretDown className=' -ml-1 inline'/></span>
                     <div className={` ${isShowing ? " h-[150px]" : " h-0 overflow-hidden"} duration-150 transition-all absolute w-full`}>
                         <ol className=' flex gap-[1px] flex-col text-black text-[15px]'>
@@ -62,7 +62,7 @@ function HiddenNav({isOpen, toggleMenu}) {
                             </li>
                         </ol>
                     </div>
-                </li>
+                </li> */}
             </ol>
         </nav>
     </div>
