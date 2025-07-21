@@ -23,7 +23,7 @@ function HomeComponent16() {
     // Filter and sort products
     const filteredProducts = productData
         .filter(product => 
-            product.productName.toLowerCase().includes(searchTerm.toLowerCase()) &&
+            product.productName?.toLowerCase().includes(searchTerm?.toLowerCase()) &&
             (selectedCategory === 'All' || product.category === selectedCategory)
         )
         .sort((a, b) => {

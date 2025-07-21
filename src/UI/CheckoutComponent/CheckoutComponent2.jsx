@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Button from '../../ReusableComponent/Button';
-import PaystackButton from './PaystackButton';
+import FlutterBtn from './FlutterBtn';
 import API_URL from '../../Config';
 
 function CheckoutComponent2() {
@@ -248,7 +248,7 @@ function CheckoutComponent2() {
                                 </div>
                             </div>
                             <div>
-                                <PaystackButton
+                                <FlutterBtn
                                     amount={cartTotal}
                                     email={formData.email}
                                     customerInfo={formData}
