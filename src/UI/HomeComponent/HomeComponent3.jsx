@@ -17,7 +17,7 @@ function HomeComponent3() {
 
   return (
     <div>
-      <div className='min-h-[100px] dark:bg-white p-[20px] mt-[20px] bg-[url(assets/Frame2.png)]'>
+      <div className='min-h-[100px]  p-[20px] mt-[20px] bg-[url(assets/Frame2.png)]'>
             <div className='p-[10px] leading-[35px] box-border'>
               <div>
                <h2 className='before:h-[3px] before:w-[40px] before:bg-textc relative text-textc flex items-center font-custom font-medium text-2xl gap-2'>OUR SERVICES</h2>

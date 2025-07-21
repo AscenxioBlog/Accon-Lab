@@ -14,10 +14,10 @@ function CartComponent3({ cart=[], cartTotal=0}) {
 
   return (
     <div >
-        <div className='min-h-[100px] bg-bodybg mt-5   dark:text-black'>
+        <div className='min-h-[100px] bg-bodybg mt-5   text-black'>
             <div className='md:flex justify-between p-[10px] items-center'>
                 <div className='md:flex  gap-3 '>
-                    <input type="text" placeholder=" Coupon code" className="input input-bordered w-full max-w-36 dark:bg-white" />
+                    <input type="text" placeholder=" Coupon code" className="input input-bordered w-full max-w-36 " />
 
                     <Button
                         className='btn bg-textc text-white uppercase mt-4 md:mt-0'

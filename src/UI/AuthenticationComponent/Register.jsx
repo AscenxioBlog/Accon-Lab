@@ -134,139 +134,149 @@ function Register() {
   };
   return (
     <div>
-      <section className="  dark:bg-gray-900 w-full flex justify-center ">
-        <div className="container h-[100vh]  flex items-center justify-center  box-border">
-          <form onSubmit={handleSubmit} className=" w-[98%] md:w-[90%] lg:w-[50%] p-[10px]   register_shadow">
-            <div className="flex justify-center mx-auto">
-              <h1 className='font-custom text-[1rem] font-bold text-boldtext'>ACCON SCIENTIFIC/<br />LAB EQUIPMENT</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full min-h-screen flex justify-center items-center"
+      >
+        <div className="bg-[#fff5] p-8 rounded-lg shadow-md w-full max-w-md">
+          <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
+            Sign Up
+          </h2>
+          
+          <div className="mb-4">
+            <label
+              htmlFor="firstName"
+              className="block text-sm text-gray-600 font-semibold"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              placeholder="Enter your first name"
+              value={formData.firstName}
+              className={`w-full px-4 py-2 border ${
+                errors.firstName ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              onChange={handleChange}
+            />
+            {errors.firstName && (
+              <p className="text-sm text-red-500 mt-1">{errors.firstName}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="lastName"
+              className="block text-sm text-gray-600 font-semibold"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              name="lastName"
+              placeholder="Enter your last name"
+              value={formData.lastName}
+              className={`w-full px-4 py-2 border ${
+                errors.lastName ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              onChange={handleChange}
+            />
+            {errors.lastName && (
+              <p className="text-sm text-red-500 mt-1">{errors.lastName}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm text-gray-600 font-semibold"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              className={`w-full px-4 py-2 border ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              onChange={handleChange}
+            />
+            {errors.email && (
+              <p className="text-sm text-red-500 mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm text-gray-600 font-semibold"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              value={formData.password}
+              className={`w-full px-4 py-2 border ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              onChange={handleChange}
+            />
+            {errors.password && (
+              <p className="text-sm text-red-500 mt-1">{errors.password}</p>
+            )}
+          </div>
+
+          <div className="mb-3">
+            <label
+              htmlFor="confirmPassword"
+              className="block text-sm text-gray-600 font-semibold"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              value={formData.confirmPassword}
+              className={`w-full px-4 py-2 border ${
+                errors.confirmPassword ? "border-red-500" : "border-gray-300"
+              } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
+              onChange={handleChange}
+            />
+            {errors.confirmPassword && (
+              <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>
+            )}
+          </div>
+
+          {apiError && (
+            <div className="mb-4 p-2 text-red-500 text-center bg-red-50 rounded">
+              {apiError.startsWith('<!DOCTYPE html>') 
+                ? 'Server error occurred. Please try again later.' 
+                : apiError}
             </div>
-            
-            <div className="flex items-center justify-center mt-6">
-              <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-500 capitalize border-b dark:border-gray-400 dark:text-gray-300">
-                sign in
-              </a>
+          )}
 
-              <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
-                sign up
-              </a>
-            </div>
-
-            <div className="relative flex items-center mt-8">
-              <span className="absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-boldtext dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </span>
-
-              <input
-                name="firstName"
-                type="text"
-                value={formData.firstName}
-                onChange={handleChange}
-                className={`block w-full py-3 border-boldtext border-[2px] text-gray-700 bg-white rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 ${errors.firstName ? 'border-red-500' : ''}`}
-                placeholder="FirstName"
-              />
-            </div>
-            {errors.firstName && <p className="text-red-500 text-xs mt-1">{errors.firstName}</p>}
-
-            <div className="relative flex items-center mt-4">
-              <span className="absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-boldtext dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </span>
-
-              <input
-                name="lastName"
-                type="text"
-                value={formData.lastName}
-                onChange={handleChange}
-                className={`block w-full py-3 border-boldtext border-[2px] text-gray-700 bg-white rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 ${errors.lastName ? 'border-red-500' : ''}`}
-                placeholder="Lastname"
-              />
-            </div>
-            {errors.lastName && <p className="text-red-500 text-xs mt-1">{errors.lastName}</p>}
-
-            <div className="relative flex items-center mt-4">
-              <span className="absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-boldtext dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </span>
-
-              <input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className={`block w-full py-3 text-gray-700 bg-white border-boldtext border-[2px] rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 ${errors.email ? 'border-red-500' : ''}`}
-                placeholder="Email address"
-              />
-            </div>
-            {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-
-            <div className="relative flex items-center mt-4">
-              <span className="absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-boldtext dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </span>
-
-              <input
-                name="password"
-                type="password"
-                value={formData.password}
-                onChange={handleChange}
-                className={`block w-full px-10 py-3 text-gray-700 bg-white border-boldtext border-[2px] rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 ${errors.password ? 'border-red-500' : ''}`}
-                placeholder="Password"
-              />
-            </div>
-            {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password}</p>}
-
-            <div className="relative flex items-center mt-4">
-              <span className="absolute">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-boldtext dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-              </span>
-
-              <input
-                name="confirmPassword"
-                type="password"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className={`block w-full px-10 py-3 text-gray-700 bg-white border-boldtext border-[2px] rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 ${errors.confirmPassword ? 'border-red-500' : ''}`}
-                placeholder="Confirm Password"
-              />
-            </div>
-            {errors.confirmPassword && <p className="text-red-500 text-xs mt-1">{errors.confirmPassword}</p>}
-
-            {apiError && (
-  <div className="mb-4 p-2 text-red-500 text-center bg-red-50 rounded">
-    {apiError.startsWith('<!DOCTYPE html>') 
-      ? 'Server error occurred. Please try again later.' 
-      : apiError}
-  </div>
-)}
-
-            <div className="mt-6">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
-              >
-                {isSubmitting ? 'Processing...' : 'Sign Up'}
-              </button>
-
-              <div className="mt-6 text-center">
-                <a href="#" className="text-sm text-blue-500 hover:underline dark:text-blue-400">
-                  Already have an account?
-                </a>
-              </div>
-            </div>
-          </form>
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className={`w-full py-2 bg-blue-500 mb-3 mt-4 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+          >
+            {isSubmitting ? 'Processing...' : 'Sign Up'}
+          </button>
+          
+          <div className="flex justify-center items-center">
+            <span className="text-[0.7rem] text-black">
+              Already have an account? 
+              <a href="#" className="text-blue-600 underline">sign-in here</a>
+            </span>
+          </div>
         </div>
-      </section>
+      </form>
     </div>
   );
 }

@@ -84,7 +84,7 @@ function ViewAllProduct() {
   const categories = ['All', ...new Set(allProduct.map(product => product.category))];
 
   const filteredProducts = allProduct.filter(product => {
-    const searchLower = searchTerm.toLowerCase();
+    const searchLower = searchTerm?.toLowerCase();
     const nameLower = product.name?.toLowerCase() || '';
     const idLower = product.id?.toLowerCase() || '';
     

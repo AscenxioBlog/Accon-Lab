@@ -24,15 +24,15 @@ import Row5 from './Row5'
 
 function HomeComponent() {
   return (
-    <div className='  overflow-x-hidden '>
+    <div className='  overflow-x-hidden mt-[120px]'>
         <HomeComponent2/>
         <HomeComponent16/>
         <ProductContext>
           <Row2/>
           <Row3/>
-          <Row4/>
+          {/* <Row4/> */}
         </ProductContext>
-        <HomeComponent15/>
+        {/* <HomeComponent15/> */}
         <Row5/>
         
 

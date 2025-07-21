@@ -197,7 +197,7 @@ function HomeComponent16() {
 
                                     {/* Product Info */}
                                     <div className="card-body p-4">
-                                        <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em] texw">
+                                        <h3 className="card-title text-sm md:text-base font-semibold line-clamp-2 min-h-[3em] text-black">
                                             {item.productName} 
                                         </h3>
                                         <div className="flex items-center justify-between mb-1">
@@ -217,7 +217,7 @@ function HomeComponent16() {
                                         </div>
                                         <div className="flex items-center justify-between mt-2">
                                             <div>
-                                                <span className="font-bold text-textc">${item.price.toFixed(2)}</span>
+                                                <span className="font-bold text-textc"> ₦{item.price.toFixed(2)}</span>
                                                 {item.oldPrice > item.price && (
                                                     <span className="text-xs text-gray-400 line-through ml-2">${item.oldPrice.toFixed(2)}</span>
                                                 )}
@@ -230,7 +230,7 @@ function HomeComponent16() {
                         </div>
 
                         {/* Pagination */}
-                        {totalPages > 1 && (
+                        {/* {totalPages > 1 && (
                             <div className="flex justify-center mt-10">
                                 <div className="join">
                                     <button 
@@ -258,7 +258,7 @@ function HomeComponent16() {
                                     </button>
                                 </div>
                             </div>
-                        )}
+                        )} */}
 
                         {/* View All Button */}
                         <div className="flex justify-center mt-8">

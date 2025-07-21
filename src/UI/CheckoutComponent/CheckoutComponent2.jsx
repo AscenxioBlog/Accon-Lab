@@ -106,7 +106,7 @@ function CheckoutComponent2() {
         <div>
             <div>
                 <form>
-                    <div className='min-h-[100px] lg:translate-x-20  dark:bg-bodybg  lg:w-[90%] bg-bodybg grid gap-4 grid-cols-1 lg:grid-cols-2 p-[20px] lg:justify-center font-custom lg:p-[30px]'>
+                    <div className='min-h-[100px] lg:translate-x-20    lg:w-[90%] bg-bodybg grid gap-4 grid-cols-1 lg:grid-cols-2 p-[20px] lg:justify-center font-custom lg:p-[30px]'>
                         <div>
                             <div>
                                 <h1 className='text-boldtext text-[1.3rem] font-bold'>Billing address</h1>
@@ -125,7 +125,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Type here"
                                             required
-                                            className="input input-bordered input-sm w-full  dark:bg-white"
+                                            className="input input-bordered input-sm w-full  "
                                         />
                                     </div>
 
@@ -140,7 +140,7 @@ function CheckoutComponent2() {
                                             value={formData.lastname}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
-                                            className="input input-bordered input-sm w-full dark:bg-white"
+                                            className="input input-bordered input-sm w-full "
                                             required
                                         />
                                     </div>
@@ -155,7 +155,7 @@ function CheckoutComponent2() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
-                                            className="input input-bordered input-sm w-full dark:bg-white"
+                                            className="input input-bordered input-sm w-full "
                                             required
                                         />
                                     </div>
@@ -170,7 +170,7 @@ function CheckoutComponent2() {
                                         value={formData.address}
                                         onChange={handleInputChange}
                                         placeholder="Street Address"
-                                        className="input input-bordered input-sm w-full dark:bg-white"
+                                        className="input input-bordered input-sm w-full "
                                         required
                                     />
                                     <input
@@ -179,7 +179,7 @@ function CheckoutComponent2() {
                                         value={formData.apartment}
                                         onChange={handleInputChange}
                                         placeholder="Apartment suite, unit etc (optional)"
-                                        className="input input-bordered input-sm w-full mt-[10px] dark:bg-white"
+                                        className="input input-bordered input-sm w-full mt-[10px] "
                                     />
                                     <label htmlFor="city" className="block mt-1 font-semibold">
                                         Town/City <span className='text-[red]'>*</span>
@@ -190,7 +190,7 @@ function CheckoutComponent2() {
                                         value={formData.city}
                                         onChange={handleInputChange}
                                         placeholder="Town/City"
-                                        className="input input-bordered input-sm w-full dark:bg-white"
+                                        className="input input-bordered input-sm w-full "
                                         required
                                     />
                                 </div>
@@ -206,7 +206,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Enter your state"
                                             required
-                                            className="input input-bordered input-sm w-full dark:bg-white"
+                                            className="input input-bordered input-sm w-full "
                                         />
                                     </div>
                                     <div className="md:w-[48%]">
@@ -220,7 +220,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Enter your email"
                                             required
-                                            className="input input-bordered input-sm w-full dark:bg-white"
+                                            className="input input-bordered input-sm w-full "
                                         />
                                     </div>
                                 </div>
@@ -239,12 +239,12 @@ function CheckoutComponent2() {
                                 {cart.map((item, index) => (
                                     <div key={index} className="flex justify-between py-2">
                                         <span>{item.id} x {item.quantity}</span>
-                                        <span>${(item.price * item.quantity).toFixed(2)}</span>
+                                        <span> ₦{(item.price * item.quantity).toFixed(2)}</span>
                                     </div>
                                 ))}
                                 <div className="flex justify-between font-bold mt-4 border-t pt-2">
                                     <span>Total</span>
-                                    <span>${cartTotal.toFixed(2)}</span>
+                                    <span> ₦{cartTotal.toFixed(2)}</span>
                                 </div>
                             </div>
                             <div>

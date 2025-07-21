@@ -68,8 +68,8 @@ function AboutComponent4() {
                     
                 </div>
                 <div className='mt-8'>
-                    <h1 className='text-5xl font-bold dark:text-black font'>{Math.round(labNum)}</h1>
-                    <p className='font-custom text-[18px] dark:text-black font-semibold'>Laboratories in 100+ states</p>
+                    <h1 className='text-5xl font-bold text-black font'>{Math.round(labNum)}</h1>
+                    <p className='font-custom text-[18px] text-black font-semibold'>Laboratories in 100+ states</p>
                 </div>
                 
             </div>
@@ -78,8 +78,8 @@ function AboutComponent4() {
                     
                 </div>
                 <div className='mt-8'>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(specialistNum)}</h1>
-                    <p className='font-custom  dark:text-black text-[18px] font-semibold'>Laboratory Specialists</p>
+                    <h1 className='text-5xl text-black font-bold'>{Math.round(specialistNum)}</h1>
+                    <p className='font-custom  text-black text-[18px] font-semibold'>Laboratory Specialists</p>
                 </div>
             </div>
             <div className=' p-[20px]  hover:border-[2px] hover:border-[blue] transition delay-75 duration-75 rounded-lg border-[#18151529] border-[1px]'>
@@ -87,8 +87,8 @@ function AboutComponent4() {
                     
                 </div>
                 <div className='mt-8 '>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(materialNum)}</h1>
-                    <p className='font-custom dark:text-black text-[18px] font-semibold'>Material collection points</p>
+                    <h1 className='text-5xl text-black font-bold'>{Math.round(materialNum)}</h1>
+                    <p className='font-custom text-black text-[18px] font-semibold'>Material collection points</p>
                 </div>
             </div>
             <div className='p-[20px]  hover:border-[2px] hover:border-[green] transition delay-75 duration-75 rounded-lg border-[#18151529] border-[1px]'> 
@@ -96,8 +96,8 @@ function AboutComponent4() {
                     
                 </div>
                 <div className='mt-8 '>
-                    <h1 className='text-5xl dark:text-black font-bold'>{Math.round(patientsNum)}</h1>
-                    <p className='font-custom text-[18px] dark:text-black font-semibold'>Patients diagnosed in 2022</p>
+                    <h1 className='text-5xl text-black font-bold'>{Math.round(patientsNum)}</h1>
+                    <p className='font-custom text-[18px] text-black font-semibold'>Patients diagnosed in 2022</p>
                 </div>
             </div>
 
