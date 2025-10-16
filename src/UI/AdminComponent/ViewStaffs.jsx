@@ -79,7 +79,6 @@ function ViewStaffs() {
       // Show success notification
       showNotification('Staff deleted successfully', deleteConfirm.staffName);
     } catch (err) {
-      console.log(err.message);
       showNotification('Failed to delete staff', deleteConfirm.staffName);
     } finally {
       setDeleteConfirm({ show: false, staffId: null, staffName: '' });

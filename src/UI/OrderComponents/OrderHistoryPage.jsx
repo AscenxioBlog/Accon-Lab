@@ -21,7 +21,6 @@ const OrderHistoryPage = () => {
         }
 
         const data = await res.json();
-        console.log(data); // Check the structure of the response
         setOrders(data); // assuming your backend sends { orders: [...] }
       } catch (err) {
         console.error(err);
@@ -35,7 +34,7 @@ const OrderHistoryPage = () => {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto p-4 mt-[100px]">
+    <div className="max-w-4xl mx-auto p-4 mt-[150px] min-h-screen">
       <h2 className="text-2xl font-bold mb-6">My Orders</h2>
 
       {loading ? (

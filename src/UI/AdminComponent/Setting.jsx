@@ -58,7 +58,6 @@ function Settings() {
   // Handle staff form change
   const handleStaffFormChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setStaffForm((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -81,7 +80,6 @@ function Settings() {
     });
 
     const result = await response.json();
-    console.log("Password reset sucessful:", result);
 
     setPasswordForm({
       oldPassword: "",

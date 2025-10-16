@@ -16,7 +16,6 @@ export default function HomeComponent7() {
           const  entry = entries[0];
             if (entry.isIntersecting && !hasStartedCounting.current) {
                 hasStartedCounting.current = true;
-                console.log('element is in view')
                 // watch.disconnect();
             startcounters()
 

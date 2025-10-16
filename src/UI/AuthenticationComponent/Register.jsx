@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import API_URL from '../../Config';
+import { Link } from 'react-router-dom';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -61,14 +62,7 @@ function Register() {
       setIsSubmitting(true);
       
       try {
-        // Debugging - log the full request details
-        console.log('Making request to:', `${API_URL}/auth`);
-        console.log('Request payload:', {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          password: '******' // Don't log actual password
-        });
+
   
         const response = await fetch(`${API_URL}/auth`, {
           method: 'POST',
@@ -136,7 +130,7 @@ function Register() {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="w-full min-h-screen flex justify-center items-center"
+        className="w-full min-h-screen  bg-[url(assets/Frame2.png)] bg-contain flex justify-center bg-white items-center"
       >
         <div className="bg-[#fff5] p-8 rounded-lg shadow-md w-full max-w-md">
           <h2 className="text-2xl font-bold text-center text-gray-700 mb-6">
@@ -155,7 +149,7 @@ function Register() {
               name="firstName"
               placeholder="Enter your first name"
               value={formData.firstName}
-              className={`w-full px-4 py-2 border ${
+              className={`w-full px-4 py-2 bg-white border ${
                 errors.firstName ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -177,7 +171,7 @@ function Register() {
               name="lastName"
               placeholder="Enter your last name"
               value={formData.lastName}
-              className={`w-full px-4 py-2 border ${
+              className={`w-full px-4 py-2 border bg-white ${
                 errors.lastName ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -199,7 +193,7 @@ function Register() {
               name="email"
               placeholder="Enter your email"
               value={formData.email}
-              className={`w-full px-4 py-2 border ${
+              className={`w-full px-4 py-2 bg-white border ${
                 errors.email ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -221,7 +215,7 @@ function Register() {
               name="password"
               placeholder="Enter your password"
               value={formData.password}
-              className={`w-full px-4 py-2 border ${
+              className={`w-full px-4 py-2 bg-white border ${
                 errors.password ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -243,7 +237,7 @@ function Register() {
               name="confirmPassword"
               placeholder="Confirm your password"
               value={formData.confirmPassword}
-              className={`w-full px-4 py-2 border ${
+              className={`w-full px-4 py-2 bg-white border ${
                 errors.confirmPassword ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -272,7 +266,7 @@ function Register() {
           <div className="flex justify-center items-center">
             <span className="text-[0.7rem] text-black">
               Already have an account? 
-              <a href="#" className="text-blue-600 underline">sign-in here</a>
+              <Link to="/login" className="text-blue-600 underline">sign-in here</Link>
             </span>
           </div>
         </div>

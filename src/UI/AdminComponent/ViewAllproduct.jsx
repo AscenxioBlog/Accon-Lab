@@ -31,7 +31,7 @@ function ViewAllProduct() {
     const data = await res.json();
     setAllproduct(data);
   } catch (err) {
-    console.error("Failed to fetch products:", err);
+    // Failed to fetch products
   }
 };
 
@@ -74,7 +74,6 @@ function ViewAllProduct() {
       // Show success notification
       showNotification('Product deleted successfully', deleteConfirm.productName);
     } catch (err) {
-      console.log(err.message);
       showNotification('Failed to delete product', deleteConfirm.productName);
     } finally {
       setDeleteConfirm({ show: false, productId: null, productName: '' });

@@ -36,7 +36,6 @@ const EditStaff = ({ isOpen, onClose, staff, onUpdate }) => {
         body: JSON.stringify(formData),
         credentials: "include",
       });
-      console.log(formData);
       if (!res.ok) throw new Error("Update failed");
 
       onUpdate()

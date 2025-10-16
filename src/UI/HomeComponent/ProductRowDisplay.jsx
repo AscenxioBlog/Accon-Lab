@@ -79,7 +79,6 @@ function ProductRowDisplay({ products, textDeal }) {
           ) : (
             <p className="text-white">Loading products...</p>
           )}
-        {console.log(productsPerPage)}
         </div>
       </div>
       

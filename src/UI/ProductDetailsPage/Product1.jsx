@@ -16,9 +16,6 @@ function ProductPage() {
     // let {id} = useParams();
     // Fetch product data
     useEffect(() => {
-       console.log(id)
-
-
         const fetchProduct = async () => {
             try {
                 const response = await fetch(`${API_URL}/product/${id}`);

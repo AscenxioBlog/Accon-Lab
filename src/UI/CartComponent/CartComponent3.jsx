@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { TbCurrencyNaira } from "react-icons/tb";
 
 function CartComponent3({ cart=[], cartTotal=0}) {
-    console.log(cart, cartTotal);
 
      // Save cart to localStorage on changes
   useEffect(() => {

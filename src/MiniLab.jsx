@@ -31,6 +31,7 @@ import ForgotPassword from './UI/AuthenticationComponent/ForgotPassword'
 import ResetPassword from './UI/AuthenticationComponent/ResetPassword'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
 import SuccessfulPayment from './UI/CheckoutComponent/SuccessfulPayment'
+import ManualPayment from './UI/PaymentComponent/ManualPayment'
 import UserDashboard from './ConstantComponent/HeaderComponent/UserDashboard'
 import FakeDashboard from './UI/AuthenticationComponent/FakeDashboard'
 
@@ -39,7 +40,8 @@ function MiniLab() {
     const location = useLocation()
 
         const hideHeaderFoter = location.pathname === '/Checkuser' || 
-         location.pathname === '/aclab' || 
+         location.pathname === '/login' || 
+         location.pathname === '/register' || 
          location.pathname === '/dashboard' ||
         location.pathname.startsWith('/accon');
   return (
@@ -84,6 +86,7 @@ function MiniLab() {
                     <Route path="/password-reset" element={<ForgotPassword/>}/>
                     <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="order-success" element={<SuccessfulPayment />} />
+                    <Route path="order-payment" element={<ManualPayment />} />
                     <Route path="profile" element={<UserDashboard />} />
 
                     {/* <Route path="/Pricing" element={<PricingComponent />} /> */}

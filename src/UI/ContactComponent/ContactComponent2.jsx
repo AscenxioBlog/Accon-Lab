@@ -47,7 +47,6 @@ function ContactComponent2() {
         "POzmPkkWklvfEh5IY"
       )
       .then((response) => {
-        console.log("Email sent successfully!", response);
         alert("Message sent successfully!");
         //         <SweetAlert
         //     show={this.state.show}

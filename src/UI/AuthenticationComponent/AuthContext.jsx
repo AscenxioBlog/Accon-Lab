@@ -8,6 +8,7 @@ export const AuthContxt = createContext();
 function AuthContext({children}) {
     // for checking if user is logged in
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoading, setIsLoading] = useState(true)
     let [showPopup,setShowPopup] = useState(false)
     const navigate = useNavigate()
 
@@ -26,11 +27,8 @@ function AuthContext({children}) {
         })
           .then(res => res.json())
           .then(data => {
-            console.log(data)
             if (data.loggedIn) {
               setIsLoggedIn(true)
-                console.log(isLoggedIn)
-
               // you can also save user info here if needed
             } else {
               setIsLoggedIn(false)
@@ -38,6 +36,9 @@ function AuthContext({children}) {
           })
           .catch(() => {
             setIsLoggedIn(false)
+          })
+          .finally(() => {
+            setIsLoading(false)
           })
       }, [])
       
@@ -58,7 +59,6 @@ function AuthContext({children}) {
                 credentials: 'include',
             });
             const data = await response.json()
-            console.log(data)
             if (response.ok) {
                 setIsLoggedIn(false);
                 navigate('/');
@@ -72,7 +72,7 @@ function AuthContext({children}) {
     };
 
   return (
-    <AuthContxt.Provider value={{handleUserIconClick, showPopup, forPopup, forPopupFalse,isLoggedIn,setIsLoggedIn, handleLogout}}>
+    <AuthContxt.Provider value={{handleUserIconClick, showPopup, forPopup, forPopupFalse,isLoggedIn,setIsLoggedIn, handleLogout, isLoading}}>
         {children}
     </AuthContxt.Provider>
   )

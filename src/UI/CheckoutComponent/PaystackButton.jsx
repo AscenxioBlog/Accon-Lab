@@ -88,7 +88,6 @@ const PaystackButton = ({ amount, email, customerInfo, cart }) => {
         });
   
         const orderResult = await placeOrderRes.json();
-        console.log('Order placed successfully:', orderResult);
   
         alert('Payment and Order successful!');
         localStorage.removeItem('cart');

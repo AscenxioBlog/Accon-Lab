@@ -11,8 +11,6 @@ function CartComponent2() {
 
     const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
-    console.log(cartTotal);
-
   return (
     <div className='max-w-6xl mx-auto p-6'>
       {cart.length === 0 ? (

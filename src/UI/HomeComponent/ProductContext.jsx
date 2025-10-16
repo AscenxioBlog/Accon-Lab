@@ -20,7 +20,6 @@ function ProductContext({children}) {
                 const data = await res.json();
                 
                 setProducts(data);
-                console.log("Data:", data)
 
                                 
                // 📌 Get the 13 most recently added products
@@ -28,18 +27,15 @@ function ProductContext({children}) {
                     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
                     .slice(0, 13);
                 setNewArrivals(recentProds);
-                console.log("Recent products:", recentProds);
 
 
                 // filter for labProducts
                 const labProds = data.filter(prod=>prod.category?.toLowerCase() === "lab");
                 setLabProducts(labProds);
-                console.log(labProds)
 
                 // filter for hospitalProds 
                 const hospitalProd = data.filter(prod=>prod.category?.toLowerCase() === "hospital");
                 setHospitalProd(hospitalProd);
-                console.log(hospitalProd)
 
 
                 //filter for physics 

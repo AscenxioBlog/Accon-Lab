@@ -46,7 +46,6 @@ function Login() {
       });
 
       const result = await response.json();
-      console.log("Login response:", result);
       setIsLoggedIn(true);
 
       if (response.status === 200) {

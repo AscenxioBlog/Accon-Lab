@@ -7,7 +7,6 @@ function OrderDetails() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   let { orderId } = useParams();
-  console.log(orderId);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -23,7 +22,6 @@ function OrderDetails() {
         }
 
         const data = await res.json();
-        console.log(data); // Check the structure of the response
         setOrder(data); // assuming your backend sends { orders: [...] }
       } catch (err) {
         console.error(err);
@@ -108,7 +106,6 @@ function OrderDetails() {
                 </thead>
                 <tbody>
                   {order.items.map((item) => (
-                    console.log(item),
                     <tr key={item._id} className=" text-center">
                       <td className="p-2">
                         <img src={item.product.image} alt={item.product.productName} className=" w-[50px]"/>

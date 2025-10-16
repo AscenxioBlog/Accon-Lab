@@ -50,7 +50,6 @@ const EditProductModal = ({ isOpen, onClose, product, onProductChange }) => {
         },
         body: JSON.stringify(formData),
       });
-      console.log(formData);
       if (!res.ok) throw new Error("Update failed");
 
       onProductChange()

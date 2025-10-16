@@ -36,8 +36,7 @@ function ShopComponent2({ data = [] }) {
             const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory;
             const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
             
-            console.log('Product:', product.productName, 'Price:', product.price, 'Category:', product.category);
-            console.log('Matches - Search:', matchesSearch, 'Category:', matchesCategory, 'Price:', matchesPrice);
+
             
             return matchesSearch && matchesCategory && matchesPrice;
         })
@@ -55,12 +54,7 @@ function ShopComponent2({ data = [] }) {
     const firstIndex = lastIndex - productsPerPage;
     const currentProducts = filteredProducts.slice(firstIndex, lastIndex);
     
-    // Debug logging
-    console.log('Total products:', productData.length);
-    console.log('Filtered products:', filteredProducts.length);
-    console.log('Products per page:', productsPerPage);
-    console.log('Total pages:', totalPages);
-    console.log('Current products:', currentProducts.length);
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -75,7 +69,6 @@ function ShopComponent2({ data = [] }) {
                 }
         
                 const data = await response.json();
-                console.log(data);
                 setProductData(data);
                 setLoading(false);
             } catch (error) {

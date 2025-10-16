@@ -53,7 +53,6 @@ function HomeComponent16() {
                 }
         
                 const data = await response.json();
-                console.log(data);
                 setProductData(data);
                 setLoading(false);
             } catch (error) {

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate, useNavigation } from 'react-router-dom'
 import Button from '../../ReusableComponent/Button';
 import FlutterBtn from './FlutterBtn';
 import API_URL from '../../Config';
 
 function CheckoutComponent2() {
+    const navigate = useNavigate();
     const [cart, setCart] = useState(() => {
         const storedCart = localStorage.getItem("cart");
         return storedCart ? JSON.parse(storedCart) : [];
@@ -46,34 +47,24 @@ function CheckoutComponent2() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         
-        // Prepare the data to send
         const orderData = {
-            // customerInfo: formData,
-            // cart: cart,
-            // totalAmount: cartTotal.toFixed(2),
-            // orderDate: new Date().toISOString()
             billingDetails: {
                 firstname: formData.firstname,
                 lastname: formData.lastname,
                 email: formData.email
             },
             items: cart.map(item => ({
-                    product: item._id,
-                    quantity: item.quantity,
+                product: item._id,
+                quantity: item.quantity,
             })),
             shippingAddress: {
                 address: formData.address,
                 city: formData.city,
                 state: formData.state
-            },
-            totalAmount: cartTotal
+            }
         };
 
-        console.log(orderData)
-
         try {
-            // Replace with your actual API endpoint
-            // const response = await fetch('http://localhost:3600/order/placeorder', {
             const response = await fetch(`${API_URL}/order/placeorder`, {
                 method: 'POST',
                 headers: {
@@ -85,27 +76,34 @@ function CheckoutComponent2() {
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
-                console.log(orderData)
             }
 
             const result = await response.json();
-            console.log('Order successful:', result);
             
-            // Optionally clear cart after successful order
-            // localStorage.removeItem('cart');
-            // setCart([]);
-            
+            // Redirect to manual payment page with order data
+            navigate('/manual-payment', {
+                state: {
+                    orderData: {
+                        _id: result.order._id,
+                        totalAmount: cartTotal,
+                        cart: cart.map(item => ({
+                            productName: item.productName,
+                            quantity: item.quantity,
+                            price: item.price
+                        }))
+                    }
+                }
+            });
             
         } catch (error) {
-            console.error('Error submitting order:', error);
-            // Handle error (show error message to user)
+            alert('Failed to place order. Please try again.');
         }
     };
 
     return (
         <div>
             <div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='min-h-[100px] lg:translate-x-20    lg:w-[90%] bg-bodybg grid gap-4 grid-cols-1 lg:grid-cols-2 p-[20px] lg:justify-center font-custom lg:p-[30px]'>
                         <div>
                             <div>
@@ -238,7 +236,7 @@ function CheckoutComponent2() {
                                 </div>
                                 {cart.map((item, index) => (
                                     <div key={index} className="flex justify-between py-2">
-                                        <span>{item.id} x {item.quantity}</span>
+                                        <span>{item.productName} x {item.quantity}</span>
                                         <span> ₦{(item.price * item.quantity).toFixed(2)}</span>
                                     </div>
                                 ))}
@@ -248,18 +246,18 @@ function CheckoutComponent2() {
                                 </div>
                             </div>
                             <div>
-                                <FlutterBtn
+                                {/* <FlutterBtn
                                     amount={cartTotal}
                                     email={formData.email}
                                     customerInfo={formData}
                                     cart={cart}
                                     className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
-                                />
-                                {/* <Button
+                                /> */}
+                                <Button
                                     type="submit"
                                     className='btn uppercase mt-4 w-[60%] font-custom text-[1rem] font-bold text-bodybg bg-textc hover:bg-textc hover:opacity-70'
                                     label='place order'
-                                /> */}
+                                />
                             </div>
                         </div>
                     </div>
