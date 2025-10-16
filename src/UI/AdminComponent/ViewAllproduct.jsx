@@ -13,7 +13,7 @@ function ViewAllProduct() {
     // For the edit modal
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const productsPerPage = 5;
+  const productsPerPage = 30;
 
   const handleEditClick = (product) => {
     setSelectedProduct(product);
