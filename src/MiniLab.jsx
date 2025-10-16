@@ -58,13 +58,20 @@ function MiniLab() {
                     <Route path="/Shop" element={<ShopComponent />} />
                     <Route path="/FAQ" element={<FAQComponent />} />
                     <Route path="/dashboard" element={<FakeDashboard />} />
-                    {/* <Route path="/Checkout" element={<CheckoutComponent />} /> */}
                     <Route
                       path="/checkout"
                       element={
-                        // <ProtectedRoute>
+                        <ProtectedRoute>
                           <CheckoutComponent />
-                        // </ProtectedRoute>
+                        </ProtectedRoute>
+                      }
+                    />
+                    <Route
+                      path="/manual-payment"
+                      element={
+                        <ProtectedRoute>
+                          <ManualPayment />
+                        </ProtectedRoute>
                       }
                     />
                     <Route path="/login" element={<Authentication />} />
