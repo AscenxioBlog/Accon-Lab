@@ -48,6 +48,10 @@ function ViewOrder() {
     }
   };
 
+  const viewPaymentProof = (imageUrl) => {
+    window.open(imageUrl, '_blank');
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[url(assets/Frame2.png)] p-6 flex items-center justify-center">
@@ -144,6 +148,18 @@ function ViewOrder() {
                       ))}
                     </ul>
                   </div>
+                  
+                  {/* Payment Proof */}
+                  {order.paymentProof && (
+                    <div className="border-t border-gray-200 pt-3 mt-3">
+                      <button 
+                        onClick={() => viewPaymentProof(order.paymentProof)}
+                        className="text-textc hover:text-purple-700 text-sm underline"
+                      >
+                        View Payment Proof
+                      </button>
+                    </div>
+                  )}
                   
                   {/* Order Total */}
                   <div className="border-t border-gray-200 pt-3 mt-3 flex justify-between font-medium text-blue-600">

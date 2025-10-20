@@ -38,13 +38,15 @@ function ManualPayment() {
             alert('Please upload proof of payment');
             return;
         }
-
         setIsSubmitting(true);
         
         const formData = new FormData();
         formData.append('orderId', orderData._id);
         formData.append('paymentProof', paymentProof);
         formData.append('transactionRef', transactionRef);
+
+        console.log(formData)
+
 
         try {
             const response = await fetch(`${API_URL}/order/confirm-payment`, {
