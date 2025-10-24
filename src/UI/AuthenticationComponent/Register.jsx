@@ -149,7 +149,7 @@ function Register() {
               name="firstName"
               placeholder="Enter your first name"
               value={formData.firstName}
-              className={`w-full px-4 py-2 bg-white border ${
+              className={`w-full px-4 py-2 bg-white text-black border ${
                 errors.firstName ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -171,7 +171,7 @@ function Register() {
               name="lastName"
               placeholder="Enter your last name"
               value={formData.lastName}
-              className={`w-full px-4 py-2 border bg-white ${
+              className={`w-full px-4 py-2 border bg-white text-black ${
                 errors.lastName ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -193,7 +193,7 @@ function Register() {
               name="email"
               placeholder="Enter your email"
               value={formData.email}
-              className={`w-full px-4 py-2 bg-white border ${
+              className={`w-full px-4 py-2 bg-white text-black border ${
                 errors.email ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -215,7 +215,7 @@ function Register() {
               name="password"
               placeholder="Enter your password"
               value={formData.password}
-              className={`w-full px-4 py-2 bg-white border ${
+              className={`w-full px-4 py-2 bg-white text-black border ${
                 errors.password ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}
@@ -237,7 +237,7 @@ function Register() {
               name="confirmPassword"
               placeholder="Confirm your password"
               value={formData.confirmPassword}
-              className={`w-full px-4 py-2 bg-white border ${
+              className={`w-full px-4 py-2 bg-white text-black border ${
                 errors.confirmPassword ? "border-red-500" : "border-gray-300"
               } rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400`}
               onChange={handleChange}

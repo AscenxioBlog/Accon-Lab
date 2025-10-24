@@ -1,5 +1,5 @@
 // import React from 'react'
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Link,
   Outlet,
@@ -19,6 +19,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoNotificationsCircle } from "react-icons/io5";
 import NotificationBell from "./NotificationBell";
+import { AuthContxt } from "../AuthenticationComponent/AuthContext";
 // import Swal from "sweetalert2";
 // import API_URL from "../Config";
 
@@ -26,6 +27,7 @@ function Admin1() {
   let [showMe, setShowMe] = useState(false);
   let [forwidth, setForwidth] = useState("220px");
   const { pathname } = useLocation();
+  const { handleLogout } = useContext(AuthContxt);
 
   const navigate = useNavigate();
   const { id } = useParams();
@@ -160,7 +162,10 @@ function Admin1() {
             </ul>
 
             <div>
-              <button className=" p-[10px] w-[100%] text-black rounded-[10px] bg-textc font-bold flex gap-2 justify-center items-center mt-[50px]">
+              <button 
+                onClick={handleLogout}
+                className=" p-[10px] w-[100%] text-black rounded-[10px] bg-textc font-bold flex gap-2 justify-center items-center mt-[50px]"
+              >
                 <BiLogOut className=" text-[20px]" /> Logout
               </button>
             </div>

@@ -15,7 +15,7 @@ function Login() {
     password: "",
   });
   let [errors, setErrors] = useState({});
-
+  const [isLoading, setIsLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
@@ -33,6 +33,7 @@ function Login() {
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const response = await fetch(`${API_URL}/auth/login`, {
@@ -46,12 +47,32 @@ function Login() {
       });
 
       const result = await response.json();
+      console.log('Login response:', result);
       setIsLoggedIn(true);
 
       if (response.status === 200) {
         alert(result.message);
-        // Redirect to previous page if exists, else home
-        navigate(from, { replace: true });
+        
+        // Check user role after successful login
+        try {
+          const roleResponse = await fetch(`${API_URL}/auth/check`, {
+            method: 'GET',
+            credentials: 'include',
+          });
+          const roleData = await roleResponse.json();
+          console.log('Role check response:', roleData);
+          
+          if (roleData.loggedIn && roleData.user?.role === 'Admin') {
+            console.log('Admin detected, redirecting to /accon');
+            navigate('/accon', { replace: true });
+          } else {
+            console.log('Regular user, redirecting to:', from);
+            navigate(from, { replace: true });
+          }
+        } catch (error) {
+          console.log('Role check failed, redirecting to home');
+          navigate(from, { replace: true });
+        }
       } else {
         setErrors({
           email: result.emailMessage || null,
@@ -60,6 +81,8 @@ function Login() {
       }
     } catch (error) {
       console.error("Error during login:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -120,9 +143,10 @@ function Login() {
           <button
             id="loginButton"
             type="submit"
-            className="w-full py-2 bg-blue-500 mb-3 mt-4 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            disabled={isLoading}
+            className={`w-full py-2 bg-blue-500 mb-3 mt-4 text-white font-semibold rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
           >
-            Log In
+            {isLoading ? 'Logging in...' : 'Log In'}
           </button>
           <div className=" flex justify-between items-center">
             <span className=" text-[0.7rem] text-black">Don't have an account? <Link to="/register" className=" text-blue-600 underline">sign-up here </Link></span>

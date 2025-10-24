@@ -123,7 +123,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Type here"
                                             required
-                                            className="input input-bordered input-sm w-full  "
+                                            className="input input-bordered input-sm w-full bg-white text-black"
                                         />
                                     </div>
 
@@ -138,7 +138,7 @@ function CheckoutComponent2() {
                                             value={formData.lastname}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
-                                            className="input input-bordered input-sm w-full "
+                                            className="input input-bordered input-sm w-full bg-white text-black"
                                             required
                                         />
                                     </div>
@@ -153,7 +153,7 @@ function CheckoutComponent2() {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             placeholder="Type here"
-                                            className="input input-bordered input-sm w-full "
+                                            className="input input-bordered input-sm w-full bg-white text-black"
                                             required
                                         />
                                     </div>
@@ -168,7 +168,7 @@ function CheckoutComponent2() {
                                         value={formData.address}
                                         onChange={handleInputChange}
                                         placeholder="Street Address"
-                                        className="input input-bordered input-sm w-full "
+                                        className="input input-bordered input-sm w-full bg-white text-black"
                                         required
                                     />
                                     <input
@@ -177,7 +177,7 @@ function CheckoutComponent2() {
                                         value={formData.apartment}
                                         onChange={handleInputChange}
                                         placeholder="Apartment suite, unit etc (optional)"
-                                        className="input input-bordered input-sm w-full mt-[10px] "
+                                        className="input input-bordered input-sm w-full mt-[10px] bg-white text-black"
                                     />
                                     <label htmlFor="city" className="block mt-1 font-semibold">
                                         Town/City <span className='text-[red]'>*</span>
@@ -188,7 +188,7 @@ function CheckoutComponent2() {
                                         value={formData.city}
                                         onChange={handleInputChange}
                                         placeholder="Town/City"
-                                        className="input input-bordered input-sm w-full "
+                                        className="input input-bordered input-sm w-full bg-white text-black"
                                         required
                                     />
                                 </div>
@@ -204,7 +204,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Enter your state"
                                             required
-                                            className="input input-bordered input-sm w-full "
+                                            className="input input-bordered input-sm w-full bg-white text-black"
                                         />
                                     </div>
                                     <div className="md:w-[48%]">
@@ -218,7 +218,7 @@ function CheckoutComponent2() {
                                             onChange={handleInputChange}
                                             placeholder="Enter your email"
                                             required
-                                            className="input input-bordered input-sm w-full "
+                                            className="input input-bordered input-sm w-full bg-white text-black"
                                         />
                                     </div>
                                 </div>

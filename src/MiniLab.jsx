@@ -30,6 +30,7 @@ import Register from './UI/AuthenticationComponent/Register'
 import ForgotPassword from './UI/AuthenticationComponent/ForgotPassword'
 import ResetPassword from './UI/AuthenticationComponent/ResetPassword'
 import ProtectedRoute from './UI/AuthenticationComponent/ProtectedRoute'
+import AdminProtectedRoute from './UI/AuthenticationComponent/AdminProtectedRoute'
 import SuccessfulPayment from './UI/CheckoutComponent/SuccessfulPayment'
 import ManualPayment from './UI/PaymentComponent/ManualPayment'
 import UserDashboard from './ConstantComponent/HeaderComponent/UserDashboard'
@@ -78,7 +79,11 @@ function MiniLab() {
                     <Route path="/order-history" element={<OrderHistoryPage />} />
                     <Route path="/order/:orderId" element={<OrderDetails />} />
                     <Route path="/aclab" element={<AdminSignUp />} />
-                    <Route path="/accon" element={<Admin />} >
+                    <Route path="/accon" element={
+                        <AdminProtectedRoute>
+                            <Admin />
+                        </AdminProtectedRoute>
+                    } >
                         <Route index element={<Dashboard/>}/>
                         <Route path='/accon/dashboard' element={<Dashboard/>}/>
                         <Route path='/accon/productlist' element={<ViewAllproduct/>}/>
