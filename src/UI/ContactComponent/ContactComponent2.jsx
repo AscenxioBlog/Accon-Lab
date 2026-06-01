@@ -164,8 +164,8 @@ function ContactComponent2() {
             </span>
             <div>
               <p className=" font-semibold text-black">Address</p>
-              <p className=" text-black">23 Road Market Opposite W-close Festac Town</p>
-              <p className=" text-black">Maza Maza ...</p>
+              <p className=" text-black">Shop  A16,  Rasheed Otolorin Street, 23rd, Mkt opposite  W / close  festac town, </p>
+              <p className=" text-black">lagos state...</p>
             </div>
           </section>
         </div>
